@@ -2,10 +2,15 @@
 # Project Structure
 .
 ├── docs /
+
 ├── src /
+
 ├── wip /
+
 ├── LICENSE
+
 ├── README.md
+
 
 The docs/ directory will hold a standalone Starlight + Astro website.
 
