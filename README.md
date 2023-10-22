@@ -1,5 +1,19 @@
 # healthy-games-for-healthy-people-and-healthy-planet
 # Project Structure
+.
+├── docs /
+├── src /
+├── wip /
+├── LICENSE
+├── README.md
+
+The docs/ directory will hold a standalone Starlight + Astro website.
+
+The src/ directory will contain our codebase
+
+The wip/ directory is the Work in Progress directory. It contains assignment templates that will be modified/updated during the year. 
+
+The LICENSE is currently CC0 and will need to be changed by the end of the year.
 
 **General Rules**
 - Never create issues directly, do it through the Board created in the github-projects tab
