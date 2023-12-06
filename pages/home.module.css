@@ -1,0 +1,112 @@
+.juniorOutdoorFood {
+  margin: 0;
+}
+.juniorOutdoorFoodContainer {
+  position: relative;
+  display: inline-block;
+  width: 680px;
+  height: 121.5px;
+  flex-shrink: 0;
+}
+.backgroundImage,
+.frame {
+  width: 1440px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.backgroundImage {
+  height: 519px;
+  align-items: flex-start;
+  padding: 62.94255447387695px 373px;
+  box-sizing: border-box;
+  background-image: url(/background-image@3x.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top;
+}
+.frame {
+  overflow: hidden;
+  align-items: center;
+}
+.climateResilienceStarts {
+  position: undefined;
+  letter-spacing: 0.06em;
+  line-height: 26px;
+  display: inline-block;
+  height: 26px;
+  margin-left: 357px;
+}
+.theJrOutdoor {
+  margin-block-start: 0;
+  margin-block-end: 10px;
+}
+.theJrOutdoorContainer {
+  align-self: stretch;
+  position: relative;
+  font-size: 21px;
+  color: var(--color-black);
+  white-space: pre-wrap;
+}
+.jofnInfo {
+  width: 1138px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 43px;
+  font-size: 26px;
+  color: var(--color-orangered);
+}
+.calculatorIcon {
+  position: relative;
+  width: 49px;
+  height: 41px;
+  object-fit: cover;
+}
+.calculator {
+  position: relative;
+  display: inline-block;
+  width: 188px;
+  height: 35px;
+  flex-shrink: 0;
+}
+.calculatorButton1 {
+  border-radius: var(--br-56xl);
+  background-color: var(--color-orangered);
+  border: 1px solid var(--color-black);
+  box-sizing: border-box;
+  width: 318px;
+  height: 73px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 16px 26.5px;
+  gap: 11px;
+}
+.calculatorButton,
+.home {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.calculatorButton {
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  width: 318px;
+  justify-content: center;
+  font-size: 32px;
+  color: var(--color-white);
+}
+.home {
+  position: relative;
+  background-color: var(--color-white);
+  width: 100%;
+  overflow: hidden;
+  justify-content: flex-start;
+  gap: 34px;
+  text-align: center;
+  font-size: 46px;
+  color: var(--color-black);
+  font-family: var(--font-inria-serif);
+}
