@@ -1,0 +1,26 @@
+@import url("https://fonts.googleapis.com/css2?family=Inria+Serif:wght@700&display=swap");
+body {
+  margin: 0;
+  line-height: normal;
+}
+:root {
+  /* fonts */
+  --font-inria-serif: "Inria Serif";
+
+  /* font sizes */
+  --font-size-xl: 20px;
+
+  /* Colors */
+  --color-white: #fff;
+  --color-orangered: #d73f09;
+  --color-black: #000;
+
+  /* Paddings */
+  --padding-2xl-3: 21.3px;
+  --padding-11xs: 2px;
+  --padding-5xl-9: 24.9px;
+  --padding-2xs: 11px;
+
+  /* Border radiuses */
+  --br-56xl: 75px;
+}
