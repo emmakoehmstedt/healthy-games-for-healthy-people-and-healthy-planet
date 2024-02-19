@@ -1,0 +1,580 @@
+.foodcardbackground {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: var(--br-3xs);
+  background-color: var(--color-white);
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  border: 1px solid var(--color-gray-200);
+  box-sizing: border-box;
+  width: 266.4px;
+  height: 359.7px;
+}
+.pineapple {
+  position: absolute;
+  top: 304.7px;
+  left: 19.5px;
+  display: flex;
+  align-items: center;
+  width: 209px;
+  height: 44px;
+}
+.pineappleimageIcon {
+  position: absolute;
+  top: 18.5px;
+  left: 15px;
+  border-radius: var(--br-3xs);
+  width: 233.8px;
+  height: 280px;
+  object-fit: cover;
+}
+.oreganocard,
+.pineapplecard {
+  position: absolute;
+  top: 3323px;
+  left: 377px;
+  width: 266.4px;
+  height: 359.7px;
+}
+.oreganocard {
+  left: 32px;
+}
+.artichokecard,
+.basilcard,
+.chivescard,
+.mushrooms,
+.olivescard {
+  position: absolute;
+  top: 2906px;
+  left: 724px;
+  width: 266.4px;
+  height: 359.7px;
+}
+.artichokecard,
+.basilcard,
+.mushrooms,
+.olivescard {
+  left: 378px;
+}
+.artichokecard,
+.mushrooms,
+.olivescard {
+  left: 32px;
+}
+.mushrooms,
+.olivescard {
+  top: 2489px;
+  left: 724px;
+}
+.mushrooms {
+  top: 305px;
+  left: 20px;
+  display: flex;
+  align-items: center;
+  width: 229px;
+  height: 44px;
+}
+.bananacard,
+.blackberriescard,
+.cacaocard,
+.mushroomscard,
+.wheatcard {
+  position: absolute;
+  top: 2489px;
+  left: 378px;
+  width: 266.4px;
+  height: 359.7px;
+}
+.bananacard,
+.blackberriescard,
+.cacaocard,
+.wheatcard {
+  left: 32px;
+}
+.bananacard,
+.blackberriescard,
+.cacaocard {
+  top: 2072px;
+  left: 724px;
+}
+.bananacard,
+.cacaocard {
+  left: 378px;
+}
+.cacaocard {
+  left: 32px;
+}
+.purslanecard,
+.sweetPotato,
+.swisschardcard,
+.tomatoescard {
+  position: absolute;
+  top: 1655px;
+  left: 724px;
+  width: 266.4px;
+  height: 359.7px;
+}
+.sweetPotato,
+.swisschardcard,
+.tomatoescard {
+  top: 1659px;
+  left: 378px;
+}
+.sweetPotato,
+.swisschardcard {
+  top: 1655px;
+  left: 32px;
+}
+.sweetPotato {
+  top: 305px;
+  left: 13px;
+  display: flex;
+  align-items: center;
+  width: 239px;
+  height: 44px;
+}
+.foodcardbackground16,
+.potatoescard,
+.sweetpotatocard {
+  position: absolute;
+  top: 1240px;
+  left: 724px;
+  width: 266.4px;
+  height: 359.7px;
+}
+.foodcardbackground16,
+.potatoescard {
+  top: 1246px;
+  left: 375px;
+}
+.foodcardbackground16 {
+  top: 0;
+  left: 0;
+  border-radius: var(--br-3xs);
+  background-color: var(--color-white);
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  border: 1px solid var(--color-gray-200);
+  box-sizing: border-box;
+  cursor: pointer;
+}
+.bellpeppercard,
+.jalapenoPepper {
+  position: absolute;
+  top: 1240px;
+  left: 32px;
+  width: 266.4px;
+  height: 359.7px;
+}
+.jalapenoPepper {
+  top: 305px;
+  left: 21px;
+  display: flex;
+  align-items: center;
+  width: 228px;
+  height: 44px;
+}
+.jalapenoimageIcon {
+  position: absolute;
+  top: 16.5px;
+  left: 16.8px;
+  width: 230.3px;
+  height: 280px;
+  object-fit: cover;
+}
+.jalapenopeppercard {
+  position: absolute;
+  top: 833px;
+  left: 724px;
+  width: 266.4px;
+  height: 359.7px;
+  font-size: var(--font-size-13xl);
+}
+.okra {
+  position: absolute;
+  top: 304.7px;
+  left: 23.3px;
+  display: flex;
+  align-items: center;
+  width: 118.2px;
+  height: 44px;
+}
+.okraimageIcon {
+  position: absolute;
+  top: 18.5px;
+  left: 17.6px;
+  border-radius: var(--br-3xs);
+  width: 227.6px;
+  height: 280px;
+  object-fit: cover;
+}
+.carrot,
+.eggplantcard,
+.okracard {
+  position: absolute;
+  top: 833px;
+  left: 375px;
+  width: 266.4px;
+  height: 359.7px;
+}
+.carrot,
+.eggplantcard {
+  left: 32px;
+}
+.carrot {
+  top: 296px;
+  left: 26.2px;
+  display: flex;
+  align-items: center;
+  width: 227.5px;
+  height: 44px;
+}
+.carrotimageIcon {
+  position: absolute;
+  top: 15.6px;
+  left: 16.8px;
+  border-radius: var(--br-3xs);
+  width: 237.3px;
+  height: 269.3px;
+  object-fit: cover;
+}
+.beets,
+.carrotcard {
+  position: absolute;
+  top: 426px;
+  left: 722px;
+  width: 266.4px;
+  height: 359.7px;
+}
+.beets {
+  top: 296px;
+  left: 16.6px;
+  display: flex;
+  align-items: center;
+  width: 190.4px;
+  height: 44px;
+}
+.beetsimageIcon {
+  position: absolute;
+  top: 15.6px;
+  left: 12.4px;
+  border-radius: var(--br-3xs);
+  width: 238.2px;
+  height: 269.3px;
+  object-fit: cover;
+}
+.beetscard,
+.lentils {
+  position: absolute;
+  top: 425px;
+  left: 377px;
+  width: 266.4px;
+  height: 359.7px;
+}
+.lentils {
+  top: 296px;
+  left: 18.6px;
+  display: flex;
+  align-items: center;
+  width: 180.7px;
+  height: 44px;
+}
+.lentilsimageIcon {
+  position: absolute;
+  top: 15.6px;
+  left: 14.1px;
+  border-radius: var(--br-3xs);
+  width: 238.2px;
+  height: 269.3px;
+  object-fit: cover;
+}
+.lentilscard {
+  position: absolute;
+  top: 426px;
+  left: 32px;
+  width: 266.4px;
+  height: 359.7px;
+}
+.chickpeasimageIcon,
+.foodcardbackground23 {
+  position: absolute;
+  border-radius: var(--br-3xs);
+}
+.foodcardbackground23 {
+  top: 0;
+  left: 0;
+  background-color: var(--color-white);
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  border: 1px solid var(--color-gray-200);
+  box-sizing: border-box;
+  width: 266px;
+  height: 359.7px;
+}
+.chickpeasimageIcon {
+  top: 15.6px;
+  left: 14.1px;
+  width: 237.8px;
+  height: 269.3px;
+  object-fit: cover;
+}
+.chickpeas {
+  position: absolute;
+  top: 296px;
+  left: 19px;
+  display: flex;
+  align-items: center;
+  width: 232.5px;
+  height: 44px;
+}
+.chickpeascard,
+.strawberrycard {
+  position: absolute;
+  top: 17px;
+  left: 722px;
+  width: 266px;
+  height: 359.7px;
+}
+.strawberrycard {
+  left: 377px;
+}
+.blueberriesimageIcon {
+  position: absolute;
+  top: 15.6px;
+  left: 14.1px;
+  border-radius: var(--br-3xs);
+  width: 238px;
+  height: 269.5px;
+  object-fit: cover;
+}
+.blueberrycard,
+.foodcardsframe {
+  position: absolute;
+  top: 17px;
+  left: 32px;
+  width: 266px;
+  height: 359.7px;
+}
+.foodcardsframe {
+  top: 211px;
+  left: 361px;
+  width: 1079px;
+  height: 3719px;
+  overflow: hidden;
+  font-size: var(--font-size-19xl);
+  color: var(--color-dimgray-100);
+}
+.searchbarinput {
+  position: absolute;
+  top: 0;
+  left: 1px;
+  border-radius: var(--br-3xs);
+  background-color: var(--color-white);
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  width: 551px;
+  height: 48px;
+}
+.searchicon {
+  position: absolute;
+  top: 5px;
+  left: 25px;
+  width: 34px;
+  height: 34px;
+  object-fit: cover;
+}
+.searchByName {
+  position: absolute;
+  top: 8px;
+  left: 80px;
+  font-weight: 300;
+}
+.searchcardsframe {
+  position: absolute;
+  top: 136px;
+  left: 870px;
+  width: 552px;
+  height: 48px;
+  overflow: visible;
+}
+.colorsdropdownbackground {
+  width: 265px;
+  position: absolute;
+  border-radius: var(--br-3xs);
+  background-color: var(--color-white);
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  height: 48px;
+}
+.allColors {
+  position: relative;
+  font-weight: 300;
+  margin-top: 8px;
+  left: 25px;
+}
+.colorsdropdownframe {
+  position: absolute;
+  top: 136px;
+  left: 382px;
+  width: 552px;
+  height: 48px;
+  overflow: visible;
+}
+.calculatorsidebarbackground {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: var(--br-3xs);
+  background-color: var(--color-white);
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  border: 1px solid var(--color-gray-400);
+  box-sizing: border-box;
+  width: 354px;
+  height: 901px;
+}
+.youCurrentlyHave {
+  margin: 0;
+}
+.youCurrentlyHaveContainer1 {
+  width: 100%;
+}
+.myCalculator,
+.youCurrentlyHaveContainer {
+  position: absolute;
+  top: 184.8px;
+  left: 38.8px;
+  display: flex;
+  align-items: center;
+  width: 277.3px;
+  height: 177.9px;
+}
+.myCalculator {
+  top: 51.6px;
+  left: 64px;
+  font-size: var(--font-size-5xl);
+  justify-content: center;
+  width: 290px;
+  height: 62.6px;
+}
+.calculatoricon {
+  position: absolute;
+  top: 21px;
+  left: 21px;
+  width: 93px;
+  height: 113px;
+  object-fit: cover;
+}
+.calculatorsidebarframe {
+  position: absolute;
+  top: 123px;
+  left: 0;
+  width: 354px;
+  height: 874px;
+  overflow: hidden;
+  text-align: center;
+  font-size: var(--font-size-xl);
+  color: var(--color-black);
+}
+.oregonstateuniversityicon {
+  width: 311px;
+  position: relative;
+  height: 75.5px;
+  object-fit: cover;
+}
+.informationButtonOutline {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: var(--br-56xl);
+  background-color: var(--color-white);
+  border: 1px solid var(--color-black);
+  box-sizing: border-box;
+  width: 188px;
+  height: 50px;
+}
+.information {
+  position: absolute;
+  top: 13px;
+  left: 44px;
+}
+.informationbutton {
+  width: 188px;
+  left: 1220px;
+  position: absolute;
+  height: 44.4px;
+}
+.headerframe {
+  top: 1px;
+  background-color: var(--color-orangered);
+  width: 1440px;
+  height: 122px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 21px var(--padding-11xs) 25px;
+  box-sizing: border-box;
+  gap: var(--gap-888xl);
+  text-align: center;
+  font-size: var(--font-size-xl);
+  color: var(--color-black);
+}
+.dividerlineIcon,
+.headerframe,
+.osufootericon {
+  position: absolute;
+  overflow: hidden;
+}
+.dividerlineIcon {
+  top: 80px;
+  left: 719px;
+  max-width: 100%;
+  height: 276px;
+  object-fit: contain;
+}
+.osufootericon {
+  top: 42px;
+  left: 222px;
+  width: 234.7px;
+  height: 75px;
+}
+.collegeOfHealth,
+.oregonStateUniversitys {
+  position: absolute;
+  top: 194px;
+  left: 168px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 368px;
+}
+.oregonStateUniversitys {
+  top: 265px;
+  left: 170px;
+  font-size: var(--font-size-xl);
+  color: var(--color-white);
+  width: 361px;
+  height: 100px;
+  text-align: center;
+}
+.footerframe {
+  width: 1440px;
+  top: 3930px;
+  background-color: #212529;
+  height: 458px;
+  flex-shrink: 0;
+  font-size: var(--font-size-7xl);
+  color: var(--color-orangered);
+}
+.footerframe
+{
+  position: relative;
+  overflow: hidden;
+}
+.mainFoodCardsPage {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--color-white);
+  font-size: var(--font-size-xl);
+  color: var(--color-black);
+  font-family: var(--font-calibri);
+}

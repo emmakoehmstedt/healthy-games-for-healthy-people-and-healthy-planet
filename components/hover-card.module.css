@@ -1,0 +1,81 @@
+.fadedCarrotCard {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: var(--br-3xs);
+  background-color: rgba(255, 255, 255, 0.79);
+  width: 266px;
+  height: 360px;
+}
+.addToCalculatorRectangle {
+  position: absolute;
+  top: -0.4px;
+  left: 0.1px;
+  border-radius: var(--br-21xl);
+  background-color: #f5f5f5;
+  border: 5px solid var(--color-chocolate);
+  box-sizing: border-box;
+  width: 231px;
+  height: 81px;
+}
+.addToCalculator {
+  position: absolute;
+  top: 15.8px;
+  left: 70.9px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 140px;
+}
+.calculatorIcon {
+  position: absolute;
+  top: 8.6px;
+  left: 30.1px;
+  width: 52px;
+  height: 63px;
+  object-fit: cover;
+}
+.addToCalculatorButton {
+  position: absolute;
+  top: 177.4px;
+  left: 13px;
+  width: 221.4px;
+  height: 99.1px;
+  overflow: hidden;
+}
+.informationRectangle {
+  position: absolute;
+  top: 5.6px;
+  left: 0.1px;
+  border-radius: var(--br-21xl);
+  background-color: var(--color-white);
+  border: 5px solid var(--color-chocolate);
+  box-sizing: border-box;
+  width: 235px;
+  height: 85px;
+}
+.funFacts {
+  position: absolute;
+  top: 35px;
+  left: calc(50% - 57.55px);
+}
+.informationButton {
+  position: absolute;
+  top: 57px;
+  left: 13.1px;
+  width: 252.9px;
+  height: 92.9px;
+  overflow: hidden;
+}
+.hovercard {
+  width: 266px;
+  position: relative;
+  height: 360px;
+  max-width: 100%;
+  max-height: 100%;
+  overflow: auto;
+  text-align: center;
+  font-size: var(--font-size-3xl);
+  color: var(--color-black);
+  font-family: var(--font-inria-serif);
+}
