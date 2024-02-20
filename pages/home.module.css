@@ -1,112 +1,192 @@
+.informationButtonOutline {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: var(--br-56xl);
+  background-color: var(--color-white);
+  border: 1px solid var(--color-black);
+  box-sizing: border-box;
+  width: 188px;
+  height: 50px;
+}
+.information {
+  position: absolute;
+  top: 13px;
+  left: 44px;
+}
+.informationbutton {
+  position: absolute;
+  top: 38.2px;
+  left: 1220px;
+  width: 188px;
+  height: 44.4px;
+}
+.oregonstateuniversityicon {
+  position: absolute;
+  top: 21.3px;
+  left: 2px;
+  width: 311px;
+  height: 75.5px;
+  object-fit: cover;
+}
+.homeheaderframe {
+  width: 1440px;
+  position: relative;
+  background-color: var(--color-orangered);
+  height: 122px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.homepagebackgroundimageIcon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1440px;
+  height: 519px;
+  object-fit: cover;
+}
 .juniorOutdoorFood {
   margin: 0;
 }
 .juniorOutdoorFoodContainer {
-  position: relative;
+  position: absolute;
+  top: 62.9px;
+  left: calc(50% - 347px);
   display: inline-block;
   width: 680px;
   height: 121.5px;
-  flex-shrink: 0;
 }
-.backgroundImage,
-.frame {
+.hompagebackgroundframe {
   width: 1440px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-}
-.backgroundImage {
+  position: relative;
   height: 519px;
-  align-items: flex-start;
-  padding: 62.94255447387695px 373px;
-  box-sizing: border-box;
-  background-image: url(/background-image@3x.png);
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: top;
-}
-.frame {
   overflow: hidden;
-  align-items: center;
-}
-.climateResilienceStarts {
-  position: undefined;
-  letter-spacing: 0.06em;
-  line-height: 26px;
-  display: inline-block;
-  height: 26px;
-  margin-left: 357px;
+  flex-shrink: 0;
+  font-size: 46px;
 }
 .theJrOutdoor {
   margin-block-start: 0;
   margin-block-end: 10px;
 }
 .theJrOutdoorContainer {
-  align-self: stretch;
-  position: relative;
-  font-size: 21px;
-  color: var(--color-black);
+  position: absolute;
+  top: 86px;
+  left: 111px;
   white-space: pre-wrap;
 }
-.jofnInfo {
-  width: 1138px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-start;
-  gap: 43px;
-  font-size: 26px;
+.climateResilienceStarts {
+  position: absolute;
+  top: 29px;
+  left: 528px;
+  font-size: var(--font-size-7xl);
+  letter-spacing: 0.06em;
+  line-height: 26px;
   color: var(--color-orangered);
 }
-.calculatorIcon {
+.jofndescriptionframe {
+  width: 1438px;
   position: relative;
-  width: 49px;
-  height: 41px;
-  object-fit: cover;
-}
-.calculator {
-  position: relative;
-  display: inline-block;
-  width: 188px;
-  height: 35px;
+  height: 280px;
+  overflow: hidden;
   flex-shrink: 0;
+  font-size: 21px;
 }
-.calculatorButton1 {
+.calculatorbutton {
+  position: absolute;
+  top: 0;
+  left: 0;
   border-radius: var(--br-56xl);
   background-color: var(--color-orangered);
   border: 1px solid var(--color-black);
   box-sizing: border-box;
   width: 318px;
   height: 73px;
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  justify-content: flex-start;
-  padding: 16px 26.5px;
-  gap: 11px;
 }
-.calculatorButton,
+.calculator {
+  position: absolute;
+  top: 16px;
+  left: 103.5px;
+  display: inline-block;
+  width: 188px;
+  height: 35px;
+}
+.calculatoricon {
+  position: absolute;
+  top: 10px;
+  left: 43.5px;
+  width: 59px;
+  height: 51px;
+  object-fit: contain;
+}
+.calculatorframe {
+  width: 1438px;
+  left: 560px;
+  position: relative;
+  height: 132px;
+  overflow: hidden;
+  flex-shrink: 0;
+  font-size: 32px;
+  color: var(--color-white);
+  cursor: pointer;
+}
 .home {
+  background-color: var(--color-white);
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: flex-start;
+  text-align: center;
+  font-size: var(--font-size-xl);
+  color: var(--color-black);
+  font-family: var(--font-calibri);
 }
-.calculatorButton {
-  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
-  width: 318px;
+.dividerlineIcon,
+.osufootericon {
+  position: absolute;
+  overflow: hidden;
+}
+.dividerlineIcon {
+  top: 80px;
+  left: 719px;
+  max-width: 100%;
+  height: 276px;
+  object-fit: contain;
+}
+.osufootericon {
+  top: 42px;
+  left: 222px;
+  width: 234.7px;
+  height: 75px;
+}
+.collegeOfHealth,
+.oregonStateUniversitys {
+  position: absolute;
+  top: 194px;
+  left: 168px;
+  display: flex;
+  align-items: center;
   justify-content: center;
-  font-size: 32px;
-  color: var(--color-white);
+  width: 368px;
 }
+.oregonStateUniversitys {
+  top: 265px;
+  left: 170px;
+  font-size: var(--font-size-xl);
+  color: var(--color-white);
+  width: 361px;
+  height: 100px;
+}
+.footerframe,
 .home {
   position: relative;
-  background-color: var(--color-white);
-  width: 100%;
   overflow: hidden;
-  justify-content: flex-start;
-  gap: 34px;
-  text-align: center;
-  font-size: 46px;
-  color: var(--color-black);
-  font-family: var(--font-inria-serif);
+}
+.footerframe {
+  width: 1440px;
+  background-color: #212529;
+  height: 458px;
+  flex-shrink: 0;
+  font-size: var(--font-size-7xl);
+  color: var(--color-orangered);
 }
