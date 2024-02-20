@@ -154,11 +154,7 @@ function SearchBar({ handleSearch }) {
         id="searchInput"
       />
       <button onClick={handleSearch}>
-        <img
-          className={styles.searchicon}
-          alt=""
-          src="../public/searchIcon.png"
-        />
+        <img className={styles.searchicon} alt="" src="/searchIcon.png" />
       </button>
     </div>
   );
@@ -177,10 +173,11 @@ function FoodCards({ foods }) {
 function FoodCard({ id, name }) {
   const food = foods.find((foodItem) => foodItem.id === id);
   if (!food) return null;
-  const imagePath = food.imagePath;
+  const imagePath = food.image;
   return (
     <div>
-      <img src={`../public/${imagePath}`} alt={name} />
+      <img src={`/${imagePath}`} alt={name} />
+      <p>{name}</p>
     </div>
   );
 }
