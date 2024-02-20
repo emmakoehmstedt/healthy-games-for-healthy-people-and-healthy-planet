@@ -1,11 +1,8 @@
 import Head from "next/head";
 import TopBar from "../components/top-bar";
-import { supabase } from "../lib/initSupabase";
-import { useEffect } from "react";
 import { useCallback } from "react";
 import { useRouter } from "next/router";
 import styles from "./home.module.css";
-
 
 const Home = () => {
   const router = useRouter();
@@ -13,28 +10,6 @@ const Home = () => {
   const onCalculatorClick = useCallback(() => {
     router.push("/mainFoodPage");
   }, [router]);
-
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try{
-        const { data, error } = await supabase.from('foods').select('*');
-        console.log("Data: ", data);
-        
-        if(error){
-          throw error;
-        }
-        
-        console.log('Data from the table:', data);
-    
-    
-      } catch(error) {
-        console.error('Error fetching data from Supabase:', error.message)
-      }
-    };
-
-    fetchData()
-  }, []);
 
   return (
     <div className={styles.home}>
@@ -63,7 +38,8 @@ const Home = () => {
       </div>
       <div className={styles.jofndescriptionframe}>
         <b className={styles.theJrOutdoorContainer}>
-          <p className={styles.theJrOutdoor}
+          <p
+            className={styles.theJrOutdoor}
           >{`The Jr. Outdoor Food Navigators (JOFN) is funded by the National Institute of Environmental Health Sciences (NIEHS)
           through the Oregon State University ASP3IRE Center Translational Core to build climate resilience through outdoor play 
           and positive food experience among school-aged children. One of the education and outreach tools is the Food Calculator. 
@@ -73,8 +49,7 @@ const Home = () => {
           Climate Resilience Starts Here
         </b>
       </div>
-      <div className={styles.calculatorframe}
-          onClick={onCalculatorClick}>
+      <div className={styles.calculatorframe} onClick={onCalculatorClick}>
         <div>
           <div className={styles.calculatorbutton} />
           <b className={styles.calculator}>Calculator</b>
