@@ -175,8 +175,8 @@ function FoodCard({ id, name }) {
   if (!food) return null;
   const imagePath = food.image;
   return (
-    <div>
-      <img src={`/${imagePath}`} alt={name} />
+    <div className={styles.foodcard}>
+      <img className={styles.foodcardimage} src={`/${imagePath}`} alt={name} />
       <p>{name}</p>
     </div>
   );
