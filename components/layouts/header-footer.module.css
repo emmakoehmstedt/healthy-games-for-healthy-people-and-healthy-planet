@@ -5,7 +5,7 @@
   min-height: 100vh; /*make sure height is at least as tall as the screen*/
 }
 
-/*TOP BAR*/
+/*HEADER*/
 .oregonstateuniversityicon {
   width: 311px;
   position: relative;
@@ -38,12 +38,6 @@
   font-size: var(--font-size-xl);
   color: var(--color-black);
 }
-.dividerlineIcon,
-.headerframe,
-.osufootericon {
-  position: absolute;
-  overflow: hidden;
-}
 
 /*CONTENT IN BETWEEN*/
 .contentInBetween {
@@ -51,24 +45,42 @@
 }
 
 /*FOOTER*/
+.footerframe {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 100%;
+  margin-top: 50px;
+  background-color: #212529;
+  height: 458px;
+  flex-shrink: 0;
+  font-size: var(--font-size-7xl);
+  color: var(--color-orangered);
+}
+
+.footerInfoContainer {
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+}
+
 .dividerlineIcon {
-  top: 80px;
-  left: 719px;
+  padding: 50px;
   max-width: 100%;
   height: 276px;
+  right: 50%;
   object-fit: contain;
 }
 .osufootericon {
-  top: 42px;
-  left: 222px;
   width: 234.7px;
   height: 75px;
 }
 .collegeOfHealth,
 .oregonStateUniversitys {
-  position: absolute;
-  top: 194px;
-  left: 168px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -82,17 +94,4 @@
   width: 361px;
   height: 100px;
   text-align: center;
-}
-.footerframe {
-  width: 1440px;
-  top: 3930px;
-  background-color: #212529;
-  height: 458px;
-  flex-shrink: 0;
-  font-size: var(--font-size-7xl);
-  color: var(--color-orangered);
-}
-.footerframe {
-  position: relative;
-  overflow: hidden;
 }

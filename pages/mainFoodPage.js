@@ -3,6 +3,7 @@ import HoverCard from "../components/hover-card";
 
 import { supabase } from "../lib/initSupabase";
 import { useEffect } from "react";
+import Layout from "../components/layouts/layout";
 import foods from "../data/food_images";
 
 import PortalPopup from "../components/portal-popup";
@@ -57,19 +58,19 @@ const MainFoodCardsPage = () => {
   }, []);
 
   return (
-    <>
+    <Layout>
       <div className={styles.mainFoodCardsPage}>
-        <TopBar />
         <CalculatorSideBar />
-        <div className={styles.dropDownSearchContainer}>
-          <ColorDropDown
-            onColorClick={onColorsDropdownFrameContainerClick}
-            selectedColor={colorFilter}
-          />
-          <SearchBar />
+        <div className="right-of-sidebar">
+          <div className={styles.dropDownSearchContainer}>
+            <ColorDropDown
+              onColorClick={onColorsDropdownFrameContainerClick}
+              selectedColor={colorFilter}
+            />
+            <SearchBar />
+          </div>
+          <FoodCards foods={foodCards} />
         </div>
-        <FoodCards foods={foodCards} />
-        <Footer />
       </div>
 
       {/* {isHoverCardOpen && (
@@ -81,7 +82,7 @@ const MainFoodCardsPage = () => {
           <HoverCard onClose={closeHoverCard} />
         </PortalPopup>
       )} */}
-    </>
+    </Layout>
   );
 };
 

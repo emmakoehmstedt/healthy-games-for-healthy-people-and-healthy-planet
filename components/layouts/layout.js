@@ -8,9 +8,7 @@ function Layout({ children }) {
   return (
     <div className={styles.layoutContainer}>
       <TopBar />
-      <div className={styles.contentInBetween}>
-         {children}
-      </div>
+      <div className={styles.contentInBetween}>{children}</div>
       <Footer />
     </div>
   );

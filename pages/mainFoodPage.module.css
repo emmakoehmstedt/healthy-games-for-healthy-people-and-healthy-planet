@@ -1,3 +1,16 @@
+.mainFoodCardsPage {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: row;
+  align-items: flex-start;
+  background-color: var(--color-white);
+  font-size: var(--font-size-xl);
+  color: var(--color-black);
+  font-family: var(--font-calibri);
+}
+
 .foodcard {
   width: 250px;
   height: 360px;
@@ -129,7 +142,7 @@
   font-size: var(--font-size-xl);
   color: var(--color-black);
 }
-.oregonstateuniversityicon {
+/* .oregonstateuniversityicon {
   width: 311px;
   position: relative;
   height: 75.5px;
@@ -160,8 +173,8 @@
   text-align: center;
   font-size: var(--font-size-xl);
   color: var(--color-black);
-}
-.dividerlineIcon,
+} */
+/* .dividerlineIcon,
 .headerframe,
 .osufootericon {
   position: absolute;
@@ -211,16 +224,4 @@
 .footerframe {
   position: relative;
   overflow: hidden;
-}
-.mainFoodCardsPage {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: flex-start;
-  flex-direction: column;
-  align-items: center;
-  background-color: var(--color-white);
-  font-size: var(--font-size-xl);
-  color: var(--color-black);
-  font-family: var(--font-calibri);
-}
+} */

@@ -1,134 +1,4 @@
-/* .informationButtonOutline {
-  position: absolute;
-  top: 0;
-  left: 0;
-  border-radius: var(--br-56xl);
-  background-color: var(--color-white);
-  border: 1px solid var(--color-black);
-  box-sizing: border-box;
-  width: 188px;
-  height: 50px;
-}
-.information {
-  position: absolute;
-  top: 13px;
-  left: 44px;
-}
-.informationbutton {
-  position: absolute;
-  top: 38.2px;
-  left: 1220px;
-  width: 188px;
-  height: 44.4px;
-}
-.oregonstateuniversityicon {
-  position: absolute;
-  top: 21.3px;
-  left: 2px;
-  width: 311px;
-  height: 75.5px;
-  object-fit: cover;
-}
-.homeheaderframe {
-  width: 1440px;
-  position: relative;
-  background-color: var(--color-orangered);
-  height: 122px;
-  overflow: hidden;
-  flex-shrink: 0;
-} */
-.homepagebackgroundimageIcon {
-  /* position: absolute; */
-  top: 0;
-  left: 0;
-  width: 1440px;
-  height: 519px;
-  object-fit: cover;
-}
-.juniorOutdoorFood {
-  margin: 0;
-}
-.juniorOutdoorFoodContainer {
-  /* position: absolute; */
-  top: 62.9px;
-  left: calc(50% - 347px);
-  display: inline-block;
-  width: 680px;
-  height: 121.5px;
-}
-.hompagebackgroundframe {
-  width: 1440px;
-  /* position: relative; */
-  height: 519px;
-  overflow: hidden;
-  flex-shrink: 0;
-  font-size: 46px;
-}
-.theJrOutdoor {
-  margin-block-start: 0;
-  margin-block-end: 10px;
-}
-.theJrOutdoorContainer {
-  /* position: absolute; */
-  top: 86px;
-  left: 111px;
-  white-space: pre-wrap;
-}
-.climateResilienceStarts {
-  /* position: absolute; */
-  top: 29px;
-  left: 528px;
-  font-size: var(--font-size-7xl);
-  letter-spacing: 0.06em;
-  line-height: 26px;
-  color: var(--color-orangered);
-}
-.jofndescriptionframe {
-  width: 1438px;
-  /* position: relative; */
-  height: 280px;
-  overflow: hidden;
-  flex-shrink: 0;
-  font-size: 21px;
-}
-.calculatorbutton {
-  /* position: absolute; */
-  top: 0;
-  left: 0;
-  border-radius: var(--br-56xl);
-  background-color: var(--color-orangered);
-  border: 1px solid var(--color-black);
-  box-sizing: border-box;
-  width: 318px;
-  height: 73px;
-}
-.calculator {
-  /* position: absolute; */
-  top: 16px;
-  left: 103.5px;
-  display: inline-block;
-  width: 188px;
-  height: 35px;
-}
-.calculatoricon {
-  /* position: absolute; */
-  top: 10px;
-  left: 43.5px;
-  width: 59px;
-  height: 51px;
-  object-fit: contain;
-}
-.calculatorframe {
-  width: 1438px;
-  left: 560px;
-  position: relative;
-  height: 132px;
-  overflow: hidden;
-  flex-shrink: 0;
-  font-size: 32px;
-  color: var(--color-white);
-  cursor: pointer;
-}
+/*HOME PAGE FRAME*/
 .home {
   background-color: var(--color-white);
   width: 100%;
@@ -141,52 +11,89 @@
   color: var(--color-black);
   font-family: var(--font-calibri);
 }
-.dividerlineIcon,
-.osufootericon {
-  /* position: absolute; */
+
+/*HOME PAGE IMAGE STYLES*/
+.homepagebackgroundframe {
+  position: relative;
+  width: 100%;
+  height: 520px;
   overflow: hidden;
+  flex-shrink: 0;
+  font-size: 46px;
+  margin-bottom: 30px;
 }
-.dividerlineIcon {
-  top: 80px;
-  left: 719px;
-  max-width: 100%;
-  height: 276px;
-  object-fit: contain;
+
+.homepagebackgroundimageIcon {
+  width: 100%;
+  height: 520px;
+  object-fit: cover;
 }
-.osufootericon {
-  top: 42px;
-  left: 222px;
-  width: 234.7px;
-  height: 75px;
+
+.juniorOutdoorFoodContainer {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: inline-block;
+  width: 680px;
+  min-width: 300px;
+  height: 121.5px;
 }
-.collegeOfHealth,
-.oregonStateUniversitys {
-  /* position: absolute; */
-  top: 194px;
-  left: 168px;
+
+/*JOFN DESCRIPTION STYLES*/
+.jofndescriptionframe {
+  width: 100%;
+  min-height: 200px;
+  overflow: hidden;
+  flex-shrink: 0;
+  font-size: 21px;
+}
+.theJrOutdoor {
+  margin-top: 25px;
+}
+.theJrOutdoorContainer {
+  white-space: pre-wrap;
+}
+.climateResilienceStarts {
+  font-size: var(--font-size-7xl);
+  letter-spacing: 0.06em;
+  line-height: 26px;
+  color: var(--color-orangered);
+}
+
+/*CALCULATOR BUTTON STYLES*/
+.calculatorbutton {
   display: flex;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
-  width: 368px;
+  border-radius: var(--br-56xl);
+  background-color: var(--color-orangered);
+  border: 1px solid var(--color-black);
+  box-sizing: border-box;
+  width: 318px;
+  height: 73px;
 }
-.oregonStateUniversitys {
-  top: 265px;
-  left: 170px;
-  font-size: var(--font-size-xl);
-  color: var(--color-white);
-  width: 361px;
+.calculator {
+  display: inline-block;
+  width: 188px;
+  height: 35px;
+}
+.calculatoricon {
+  width: 59px;
+  height: 51px;
+  object-fit: contain;
+}
+.calculatorframe {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
   height: 100px;
-}
-.footerframe,
-.home {
-  /* position: relative; */
   overflow: hidden;
-}
-.footerframe {
-  width: 1440px;
-  background-color: #212529;
-  height: 458px;
   flex-shrink: 0;
-  font-size: var(--font-size-7xl);
-  color: var(--color-orangered);
+  font-size: 32px;
+  color: var(--color-white);
+  cursor: pointer;
 }
