@@ -1,4 +1,4 @@
-.informationButtonOutline {
+/* .informationButtonOutline {
   position: absolute;
   top: 0;
   left: 0;
@@ -36,9 +36,9 @@
   height: 122px;
   overflow: hidden;
   flex-shrink: 0;
-}
+} */
 .homepagebackgroundimageIcon {
-  position: absolute;
+  /* position: absolute; */
   top: 0;
   left: 0;
   width: 1440px;
@@ -49,7 +49,7 @@
   margin: 0;
 }
 .juniorOutdoorFoodContainer {
-  position: absolute;
+  /* position: absolute; */
   top: 62.9px;
   left: calc(50% - 347px);
   display: inline-block;
@@ -58,7 +58,7 @@
 }
 .hompagebackgroundframe {
   width: 1440px;
-  position: relative;
+  /* position: relative; */
   height: 519px;
   overflow: hidden;
   flex-shrink: 0;
@@ -69,13 +69,13 @@
   margin-block-end: 10px;
 }
 .theJrOutdoorContainer {
-  position: absolute;
+  /* position: absolute; */
   top: 86px;
   left: 111px;
   white-space: pre-wrap;
 }
 .climateResilienceStarts {
-  position: absolute;
+  /* position: absolute; */
   top: 29px;
   left: 528px;
   font-size: var(--font-size-7xl);
@@ -85,14 +85,14 @@
 }
 .jofndescriptionframe {
   width: 1438px;
-  position: relative;
+  /* position: relative; */
   height: 280px;
   overflow: hidden;
   flex-shrink: 0;
   font-size: 21px;
 }
 .calculatorbutton {
-  position: absolute;
+  /* position: absolute; */
   top: 0;
   left: 0;
   border-radius: var(--br-56xl);
@@ -103,7 +103,7 @@
   height: 73px;
 }
 .calculator {
-  position: absolute;
+  /* position: absolute; */
   top: 16px;
   left: 103.5px;
   display: inline-block;
@@ -111,7 +111,7 @@
   height: 35px;
 }
 .calculatoricon {
-  position: absolute;
+  /* position: absolute; */
   top: 10px;
   left: 43.5px;
   width: 59px;
@@ -143,7 +143,7 @@
 }
 .dividerlineIcon,
 .osufootericon {
-  position: absolute;
+  /* position: absolute; */
   overflow: hidden;
 }
 .dividerlineIcon {
@@ -161,7 +161,7 @@
 }
 .collegeOfHealth,
 .oregonStateUniversitys {
-  position: absolute;
+  /* position: absolute; */
   top: 194px;
   left: 168px;
   display: flex;
@@ -179,7 +179,7 @@
 }
 .footerframe,
 .home {
-  position: relative;
+  /* position: relative; */
   overflow: hidden;
 }
 .footerframe {

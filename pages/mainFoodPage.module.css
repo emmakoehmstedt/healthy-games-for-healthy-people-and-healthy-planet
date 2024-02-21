@@ -17,16 +17,6 @@
   height: 290px;
 }
 
-.pineappleimageIcon {
-  position: absolute;
-  top: 18.5px;
-  left: 15px;
-  border-radius: var(--br-3xs);
-  width: 233.8px;
-  height: 280px;
-  object-fit: cover;
-}
-
 .foodcardsframe {
   position: absolute;
   top: 190px;

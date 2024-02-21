@@ -8,10 +8,16 @@ import foods from "../data/food_images";
 import PortalPopup from "../components/portal-popup";
 import styles from "./mainFoodPage.module.css";
 
+/*************************************************************************
+ * Component:
+ * Description:
+ *************************************************************************/
 const MainFoodCardsPage = () => {
   const [isHoverCardOpen, setHoverCardOpen] = useState(false);
 
   const [foodCards, setFoodCards] = useState([]);
+
+  const [colorFilter, setColorFilter] = useState("all");
 
   useEffect(() => {
     const fetchData = async () => {
@@ -45,8 +51,9 @@ const MainFoodCardsPage = () => {
     setHoverCardOpen(false);
   }, []);
 
-  const onColorsDropdownFrameContainerClick = useCallback(() => {
+  const onColorsDropdownFrameContainerClick = useCallback((val) => {
     // Please sync "Main Food Cards Page wtih Dropdown" to the project
+    setColorFilter(val);
   }, []);
 
   return (
@@ -55,7 +62,10 @@ const MainFoodCardsPage = () => {
         <TopBar />
         <CalculatorSideBar />
         <div className={styles.dropDownSearchContainer}>
-          <ColorDropDown onColorClick={onColorsDropdownFrameContainerClick} />
+          <ColorDropDown
+            onColorClick={onColorsDropdownFrameContainerClick}
+            selectedColor={colorFilter}
+          />
           <SearchBar />
         </div>
         <FoodCards foods={foodCards} />
@@ -132,10 +142,10 @@ function ColorDropDown({ onColorClick, selectedColor }) {
     <select
       className={styles.colorsdropdownframe}
       id="dropdown"
-      value="allColors"
-      onChange={onColorClick}
+      value={selectedColor}
+      onChange={(e) => onColorClick(e.target.value)}
     >
-      <option value="allColors">All Colors!</option>
+      <option value="all">All Colors!</option>
       <option value="blue">Blue </option>
       <option value="green">Green </option>
       <option value="yellow">Yellow </option>
