@@ -24,7 +24,8 @@ const MainFoodCardsPage = () => {
     const fetchData = async () => {
       try {
         //TODO: Add function to supabase database so you can fetch the food with color
-        const { data, error } = await supabase.from("foods").select("*");
+        const { data, error } = await supabase.rpc("getfoodcardinformation");
+
         console.log("Data: ", data);
 
         if (error) {
@@ -33,7 +34,9 @@ const MainFoodCardsPage = () => {
 
         const foodsArray = data.map((food) => ({
           id: food.id,
-          name: food.food,
+          name: food.food_name,
+          color_name: food.color_name,
+          color_id: food.color_id,
         }));
         setFoodCards(foodsArray);
         console.log("Data from the table:", foodsArray);
