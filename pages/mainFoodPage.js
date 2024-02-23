@@ -18,6 +18,8 @@ const MainFoodCardsPage = () => {
 
   const [foodCards, setFoodCards] = useState([]);
 
+  const [colorArray, setColorArray] = useState([]);
+
   const [colorFilter, setColorFilter] = useState("all");
 
   useEffect(() => {
@@ -47,6 +49,31 @@ const MainFoodCardsPage = () => {
     fetchData();
   }, []);
 
+  useEffect(() => {
+    const fetchColorData = async () => {
+      try {
+        //TODO: Add function to supabase database so you can fetch the food with color
+        const { data, error } = await supabase.from("colors").select("*");
+
+        console.log("Color Data: ", data);
+
+        if (error) {
+          throw error;
+        }
+
+        const colorArray = data.map((color) => ({
+          id: color.color_id,
+          name: color.color,
+        }));
+        setColorArray(colorArray);
+        console.log("Data from the table:", colorArray);
+      } catch (error) {
+        console.error("Error fetching data from Supabase:", error.message);
+      }
+    };
+    fetchColorData();
+  }, []);
+
   const openHoverCard = useCallback(() => {
     setHoverCardOpen(true);
   }, []);
@@ -67,6 +94,7 @@ const MainFoodCardsPage = () => {
         <div className="right-of-sidebar">
           <div className={styles.dropDownSearchContainer}>
             <ColorDropDown
+              colors={colorArray}
               onColorClick={onColorsDropdownFrameContainerClick}
               selectedColor={colorFilter}
             />
@@ -126,20 +154,62 @@ function CalculatorSideBar() {
   );
 }
 
-function ColorDropDown({ onColorClick, selectedColor }) {
+function ColorDropDown({ colors, onColorClick, selectedColor }) {
+  const dropDownStyle = {
+    backgroundColor: selectedColor === "all" ? "white" : selectedColor,
+  };
+
   return (
     <select
       className={styles.colorsdropdownframe}
       id="dropdown"
       value={selectedColor}
       onChange={(e) => onColorClick(e.target.value)}
+      style={dropDownStyle}
     >
-      <option value="all">All Colors!</option>
-      <option value="blue">Blue </option>
-      <option value="green">Green </option>
-      <option value="yellow">Yellow </option>
-      <option value="purple">Purple </option>
+      <option
+        value="all"
+        className={styles.colorOption}
+        //style={{ backgroundColor: "white" }}
+      >
+        All Colors!
+      </option>
+      {colors.map((color) => (
+        <option
+          key={color.id}
+          value={color.name}
+          //style={{ backgroundColor: color.name }}
+          className={styles.colorOption}
+        >
+          {color.name}
+        </option>
+      ))}
     </select>
+  );
+}
+
+function CustomDropDown({ options, onOptionClick, selectedOption }) {
+  //implement custom drop down for color selection to achieve the correct styling
+  return (
+    <div className={styles.customDropdown}>
+      <div
+        className={styles.selectedOption}
+        onClick={() => onOptionClick("all")}
+      >
+        {selectedOption}
+      </div>
+      {options.map((option) => (
+        <div
+          key={option.id}
+          className={`${styles.option} ${
+            option.name === selectedOption ? styles.selected : ""
+          }`}
+          onClick={() => onOptionClick(option.name)}
+        >
+          {option.name}
+        </div>
+      ))}
+    </div>
   );
 }
 

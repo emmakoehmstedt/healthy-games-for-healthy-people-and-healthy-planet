@@ -57,7 +57,6 @@
   left: 340px;
   height: 50px;
   width: calc(100% - 340px);
-  display: flex;
 }
 
 .searchicon {
@@ -96,6 +95,14 @@
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
   overflow: visible;
   border: none;
+  font-weight: 300;
+}
+
+.colorOption {
+  width: 100px;
+  height: 40px;
+  background-color: lightgray;
+  color: white;
   font-weight: 300;
 }
 
