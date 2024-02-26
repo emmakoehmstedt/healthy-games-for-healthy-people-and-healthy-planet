@@ -4,6 +4,7 @@ import HoverCard from "../components/hover-card";
 import { supabase } from "../lib/initSupabase";
 import { useEffect } from "react";
 import Layout from "../components/layouts/layout";
+import ColorDropDown from "../components/mainFoodPage/colorDropDown";
 import foods from "../data/food_images";
 
 import PortalPopup from "../components/portal-popup";
@@ -21,6 +22,8 @@ const MainFoodCardsPage = () => {
   const [colorArray, setColorArray] = useState([]);
 
   const [colorFilter, setColorFilter] = useState("all");
+
+  const [colorFilterId, setColorFilterId] = useState(-1);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -82,9 +85,10 @@ const MainFoodCardsPage = () => {
     setHoverCardOpen(false);
   }, []);
 
-  const onColorsDropdownFrameContainerClick = useCallback((val) => {
+  const onColorsDropdownFrameContainerClick = useCallback((val, id) => {
     // Please sync "Main Food Cards Page wtih Dropdown" to the project
     setColorFilter(val);
+    setColorFilterId(id);
   }, []);
 
   return (
@@ -100,7 +104,7 @@ const MainFoodCardsPage = () => {
             />
             <SearchBar />
           </div>
-          <FoodCards foods={foodCards} />
+          <FoodCards foods={foodCards} selectedColorId={colorFilterId} />
         </div>
       </div>
 
@@ -118,21 +122,6 @@ const MainFoodCardsPage = () => {
 };
 
 export default MainFoodCardsPage;
-
-function TopBar() {
-  return (
-    <div className={styles.headerframe}>
-      <img
-        className={styles.oregonstateuniversityicon}
-        alt=""
-        src="/oregonStateUniversityIcon.png"
-      />
-      <div className={styles.informationbutton}>
-        <b>Information</b>
-      </div>
-    </div>
-  );
-}
 
 function CalculatorSideBar() {
   return (
@@ -154,65 +143,6 @@ function CalculatorSideBar() {
   );
 }
 
-function ColorDropDown({ colors, onColorClick, selectedColor }) {
-  const dropDownStyle = {
-    backgroundColor: selectedColor === "all" ? "white" : selectedColor,
-  };
-
-  return (
-    <select
-      className={styles.colorsdropdownframe}
-      id="dropdown"
-      value={selectedColor}
-      onChange={(e) => onColorClick(e.target.value)}
-      style={dropDownStyle}
-    >
-      <option
-        value="all"
-        className={styles.colorOption}
-        //style={{ backgroundColor: "white" }}
-      >
-        All Colors!
-      </option>
-      {colors.map((color) => (
-        <option
-          key={color.id}
-          value={color.name}
-          //style={{ backgroundColor: color.name }}
-          className={styles.colorOption}
-        >
-          {color.name}
-        </option>
-      ))}
-    </select>
-  );
-}
-
-function CustomDropDown({ options, onOptionClick, selectedOption }) {
-  //implement custom drop down for color selection to achieve the correct styling
-  return (
-    <div className={styles.customDropdown}>
-      <div
-        className={styles.selectedOption}
-        onClick={() => onOptionClick("all")}
-      >
-        {selectedOption}
-      </div>
-      {options.map((option) => (
-        <div
-          key={option.id}
-          className={`${styles.option} ${
-            option.name === selectedOption ? styles.selected : ""
-          }`}
-          onClick={() => onOptionClick(option.name)}
-        >
-          {option.name}
-        </div>
-      ))}
-    </div>
-  );
-}
-
 function SearchBar({ handleSearch }) {
   return (
     <div className={styles.searchcardsframe}>
@@ -229,12 +159,15 @@ function SearchBar({ handleSearch }) {
   );
 }
 
-function FoodCards({ foods }) {
+function FoodCards({ foods, selectedColorId }) {
   return (
     <div className={styles.foodcardsframe}>
-      {foods.map((food) => (
-        <FoodCard key={food.id} id={food.id} name={food.name} />
-      ))}
+      {foods.map(
+        (food) =>
+          (selectedColorId == -1 || selectedColorId === food.color_id) && (
+            <FoodCard key={food.id} id={food.id} name={food.name} />
+          )
+      )}
     </div>
   );
 }
