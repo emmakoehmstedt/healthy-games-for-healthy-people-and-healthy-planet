@@ -79,3 +79,6 @@
   color: var(--color-black);
   font-family: var(--font-inria-serif);
 }
+.colorsdropdownframe{
+  background-color: black;
+}

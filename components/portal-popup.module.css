@@ -4,3 +4,8 @@
   position: fixed;
   inset: 0;
 }
+
+.infoDiv{
+  display: flex;
+  
+}
