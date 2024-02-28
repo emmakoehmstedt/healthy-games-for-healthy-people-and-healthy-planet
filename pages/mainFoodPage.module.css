@@ -13,7 +13,7 @@
 
 .foodcard {
   width: 250px;
-  height: 360px;
+  height: 440px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -47,6 +47,32 @@
   overflow-y: scroll;
   font-size: var(--font-size-19xl);
   color: var(--color-dimgray-100);
+}
+
+.addFoodButtonContainer{
+    position: relative;
+    
+}
+
+.addFoodButton {
+  position: relative;
+  bottom: 8px; 
+  left: 41%; 
+  transform: translateX(-50%); 
+  height: 65px;
+  width: 65px;
+  margin-bottom: 5px; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #33b249;
+  border-radius: 15px;
+  border: 1px solid black;
+}
+
+.plus-sign {
+  position: relative;
+  font-size: 40px; 
 }
 
 .dropDownSearchContainer {
@@ -142,6 +168,43 @@
   font-size: var(--font-size-xl);
   color: var(--color-black);
 }
+.bottomButtonsContainer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+.calculateButton {
+  height: 65px;
+  width: 100%;
+  background-color: #33b249;
+  padding: 10px;
+  box-sizing: border-box; 
+  margin-bottom: 5px; 
+  border-radius: 10px;
+  display: flex;
+  align-items: center; 
+  justify-content: center;
+  border: 1px solid black; /* Thin black border */
+  font-size: 40px;
+
+}
+
+.clearCalcButton {
+  height: 65px;
+  width: 100%;
+  background-color: #ED0800;
+  padding: 10px;
+  box-sizing: border-box; 
+  margin-bottom: 5px; 
+  border-radius: 10px;
+  display: flex;
+  align-items: center; 
+  justify-content: center;
+  border: 1px solid black; /* Thin black border */
+  font-size: 40px;
+}
+
 /* .oregonstateuniversityicon {
   width: 311px;
   position: relative;

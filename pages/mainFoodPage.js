@@ -24,8 +24,7 @@ const MainFoodCardsPage = () => {
     const fetchData = async () => {
       try {
         //TODO: Add function to supabase database so you can fetch the food with color
-        const { data, error } = await supabase.rpc("getfoodcardinformation");
-
+        const { data, error } = await supabase.from("foods").select("*");
         console.log("Data: ", data);
 
         if (error) {
@@ -34,9 +33,7 @@ const MainFoodCardsPage = () => {
 
         const foodsArray = data.map((food) => ({
           id: food.id,
-          name: food.food_name,
-          color_name: food.color_name,
-          color_id: food.color_id,
+          name: food.food,
         }));
         setFoodCards(foodsArray);
         console.log("Data from the table:", foodsArray);
@@ -122,6 +119,10 @@ function CalculatorSideBar() {
       </div>
       <b className={styles.myCalculator}>My Calculator</b>
       <img className={styles.calculatoricon} alt="" src="/calculatorIcon.png" />
+      <div className={styles.bottomButtonsContainer}>
+        <div className={styles.calculateButton}>calculate</div>
+        <div className={styles.clearCalcButton}>clear calculation</div>
+      </div>
     </div>
   );
 }
@@ -165,18 +166,31 @@ function FoodCards({ foods }) {
       {foods.map((food) => (
         <FoodCard key={food.id} id={food.id} name={food.name} />
       ))}
+
     </div>
   );
 }
 
 function FoodCard({ id, name }) {
+
   const food = foods.find((foodItem) => foodItem.id === id);
+
   if (!food) return null;
   const imagePath = food.image;
+
   return (
+    
     <div className={styles.foodcard}>
+    
       <img className={styles.foodcardimage} src={`/${imagePath}`} alt={name} />
       <p>{name}</p>
+        <div className={styles.addFoodButton}>  
+          <p className={styles.plusSign}>+</p>
+        </div>
     </div>
+    
+
+    
   );
+
 }
