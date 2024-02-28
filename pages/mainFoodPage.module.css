@@ -1,6 +1,6 @@
 .mainFoodCardsPage {
   width: 100%;
-  min-height: 100vh;
+  min-height: calc(100vh - 123px);
   display: flex;
   justify-content: flex-start;
   flex-direction: row;
@@ -110,6 +110,23 @@
   font-size: 40px;
 }
 
+.foodInCalculatorContainer {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  top: 100px;
+  width: 100%;
+  height: calc(100vh - 440px);
+  overflow-y: scroll;
+}
+
+.foodInCalculatorContainer img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+}
+
 .dropDownSearchContainer {
   position: absolute;
   padding: 10px;
@@ -173,16 +190,24 @@
 }
 .youCurrentlyHaveContainer1 {
   width: 100%;
+  height: 100%;
 }
 .myCalculator,
 .youCurrentlyHaveContainer {
   position: absolute;
-  top: 184.8px;
-  left: 38.8px;
+  top: 155px;
+  left: 0px;
   display: flex;
   align-items: center;
-  width: 277.3px;
-  height: 177.9px;
+  width: 95%;
+  height: calc(100vh - 455px);
+  padding: 5px;
+  overflow-y: scroll;
+}
+
+.youCurrentlyHaveContainer img {
+  width: 40px;
+  height: 40px;
 }
 
 .myCalculator {
@@ -208,7 +233,7 @@
   top: 123px;
   left: 0;
   width: 340px;
-  height: 100%;
+  height: calc(100vh - 123px);
   overflow: hidden;
   text-align: center;
   font-size: var(--font-size-xl);
@@ -222,11 +247,12 @@
 
 .calculateButton {
   height: 65px;
-  width: 100%;
+  width: 90%;
   background-color: #33b249;
   padding: 10px;
   box-sizing: border-box;
   margin-bottom: 5px;
+  margin-left: 5px;
   border-radius: 10px;
   display: flex;
   align-items: center;
@@ -237,10 +263,11 @@
 
 .clearCalcButton {
   height: 65px;
-  width: 100%;
+  width: 90%;
   background-color: #ed0800;
   padding: 10px;
   box-sizing: border-box;
+  margin-left: 5px;
   margin-bottom: 5px;
   border-radius: 10px;
   display: flex;

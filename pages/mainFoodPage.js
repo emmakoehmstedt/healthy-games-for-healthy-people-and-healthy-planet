@@ -87,7 +87,7 @@ const MainFoodCardsPage = () => {
   }, []);
 
   function onAddToCalculator(newFoodItem) {
-    setCalculatorItems((prevFoods) => [...prevFoods, newFoodItem]);
+    setCalculatorItems((prevFoods) => [newFoodItem, ...prevFoods]);
     console.log("Food: ", newFoodItem);
   }
 
@@ -99,6 +99,10 @@ const MainFoodCardsPage = () => {
 
   function isInCalculator(id) {
     return calculatorItems.some((item) => item.id === id);
+  }
+
+  function onClearCalculator() {
+    setCalculatorItems([]);
   }
 
   const onColorsDropdownFrameContainerClick = useCallback((val, id) => {
@@ -113,6 +117,7 @@ const MainFoodCardsPage = () => {
         <CalculatorSideBar
           foods={calculatorItems}
           removeFromCalculator={onRemoveFromCalculator}
+          clearCalculator={onClearCalculator}
         />
         <div className="right-of-sidebar">
           <div className={styles.dropDownSearchContainer}>
@@ -148,7 +153,7 @@ const MainFoodCardsPage = () => {
 
 export default MainFoodCardsPage;
 
-function CalculatorSideBar({ foods, removeFromCalculator }) {
+function CalculatorSideBar({ foods, removeFromCalculator, clearCalculator }) {
   return (
     <div className={styles.calculatorsidebarframe}>
       <div className={styles.youCurrentlyHaveContainer}>
@@ -180,7 +185,9 @@ function CalculatorSideBar({ foods, removeFromCalculator }) {
       <img className={styles.calculatoricon} alt="" src="/calculatorIcon.png" />
       <div className={styles.bottomButtonsContainer}>
         <div className={styles.calculateButton}>calculate</div>
-        <div className={styles.clearCalcButton}>clear calculation</div>
+        <div className={styles.clearCalcButton} onClick={clearCalculator}>
+          clear calculation
+        </div>
       </div>
     </div>
   );
@@ -190,7 +197,7 @@ function CalculatorFoodItem({ foodItem, removeFromCalculator }) {
   return (
     <li key={foodItem.id}>
       <div>
-        <img src="/{imagePath}" alt={foodItem.name} />
+        <img src={`/${foodItem.imagePath}`} alt={foodItem.name} />
         <p>{foodItem.name}</p>
         <button onClick={() => removeFromCalculator(foodItem.id)}>-</button>
       </div>
