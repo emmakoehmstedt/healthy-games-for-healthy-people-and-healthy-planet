@@ -86,12 +86,20 @@ const MainFoodCardsPage = () => {
     setHoverCardOpen(false);
   }, []);
 
-  const onAddToCalculator = useCallback(
-    (food) => {
-      setCalculatorItems((prevFoods) => [...prevFoods, food]);
-    },
-    [setCalculatorItems]
-  );
+  function onAddToCalculator(newFoodItem) {
+    setCalculatorItems((prevFoods) => [...prevFoods, newFoodItem]);
+    console.log("Food: ", newFoodItem);
+  }
+
+  function onRemoveFromCalculator(id) {
+    setCalculatorItems((prevFoods) =>
+      prevFoods.filter((food) => food.id !== id)
+    );
+  }
+
+  function isInCalculator(id) {
+    return calculatorItems.some((item) => item.id === id);
+  }
 
   const onColorsDropdownFrameContainerClick = useCallback((val, id) => {
     // Please sync "Main Food Cards Page wtih Dropdown" to the project
@@ -102,7 +110,10 @@ const MainFoodCardsPage = () => {
   return (
     <Layout>
       <div className={styles.mainFoodCardsPage}>
-        <CalculatorSideBar foods={calculatorItems} />
+        <CalculatorSideBar
+          foods={calculatorItems}
+          removeFromCalculator={onRemoveFromCalculator}
+        />
         <div className="right-of-sidebar">
           <div className={styles.dropDownSearchContainer}>
             <ColorDropDown
@@ -116,6 +127,8 @@ const MainFoodCardsPage = () => {
             foods={foodCards}
             selectedColorId={colorFilterId}
             addToCalculator={onAddToCalculator}
+            onRemoveFromCalculator={onRemoveFromCalculator}
+            isInCalculator={isInCalculator}
           />
         </div>
       </div>
@@ -135,18 +148,32 @@ const MainFoodCardsPage = () => {
 
 export default MainFoodCardsPage;
 
-function CalculatorSideBar({ foods }) {
+function CalculatorSideBar({ foods, removeFromCalculator }) {
   return (
     <div className={styles.calculatorsidebarframe}>
       <div className={styles.youCurrentlyHaveContainer}>
         <span className={styles.youCurrentlyHaveContainer1}>
-          <p className={styles.youCurrentlyHave}>
-            You currently have nothing in your calculator!
-          </p>
-          <p className={styles.youCurrentlyHave}>&nbsp;</p>
-          <p className={styles.youCurrentlyHave}>
-            Hover over a food card to add it to the calculator
-          </p>
+          {foods.length === 0 ? (
+            <div>
+              <p className={styles.youCurrentlyHave}>
+                You currently have nothing in your calculator!
+              </p>
+              <p className={styles.youCurrentlyHave}>&nbsp;</p>
+              <p className={styles.youCurrentlyHave}>
+                Hover over a food card to add it to the calculator
+              </p>
+            </div>
+          ) : (
+            <ul>
+              {foods.map((food) => (
+                <CalculatorFoodItem
+                  key={food.id}
+                  foodItem={food}
+                  removeFromCalculator={removeFromCalculator}
+                />
+              ))}
+            </ul>
+          )}
         </span>
       </div>
       <b className={styles.myCalculator}>My Calculator</b>
@@ -156,6 +183,18 @@ function CalculatorSideBar({ foods }) {
         <div className={styles.clearCalcButton}>clear calculation</div>
       </div>
     </div>
+  );
+}
+
+function CalculatorFoodItem({ foodItem, removeFromCalculator }) {
+  return (
+    <li key={foodItem.id}>
+      <div>
+        <img src="/{imagePath}" alt={foodItem.name} />
+        <p>{foodItem.name}</p>
+        <button onClick={() => removeFromCalculator(foodItem.id)}>-</button>
+      </div>
+    </li>
   );
 }
 
@@ -175,7 +214,13 @@ function SearchBar({ handleSearch }) {
   );
 }
 
-function FoodCards({ foods, selectedColorId, addToCalculator }) {
+function FoodCards({
+  foods,
+  selectedColorId,
+  addToCalculator,
+  onRemoveFromCalculator,
+  isInCalculator,
+}) {
   return (
     <div className={styles.foodcardsframe}>
       {foods.map(
@@ -186,6 +231,8 @@ function FoodCards({ foods, selectedColorId, addToCalculator }) {
               id={food.id}
               name={food.name}
               addToCalculator={addToCalculator}
+              removeFromCalculator={onRemoveFromCalculator}
+              isInCalculator={isInCalculator}
             />
           )
       )}
@@ -193,7 +240,13 @@ function FoodCards({ foods, selectedColorId, addToCalculator }) {
   );
 }
 
-function FoodCard({ id, name, addToCalculator }) {
+function FoodCard({
+  id,
+  name,
+  addToCalculator,
+  removeFromCalculator,
+  isInCalculator,
+}) {
   const food = foods.find((foodItem) => foodItem.id === id);
 
   if (!food) return null;
@@ -203,9 +256,21 @@ function FoodCard({ id, name, addToCalculator }) {
     <div className={styles.foodcard}>
       <img className={styles.foodcardimage} src={`/${imagePath}`} alt={name} />
       <p>{name}</p>
-      <div className={styles.addFoodButton}>
-        <p className={styles.plusSign}>+</p>
-      </div>
+      {isInCalculator(id) ? (
+        <div
+          className={styles.removeFoodButton}
+          onClick={() => removeFromCalculator(id)}
+        >
+          <p className={styles.plusSign}>-</p>
+        </div>
+      ) : (
+        <div
+          className={styles.addFoodButton}
+          onClick={() => addToCalculator({ id, name, imagePath })}
+        >
+          <p className={styles.plusSign}>+</p>
+        </div>
+      )}
     </div>
   );
 }

@@ -56,7 +56,8 @@
   position: relative;
 }
 
-.addFoodButton {
+.addFoodButton,
+.removeFoodButton {
   position: relative;
   bottom: 8px;
   left: 41%;
@@ -67,9 +68,16 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #33b249;
   border-radius: 15px;
   border: 1px solid black;
+}
+
+.addFoodButton {
+  background-color: #33b249;
+}
+
+.removeFoodButton {
+  background-color: #ed0800;
 }
 
 .plus-sign {
