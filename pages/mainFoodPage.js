@@ -4,6 +4,7 @@ import HoverCard from "../components/hover-card";
 import { supabase } from "../lib/initSupabase";
 import { useEffect } from "react";
 import Layout from "../components/layouts/layout";
+import ColorDropDown from "../components/mainFoodPage/colorDropDown";
 import foods from "../data/food_images";
 
 import PortalPopup from "../components/portal-popup";
@@ -14,17 +15,23 @@ import styles from "./mainFoodPage.module.css";
  * Description:
  *************************************************************************/
 const MainFoodCardsPage = () => {
+  const [calculatorItems, setCalculatorItems] = useState([]);
+
   const [isHoverCardOpen, setHoverCardOpen] = useState(false);
 
   const [foodCards, setFoodCards] = useState([]);
 
+  const [colorArray, setColorArray] = useState([]);
+
   const [colorFilter, setColorFilter] = useState("all");
+
+  const [colorFilterId, setColorFilterId] = useState(-1);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         //TODO: Add function to supabase database so you can fetch the food with color
-        const { data, error } = await supabase.from("foods").select("*");
+        const { data, error } = await supabase.rpc("getfoodcardinformation");
         console.log("Data: ", data);
 
         if (error) {
@@ -34,6 +41,8 @@ const MainFoodCardsPage = () => {
         const foodsArray = data.map((food) => ({
           id: food.id,
           name: food.food,
+          color_name: food.color_name,
+          color_id: food.color_id,
         }));
         setFoodCards(foodsArray);
         console.log("Data from the table:", foodsArray);
@@ -44,6 +53,31 @@ const MainFoodCardsPage = () => {
     fetchData();
   }, []);
 
+  useEffect(() => {
+    const fetchColorData = async () => {
+      try {
+        //TODO: Add function to supabase database so you can fetch the food with color
+        const { data, error } = await supabase.from("colors").select("*");
+
+        console.log("Color Data: ", data);
+
+        if (error) {
+          throw error;
+        }
+
+        const colorArray = data.map((color) => ({
+          id: color.color_id,
+          name: color.color,
+        }));
+        setColorArray(colorArray);
+        console.log("Data from the table:", colorArray);
+      } catch (error) {
+        console.error("Error fetching data from Supabase:", error.message);
+      }
+    };
+    fetchColorData();
+  }, []);
+
   const openHoverCard = useCallback(() => {
     setHoverCardOpen(true);
   }, []);
@@ -52,24 +86,37 @@ const MainFoodCardsPage = () => {
     setHoverCardOpen(false);
   }, []);
 
-  const onColorsDropdownFrameContainerClick = useCallback((val) => {
+  const onAddToCalculator = useCallback(
+    (food) => {
+      setCalculatorItems((prevFoods) => [...prevFoods, food]);
+    },
+    [setCalculatorItems]
+  );
+
+  const onColorsDropdownFrameContainerClick = useCallback((val, id) => {
     // Please sync "Main Food Cards Page wtih Dropdown" to the project
     setColorFilter(val);
+    setColorFilterId(id);
   }, []);
 
   return (
     <Layout>
       <div className={styles.mainFoodCardsPage}>
-        <CalculatorSideBar />
+        <CalculatorSideBar foods={calculatorItems} />
         <div className="right-of-sidebar">
           <div className={styles.dropDownSearchContainer}>
             <ColorDropDown
+              colors={colorArray}
               onColorClick={onColorsDropdownFrameContainerClick}
               selectedColor={colorFilter}
             />
             <SearchBar />
           </div>
-          <FoodCards foods={foodCards} />
+          <FoodCards
+            foods={foodCards}
+            selectedColorId={colorFilterId}
+            addToCalculator={onAddToCalculator}
+          />
         </div>
       </div>
 
@@ -88,22 +135,7 @@ const MainFoodCardsPage = () => {
 
 export default MainFoodCardsPage;
 
-function TopBar() {
-  return (
-    <div className={styles.headerframe}>
-      <img
-        className={styles.oregonstateuniversityicon}
-        alt=""
-        src="/oregonStateUniversityIcon.png"
-      />
-      <div className={styles.informationbutton}>
-        <b>Information</b>
-      </div>
-    </div>
-  );
-}
-
-function CalculatorSideBar() {
+function CalculatorSideBar({ foods }) {
   return (
     <div className={styles.calculatorsidebarframe}>
       <div className={styles.youCurrentlyHaveContainer}>
@@ -127,23 +159,6 @@ function CalculatorSideBar() {
   );
 }
 
-function ColorDropDown({ onColorClick, selectedColor }) {
-  return (
-    <select
-      className={styles.colorsdropdownframe}
-      id="dropdown"
-      value={selectedColor}
-      onChange={(e) => onColorClick(e.target.value)}
-    >
-      <option value="all">All Colors!</option>
-      <option value="blue">Blue </option>
-      <option value="green">Green </option>
-      <option value="yellow">Yellow </option>
-      <option value="purple">Purple </option>
-    </select>
-  );
-}
-
 function SearchBar({ handleSearch }) {
   return (
     <div className={styles.searchcardsframe}>
@@ -160,37 +175,37 @@ function SearchBar({ handleSearch }) {
   );
 }
 
-function FoodCards({ foods }) {
+function FoodCards({ foods, selectedColorId, addToCalculator }) {
   return (
     <div className={styles.foodcardsframe}>
-      {foods.map((food) => (
-        <FoodCard key={food.id} id={food.id} name={food.name} />
-      ))}
-
+      {foods.map(
+        (food) =>
+          (selectedColorId == -1 || selectedColorId === food.color_id) && (
+            <FoodCard
+              key={food.id}
+              id={food.id}
+              name={food.name}
+              addToCalculator={addToCalculator}
+            />
+          )
+      )}
     </div>
   );
 }
 
-function FoodCard({ id, name }) {
-
+function FoodCard({ id, name, addToCalculator }) {
   const food = foods.find((foodItem) => foodItem.id === id);
 
   if (!food) return null;
   const imagePath = food.image;
 
   return (
-    
     <div className={styles.foodcard}>
-    
       <img className={styles.foodcardimage} src={`/${imagePath}`} alt={name} />
       <p>{name}</p>
-        <div className={styles.addFoodButton}>  
-          <p className={styles.plusSign}>+</p>
-        </div>
+      <div className={styles.addFoodButton}>
+        <p className={styles.plusSign}>+</p>
+      </div>
     </div>
-    
-
-    
   );
-
 }

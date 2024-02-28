@@ -1,0 +1,57 @@
+/*COLOR DROP DOWN STYLES*/
+.closedDropDown {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 210px;
+  height: 40px;
+  background-color: white;
+  border-radius: 7px;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+  padding-left: 20px;
+  padding-right: 20px;
+  font-weight: bold;
+}
+
+.colorDropDown {
+  font-weight: bold;
+  color: white;
+}
+
+.allColorDropDown {
+  font-weight: bold;
+  color: grey;
+}
+
+.openDropDown {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 10px;
+  width: 230px;
+  background-color: white;
+  border-radius: 7px;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+}
+
+.dropDownItem {
+  display: flex;
+  flex-direction: horizontal;
+  align-items: center;
+  justify-content: space-between;
+  width: calc(100% - 20px);
+  height: 45px;
+  background-color: rgb(241, 240, 240);
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.dropDownItem p {
+  width: 100px;
+}
+
+.dropDownColorBox {
+  height: 30px;
+  width: 95px;
+  border-radius: 7px;
+}

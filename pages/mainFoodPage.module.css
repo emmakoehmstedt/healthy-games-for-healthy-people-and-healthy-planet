@@ -23,11 +23,13 @@
   padding-top: 7px;
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
   border: 1px solid var(--color-gray-200);
+  z-index: 1;
 }
 
 .foodcardimage {
   width: 235px;
   height: 290px;
+  z-index: 1;
 }
 
 .foodcardsframe {
@@ -47,21 +49,21 @@
   overflow-y: scroll;
   font-size: var(--font-size-19xl);
   color: var(--color-dimgray-100);
+  z-index: 1;
 }
 
-.addFoodButtonContainer{
-    position: relative;
-    
+.addFoodButtonContainer {
+  position: relative;
 }
 
 .addFoodButton {
   position: relative;
-  bottom: 8px; 
-  left: 41%; 
-  transform: translateX(-50%); 
+  bottom: 8px;
+  left: 41%;
+  transform: translateX(-50%);
   height: 65px;
   width: 65px;
-  margin-bottom: 5px; 
+  margin-bottom: 5px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -72,7 +74,32 @@
 
 .plus-sign {
   position: relative;
-  font-size: 40px; 
+  font-size: 40px;
+}
+
+.addFoodButtonContainer {
+  position: relative;
+}
+
+.addFoodButton {
+  position: relative;
+  bottom: 8px;
+  left: 41%;
+  transform: translateX(-50%);
+  height: 65px;
+  width: 65px;
+  margin-bottom: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #33b249;
+  border-radius: 15px;
+  border: 1px solid black;
+}
+
+.plus-sign {
+  position: relative;
+  font-size: 40px;
 }
 
 .dropDownSearchContainer {
@@ -82,8 +109,8 @@
   top: 123px;
   left: 340px;
   height: 50px;
-  width: calc(100% - 340px);
-  display: flex;
+  width: calc(100% - 360px);
+  z-index: 3000;
 }
 
 .searchicon {
@@ -125,6 +152,14 @@
   font-weight: 300;
 }
 
+.colorOption {
+  width: 100px;
+  height: 40px;
+  background-color: lightgray;
+  color: white;
+  font-weight: 300;
+}
+
 .youCurrentlyHave {
   margin: 0;
 }
@@ -141,6 +176,7 @@
   width: 277.3px;
   height: 177.9px;
 }
+
 .myCalculator {
   top: 51.6px;
   left: 64px;
@@ -149,6 +185,7 @@
   width: 290px;
   height: 62.6px;
 }
+
 .calculatoricon {
   position: absolute;
   top: 21px;
@@ -157,6 +194,7 @@
   height: 113px;
   object-fit: cover;
 }
+
 .calculatorsidebarframe {
   position: absolute;
   top: 123px;
@@ -179,112 +217,27 @@
   width: 100%;
   background-color: #33b249;
   padding: 10px;
-  box-sizing: border-box; 
-  margin-bottom: 5px; 
+  box-sizing: border-box;
+  margin-bottom: 5px;
   border-radius: 10px;
   display: flex;
-  align-items: center; 
+  align-items: center;
   justify-content: center;
   border: 1px solid black; /* Thin black border */
   font-size: 40px;
-
 }
 
 .clearCalcButton {
   height: 65px;
   width: 100%;
-  background-color: #ED0800;
+  background-color: #ed0800;
   padding: 10px;
-  box-sizing: border-box; 
-  margin-bottom: 5px; 
+  box-sizing: border-box;
+  margin-bottom: 5px;
   border-radius: 10px;
   display: flex;
-  align-items: center; 
+  align-items: center;
   justify-content: center;
   border: 1px solid black; /* Thin black border */
   font-size: 40px;
 }
-
-/* .oregonstateuniversityicon {
-  width: 311px;
-  position: relative;
-  height: 75.5px;
-  object-fit: cover;
-}
-
-.informationbutton {
-  width: 188px;
-  height: 44.4px;
-  border-radius: var(--br-56xl);
-  background-color: var(--color-white);
-  border: 1px solid var(--color-black);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-right: 30px;
-  margin-left: auto;
-}
-
-.headerframe {
-  background-color: var(--color-orangered);
-  width: 100%;
-  height: 122px;
-  display: flex;
-  align-items: center;
-  padding: 21px var(--padding-11xs) 25px;
-  box-sizing: border-box;
-  text-align: center;
-  font-size: var(--font-size-xl);
-  color: var(--color-black);
-} */
-/* .dividerlineIcon,
-.headerframe,
-.osufootericon {
-  position: absolute;
-  overflow: hidden;
-}
-.dividerlineIcon {
-  top: 80px;
-  left: 719px;
-  max-width: 100%;
-  height: 276px;
-  object-fit: contain;
-}
-.osufootericon {
-  top: 42px;
-  left: 222px;
-  width: 234.7px;
-  height: 75px;
-}
-.collegeOfHealth,
-.oregonStateUniversitys {
-  position: absolute;
-  top: 194px;
-  left: 168px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 368px;
-}
-.oregonStateUniversitys {
-  top: 265px;
-  left: 170px;
-  font-size: var(--font-size-xl);
-  color: var(--color-white);
-  width: 361px;
-  height: 100px;
-  text-align: center;
-}
-.footerframe {
-  width: 1440px;
-  top: 3930px;
-  background-color: #212529;
-  height: 458px;
-  flex-shrink: 0;
-  font-size: var(--font-size-7xl);
-  color: var(--color-orangered);
-}
-.footerframe {
-  position: relative;
-  overflow: hidden;
-} */
