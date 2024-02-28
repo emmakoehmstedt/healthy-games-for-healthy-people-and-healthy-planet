@@ -119,10 +119,6 @@ function CalculatorSideBar() {
       </div>
       <b className={styles.myCalculator}>My Calculator</b>
       <img className={styles.calculatoricon} alt="" src="/calculatorIcon.png" />
-      <div className={styles.bottomButtonsContainer}>
-        <div className={styles.calculateButton}>calculate</div>
-        <div className={styles.clearCalcButton}>clear calculation</div>
-      </div>
     </div>
   );
 }
@@ -166,31 +162,18 @@ function FoodCards({ foods }) {
       {foods.map((food) => (
         <FoodCard key={food.id} id={food.id} name={food.name} />
       ))}
-
     </div>
   );
 }
 
 function FoodCard({ id, name }) {
-
   const food = foods.find((foodItem) => foodItem.id === id);
-
   if (!food) return null;
   const imagePath = food.image;
-
   return (
-    
     <div className={styles.foodcard}>
-    
       <img className={styles.foodcardimage} src={`/${imagePath}`} alt={name} />
       <p>{name}</p>
-        <div className={styles.addFoodButton}>  
-          <p className={styles.plusSign}>+</p>
-        </div>
     </div>
-    
-
-    
   );
-
 }
