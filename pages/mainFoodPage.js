@@ -47,8 +47,6 @@ const MainFoodCardsPage = () => {
     fetchData();
   }, []);
 
-
-
   const openHoverCard = useCallback(() => {
     setHoverCardOpen(true);
   }, []);
