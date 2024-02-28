@@ -40,7 +40,7 @@ const MainFoodCardsPage = () => {
 
         const foodsArray = data.map((food) => ({
           id: food.id,
-          name: food.food,
+          name: food.food_name,
           color_name: food.color_name,
           color_id: food.color_id,
         }));
