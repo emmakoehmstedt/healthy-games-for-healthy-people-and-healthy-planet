@@ -15,6 +15,8 @@ import styles from "./mainFoodPage.module.css";
  * Description:
  *************************************************************************/
 const MainFoodCardsPage = () => {
+  const [calculatorItems, setCalculatorItems] = useState([]);
+
   const [isHoverCardOpen, setHoverCardOpen] = useState(false);
 
   const [foodCards, setFoodCards] = useState([]);
@@ -85,6 +87,13 @@ const MainFoodCardsPage = () => {
     setHoverCardOpen(false);
   }, []);
 
+  const onAddToCalculator = useCallback(
+    (food) => {
+      setCalculatorItems((prevFoods) => [...prevFoods, food]);
+    },
+    [setCalculatorItems]
+  );
+
   const onColorsDropdownFrameContainerClick = useCallback((val, id) => {
     // Please sync "Main Food Cards Page wtih Dropdown" to the project
     setColorFilter(val);
@@ -94,7 +103,7 @@ const MainFoodCardsPage = () => {
   return (
     <Layout>
       <div className={styles.mainFoodCardsPage}>
-        <CalculatorSideBar />
+        <CalculatorSideBar foods={calculatorItems} />
         <div className="right-of-sidebar">
           <div className={styles.dropDownSearchContainer}>
             <ColorDropDown
@@ -104,7 +113,11 @@ const MainFoodCardsPage = () => {
             />
             <SearchBar />
           </div>
-          <FoodCards foods={foodCards} selectedColorId={colorFilterId} />
+          <FoodCards
+            foods={foodCards}
+            selectedColorId={colorFilterId}
+            addToCalculator={onAddToCalculator}
+          />
         </div>
       </div>
 
@@ -123,7 +136,7 @@ const MainFoodCardsPage = () => {
 
 export default MainFoodCardsPage;
 
-function CalculatorSideBar() {
+function CalculatorSideBar({ foods }) {
   return (
     <div className={styles.calculatorsidebarframe}>
       <div className={styles.youCurrentlyHaveContainer}>
@@ -159,20 +172,25 @@ function SearchBar({ handleSearch }) {
   );
 }
 
-function FoodCards({ foods, selectedColorId }) {
+function FoodCards({ foods, selectedColorId, addToCalculator }) {
   return (
     <div className={styles.foodcardsframe}>
       {foods.map(
         (food) =>
           (selectedColorId == -1 || selectedColorId === food.color_id) && (
-            <FoodCard key={food.id} id={food.id} name={food.name} />
+            <FoodCard
+              key={food.id}
+              id={food.id}
+              name={food.name}
+              addToCalculator={addToCalculator}
+            />
           )
       )}
     </div>
   );
 }
 
-function FoodCard({ id, name }) {
+function FoodCard({ id, name, addToCalculator }) {
   const food = foods.find((foodItem) => foodItem.id === id);
   if (!food) return null;
   const imagePath = food.image;
