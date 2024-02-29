@@ -1,12 +1,8 @@
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 import HoverCard from "../components/hover-card";
-
 import { supabase } from "../lib/initSupabase";
-import { useEffect } from "react";
 import Layout from "../components/layouts/layout";
-import ColorDropDown from "../components/mainFoodPage/colorDropDown";
 import foods from "../data/food_images";
-
 import PortalPopup from "../components/portal-popup";
 import styles from "./mainFoodPage.module.css";
 
@@ -15,68 +11,42 @@ import styles from "./mainFoodPage.module.css";
  * Description:
  *************************************************************************/
 const MainFoodCardsPage = () => {
-  const [calculatorItems, setCalculatorItems] = useState([]);
-
   const [isHoverCardOpen, setHoverCardOpen] = useState(false);
-
   const [foodCards, setFoodCards] = useState([]);
-
-  const [colorArray, setColorArray] = useState([]);
-
   const [colorFilter, setColorFilter] = useState("all");
+  const [searchInput, setSearchInput] = useState("");
+  
 
-  const [colorFilterId, setColorFilterId] = useState(-1);
+  const fetchData = async () => {
+    try {
+      //TODO: Add function to supabase database so you can fetch the food with color
+      const { data, error } = await supabase.from("foods").select("*");
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        //TODO: Add function to supabase database so you can fetch the food with color
-        const { data, error } = await supabase.rpc("getfoodcardinformation");
-        console.log("Data: ", data);
-
-        if (error) {
-          throw error;
-        }
-
-        const foodsArray = data.map((food) => ({
-          id: food.id,
-          name: food.food_name,
-          color_name: food.color_name,
-          color_id: food.color_id,
-        }));
-        setFoodCards(foodsArray);
-        console.log("Data from the table:", foodsArray);
-      } catch (error) {
-        console.error("Error fetching data from Supabase:", error.message);
+      if (error) {
+        throw error;
       }
-    };
+
+      const foodsArray = data.map((food) => ({
+        id: food.id,
+        name: food.food,
+      }));
+      setFoodCards(foodsArray);
+      console.log("Data from the table:", foodsArray);
+    } catch (error) {
+      console.error("Error fetching data from Supabase:", error.message);
+    }
+  };
     fetchData();
   }, []);
 
-  useEffect(() => {
-    const fetchColorData = async () => {
-      try {
-        //TODO: Add function to supabase database so you can fetch the food with color
-        const { data, error } = await supabase.from("colors").select("*");
 
-        console.log("Color Data: ", data);
-
-        if (error) {
-          throw error;
-        }
-
-        const colorArray = data.map((color) => ({
-          id: color.color_id,
-          name: color.color,
-        }));
-        setColorArray(colorArray);
-        console.log("Data from the table:", colorArray);
-      } catch (error) {
-        console.error("Error fetching data from Supabase:", error.message);
-      }
-    };
-    fetchColorData();
-  }, []);
+  const resetFilter = () => {
+    setSearchInput(""); // Reset search input
+    // Fetch data with no filters (all cards)
+    fetchData();
+    // Ensure the input field is cleared
+    document.getElementById("searchInput").value = "";
+  };
 
   const openHoverCard = useCallback(() => {
     setHoverCardOpen(true);
@@ -86,37 +56,42 @@ const MainFoodCardsPage = () => {
     setHoverCardOpen(false);
   }, []);
 
-  const onAddToCalculator = useCallback(
-    (food) => {
-      setCalculatorItems((prevFoods) => [...prevFoods, food]);
-    },
-    [setCalculatorItems]
-  );
-
-  const onColorsDropdownFrameContainerClick = useCallback((val, id) => {
+  const onColorsDropdownFrameContainerClick = useCallback((val) => {
     // Please sync "Main Food Cards Page wtih Dropdown" to the project
     setColorFilter(val);
-    setColorFilterId(id);
   }, []);
+
+  const handleSearch =useCallback((input) => {
+    // Filter food cards based on search input
+    const filteredFoods = foodCards.filter((food) => {
+        const nameMatches = food.name.toLowerCase().includes(input.toLowerCase());
+        // const colorMatches = colorFilter === "all" || food.color === colorFilter;
+        return nameMatches// && colorMatches;
+    });
+    setFoodCards(filteredFoods);
+  }, [foodCards]);
+
+  const handleReset = () => {
+    setSearchInput(""); // Reset search input
+    // Fetch data with no filters (all cards)
+    fetchData();
+  };
 
   return (
     <Layout>
       <div className={styles.mainFoodCardsPage}>
-        <CalculatorSideBar foods={calculatorItems} />
+        <CalculatorSideBar />
         <div className="right-of-sidebar">
           <div className={styles.dropDownSearchContainer}>
             <ColorDropDown
-              colors={colorArray}
               onColorClick={onColorsDropdownFrameContainerClick}
               selectedColor={colorFilter}
             />
-            <SearchBar />
+            <SearchBar handleSearch={handleSearch} handleReset={handleReset} /> 
+            {/* Reset button to clear the input field */}
+            <button className={styles.resetButton} onClick={resetFilter}>Reset</button>
           </div>
-          <FoodCards
-            foods={foodCards}
-            selectedColorId={colorFilterId}
-            addToCalculator={onAddToCalculator}
-          />
+          <FoodCards foods={foodCards} />
         </div>
       </div>
 
@@ -135,7 +110,30 @@ const MainFoodCardsPage = () => {
 
 export default MainFoodCardsPage;
 
-function CalculatorSideBar({ foods }) {
+/*************************************************************************
+ * Component:
+ * Description:
+ *************************************************************************/
+function TopBar() {
+  return (
+    <div className={styles.headerframe}>
+      <img
+        className={styles.oregonstateuniversityicon}
+        alt=""
+        src="/oregonStateUniversityIcon.png"
+      />
+      <div className={styles.informationbutton}>
+        <b>Information</b>
+      </div>
+    </div>
+  );
+}
+
+/*************************************************************************
+ * Component:
+ * Description:
+ *************************************************************************/
+function CalculatorSideBar() {
   return (
     <div className={styles.calculatorsidebarframe}>
       <div className={styles.youCurrentlyHaveContainer}>
@@ -151,61 +149,82 @@ function CalculatorSideBar({ foods }) {
       </div>
       <b className={styles.myCalculator}>My Calculator</b>
       <img className={styles.calculatoricon} alt="" src="/calculatorIcon.png" />
-      <div className={styles.bottomButtonsContainer}>
-        <div className={styles.calculateButton}>calculate</div>
-        <div className={styles.clearCalcButton}>clear calculation</div>
-      </div>
     </div>
   );
 }
 
-function SearchBar({ handleSearch }) {
+/*************************************************************************
+ * Component:
+ * Description:
+ *************************************************************************/
+function ColorDropDown({ onColorClick, selectedColor }) {
   return (
-    <div className={styles.searchcardsframe}>
+    <select
+      className={styles.colorsdropdownframe}
+      id="dropdown"
+      value={selectedColor}
+      onChange={(e) => onColorClick(e.target.value)}
+    >
+      <option value="all">All Colors!</option>
+      <option value="blue">Blue </option>
+      <option value="green">Green </option>
+      <option value="yellow">Yellow </option>
+      <option value="purple">Purple </option>
+    </select>
+  );
+}
+
+/*************************************************************************
+ * Component: SearchBar
+ * Description: Allow users to filter food cards by name. 
+ * Issues: At the moment the delete functionality is not working, expected
+ *  behavior would be that the food cards start to reappear once you start
+ *  to delete the characters. Seems like this may be an issues with the 
+ *  supabase fetch having null values at times or an unknown. 
+ *************************************************************************/
+function SearchBar({ handleSearch, handleReset }) {
+  const setSearchInput = (e) => {
+    handleSearch(e.target.value);
+  };
+
+  return (
+    <div className={styles.searchBarContainer}>
       <input
         className={styles.searchInput}
         type="text"
-        placeholder="Search by Name..."
+        placeholder="Search by Name"
         id="searchInput"
+        onChange={setSearchInput}
       />
-      <button onClick={handleSearch}>
-        <img className={styles.searchicon} alt="" src="/searchIcon.png" />
-      </button>
     </div>
   );
 }
-
-function FoodCards({ foods, selectedColorId, addToCalculator }) {
+/*************************************************************************
+ * Component:
+ * Description:
+ *************************************************************************/
+function FoodCards({ foods }) {
   return (
     <div className={styles.foodcardsframe}>
-      {foods.map(
-        (food) =>
-          (selectedColorId == -1 || selectedColorId === food.color_id) && (
-            <FoodCard
-              key={food.id}
-              id={food.id}
-              name={food.name}
-              addToCalculator={addToCalculator}
-            />
-          )
-      )}
+      {foods.map((food) => (
+        <FoodCard key={food.id} id={food.id} name={food.name} />
+      ))}
     </div>
   );
 }
 
-function FoodCard({ id, name, addToCalculator }) {
+/*************************************************************************
+ * Component:
+ * Description:
+ *************************************************************************/
+function FoodCard({ id, name }) {
   const food = foods.find((foodItem) => foodItem.id === id);
-
   if (!food) return null;
   const imagePath = food.image;
-
   return (
     <div className={styles.foodcard}>
       <img className={styles.foodcardimage} src={`/${imagePath}`} alt={name} />
       <p>{name}</p>
-      <div className={styles.addFoodButton}>
-        <p className={styles.plusSign}>+</p>
-      </div>
     </div>
   );
 }
