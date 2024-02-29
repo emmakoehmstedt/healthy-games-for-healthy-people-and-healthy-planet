@@ -10,20 +10,152 @@
     color: var(--color-black);
     font-family: var(--font-calibri);
 }
-.backBtn{
+.topBtnBar{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    margin: 20px 0px;
+}
+.topBtnsBar{
     display: flex;
     align-items: center;
     justify-content: center;
-    
-    width: 200px;
+
+    width: 170px;
     height: 50px;
+    margin-right: 10px;
     padding: 1vh;
-    border: 1px solid var(--color-gray-200);
+
+    background-color: #c2effa;
+
+    border: 1px solid rgba(0, 0, 0, 0.38);
+    border-radius: 10px;
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
 
     cursor: pointer;
+}
+.topBtnBarSubDiv{
+    display: flex;
+}
+.topBtnBarSubDiv div:last-child {
+    margin-right: 0;
+}
+.backBtn{
+    font-weight: 300;
+    font-size: 24px;
+}
+.newCalculationBtn{
+    font-weight: 300;
+    font-size: 24px;
+}
+.exportBtnColor{
+    background-color: #7de281;
+}
+.exportBtn{
+    font-weight: 300;
+    font-size: 24px;
+}
+.infoDiv{
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-evenly;
 
+    width: 100%;
+}
+.infoDivChild{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+
+    margin: 2px;
+    padding: 8px;
+
+    border: 1px solid rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 .foodItem{
-    max-width: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    /* max-width: 30%; */
+    padding: 1vh;
+
+    background-color: rgba(217,217,217,.2199999);
+
+    border: 2px solid rgba(194, 220, 25, 0.903);
+    border-radius: 10px;
+}
+.dropdownStyle{
+    display: flex;
+    text-align: center;
+
+    background-color: #F16966;
+    width: 120px;
+    height: 50px;
+
+    border: 1px solid rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+    font-family: Inria Serif;
+    font-size: 20px;
+
+    cursor: pointer;
+    appearance: none;
+}
+.dropdownStyle::after{
+    content: '\25BC';
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    color: #fff;
+    font-size: 16px;
+}
+.foodItemSection1{
+    flex: .3;
+    
+    margin: 1vh;
+}
+.foodItemSection2{
+    flex: .7;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    margin: 1vh;
+
+    font-size: larger;
+}
+.selectAmountBtnDiv{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    /* width: 200px; */
+    min-width: 200px;
+    height: 70px;
+
+    border: 1px solid rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    
+    cursor: pointer;
+
+    font-size: 20px;
+    font-weight: lighter;
+}
+.selectAmountDisplayDiv{
+    display: flex;
+
+    min-width: 200px;
+    height: 70px;
+    
+    border: 1px solid rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
 }

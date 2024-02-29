@@ -1,7 +1,6 @@
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 
 import { supabase } from "../lib/initSupabase";
-import { useEffect } from "react";
 import { useRouter } from "next/router";
 import Layout from "../components/layouts/layout";
 import foods from "../data/food_images";
@@ -22,29 +21,34 @@ const ResultsPage = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const { data, error } = await supabase.rpc("getfoodcardinformationtable");
-
+                const { data, error } = await supabase.rpc("getFoodCardStars");
+        
                 console.log("Data: ", data);
-
+        
                 if (error) {
                     throw error;
                 }
-
+        
                 const foodsArray = data.map((food) => ({
                     id: food.id,
                     name: food.food_name,
-                    facts: information.facts,
-                    carbon_footprint: information.carbon_footprint,
-                    water_footprint: information.water_footprint
+                    info_id: food.info_id,
+                    facts: food.facts,
+                    carbon_footprint: food.carbon_footprint,
+                    water_footprint: food.water_footprint,
                 }));
+        
                 setFoodCards(foodsArray);
                 console.log("Data from the table:", foodsArray);
-            } catch (error) {
+            }
+            catch (error) {
                 console.error("Error fetching data from Supabase:", error.message);
             }
         };
+      
         fetchData();
-    }, []);
+      }, []);
+      
 
     const onCookedRawDropdownFrameContainerClick = useCallback((val) => {
         //sync to proj
@@ -56,23 +60,30 @@ const ResultsPage = () => {
             <div className={styles.resultsPage}>
                 <div className={styles.topBtnBar}>
                     <div onClick={onBackClick}>
-                        <b className={styles.backBtn}>⬅ Back</b>
+                        <div className={styles.topBtnsBar}>
+                            <b className={styles.backBtn}>⬅ Back</b>
+                        </div>
                         {/* we have to make sure the data between the mainFoodPage and resultsPage is consistent/same */}
                     </div>
-                    <div className={styles.newCalculationBtn}></div>
-                    <div className={styles.exportBtn}>
-                        {/* whats the purpose of the export and what file type? */}
+                    <div className={styles.topBtnBarSubDiv}>
+                        <div className={styles.topBtnsBar} onClick={onBackClick}>
+                            <b className={styles.newCalculationBtn}>New Calculation</b>
+                        </div>
+                        <div className={[styles.topBtnsBar, styles.exportBtnColor].join(' ')}>
+                            {/* whats the purpose of the export and what file type? */}
+                            <b className={styles.exportBtn}>Export</b>
+                        </div>
                     </div>
                 </div>
                 <div className={styles.infoDiv}>
-                    <div className={styles.amountCard}>
+                    <div className={[styles.amountCard, styles.infoDivChild].join(' ')}>
                         <h1>Amount</h1>
                         {/* insert food cards 
                         probably auto generated food cards with like a loop that iterates through or something
                         for now ill put the divs and stuff for like the functionality
                         */}
                         <div className={styles.foodItem}>
-                            <div>
+                            <div className={styles.foodItemSection1}>
                                 <img 
                                     // className={}
                                     alt=""
@@ -86,21 +97,23 @@ const ResultsPage = () => {
                                     />
                                 </div>
                             </div>
-                            <div>
+                            <div className={styles.foodItemSection2}>
                                 <p>[insert name]</p>
-                                <div>
+                                <div className={styles.selectAmountBtnDiv}>
                                     {/* select amount button 
                                     this is where the pop up comes in to select choices
                                     */}
-                                    <b></b>
+                                    <b className={styles.selectAmountBtn}>Select Amount</b>
                                 </div>
-                                <div>
+                                =
+                                <div className={styles.selectAmountDisplayDiv}>
                                     {/* selected amount display */}
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div className={styles.nutritionCard}>
+                    <div className={[styles.nutritionCard, styles.infoDivChild].join(' ')}>
+                        <h1>Nutrition</h1>
                         {/* insert star cards */}
                         <p>Total Score</p>
                         {/* insert stars */}
@@ -110,7 +123,8 @@ const ResultsPage = () => {
                             <FoodCards foods={foodCards}/>
                         </div>
                     </div>
-                    <div className={styles.foodPrintCard}>
+                    <div className={[styles.foodPrintCard, styles.infoDivChild].join(' ')}>
+                        <h1>Foodprint</h1>
                         {/* insert foodprint info */}
                     </div>
                 </div>
@@ -125,12 +139,12 @@ function TopBar() {
     return (
         <div className={styles.headerframe}>
             <img
-            className={styles.oregonstateuniversityicon}
-            alt=""
-            src="/oregonStateUniversityIcon.png"
+                className={styles.oregonstateuniversityicon}
+                alt=""
+                src="/oregonStateUniversityIcon.png"
             />
             <div className={styles.informationbutton}>
-            <b>Information</b>
+                <b>Information</b>
             </div>
         </div>
     );
@@ -142,6 +156,7 @@ function CookedRawDropDown({ onCRClick, selectedCook }){
             id="dropdown"
             value={selectedCook}
             onChange={(e) => onCRClick(e.target.value)}
+            className={styles.dropdownStyle}
         >
             <option value="cooked">Cooked</option>
             <option value="raw">Raw</option>
@@ -171,7 +186,7 @@ function FoodCards({ foods }) {
         <div className={styles.foodcard}>
             <img className={styles.foodcardimage} src={`/${imagePath}`} alt={name} />
             <p>{name}</p>
-            <p>{facts}</p>
+            <p>{food.facts}</p>
         </div>
     );
   }
