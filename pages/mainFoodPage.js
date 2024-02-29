@@ -36,9 +36,29 @@ const MainFoodCardsPage = () => {
       console.error("Error fetching data from Supabase:", error.message);
     }
   };
+  const fetchData = async () => {
+    try {
+      //TODO: Add function to supabase database so you can fetch the food with color
+      const { data, error } = await supabase.from("foods").select("*");
+
+      if (error) {
+        throw error;
+      }
+
+      const foodsArray = data.map((food) => ({
+        id: food.id,
+        name: food.food,
+      }));
+      setFoodCards(foodsArray);
+      console.log("Data from the table:", foodsArray);
+    } catch (error) {
+      console.error("Error fetching data from Supabase:", error.message);
+    }
+  };
+
+  useEffect(() => {
     fetchData();
   }, []);
-
 
   const resetFilter = () => {
     setSearchInput(""); // Reset search input
