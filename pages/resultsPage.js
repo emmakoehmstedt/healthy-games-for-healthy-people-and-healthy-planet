@@ -3,7 +3,6 @@ import { useState, useCallback } from "react";
 import { supabase } from "../lib/initSupabase";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
-import { useCallback } from "react";
 import Layout from "../components/layouts/layout";
 import foods from "../data/food_images";
 
@@ -12,10 +11,11 @@ import styles from "./resultsPage.module.css";
 const ResultsPage = () => {
     const router = useRouter();
 
+    const [foodCards, setFoodCards] = useState([]);
     const [cookedFilter, setCookedRawFilter] = useState("all");
 
     const onBackClick = useCallback(() => {
-        router.push("/resultsPage");
+        router.push("/mainFoodPage");
     }, [router]);
 
 
@@ -56,7 +56,8 @@ const ResultsPage = () => {
             <div className={styles.resultsPage}>
                 <div className={styles.topBtnBar}>
                     <div onClick={onBackClick}>
-                        <b className={styles.backBtn}>🔙 Back</b>
+                        <b className={styles.backBtn}>⬅ Back</b>
+                        {/* we have to make sure the data between the mainFoodPage and resultsPage is consistent/same */}
                     </div>
                     <div className={styles.newCalculationBtn}></div>
                     <div className={styles.exportBtn}>
@@ -65,11 +66,12 @@ const ResultsPage = () => {
                 </div>
                 <div className={styles.infoDiv}>
                     <div className={styles.amountCard}>
+                        <h1>Amount</h1>
                         {/* insert food cards 
                         probably auto generated food cards with like a loop that iterates through or something
                         for now ill put the divs and stuff for like the functionality
                         */}
-                        <div>
+                        <div className={styles.foodItem}>
                             <div>
                                 <img 
                                     // className={}
@@ -87,7 +89,9 @@ const ResultsPage = () => {
                             <div>
                                 <p>[insert name]</p>
                                 <div>
-                                    {/* select amount button */}
+                                    {/* select amount button 
+                                    this is where the pop up comes in to select choices
+                                    */}
                                     <b></b>
                                 </div>
                                 <div>
