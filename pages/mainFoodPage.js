@@ -119,7 +119,7 @@ const MainFoodCardsPage = () => {
           removeFromCalculator={onRemoveFromCalculator}
           clearCalculator={onClearCalculator}
         />
-        <div className="right-of-sidebar">
+        <div className={styles.rightOfSidebar}>
           <div className={styles.dropDownSearchContainer}>
             <ColorDropDown
               colors={colorArray}
@@ -156,33 +156,31 @@ export default MainFoodCardsPage;
 function CalculatorSideBar({ foods, removeFromCalculator, clearCalculator }) {
   return (
     <div className={styles.calculatorsidebarframe}>
-      <div className={styles.youCurrentlyHaveContainer}>
-        <span className={styles.youCurrentlyHaveContainer1}>
-          {foods.length === 0 ? (
-            <div>
-              <p className={styles.youCurrentlyHave}>
-                You currently have nothing in your calculator!
-              </p>
-              <p className={styles.youCurrentlyHave}>&nbsp;</p>
-              <p className={styles.youCurrentlyHave}>
-                Hover over a food card to add it to the calculator
-              </p>
-            </div>
-          ) : (
-            <ul>
-              {foods.map((food) => (
-                <CalculatorFoodItem
-                  key={food.id}
-                  foodItem={food}
-                  removeFromCalculator={removeFromCalculator}
-                />
-              ))}
-            </ul>
-          )}
-        </span>
+      <div className={styles.myCalculatorHeader}>
+        <img
+          className={styles.calculatoricon}
+          alt=""
+          src="/calculatorIcon.png"
+        />
+        <b className={styles.myCalculatorTitle}>My Calculator</b>
       </div>
-      <b className={styles.myCalculator}>My Calculator</b>
-      <img className={styles.calculatoricon} alt="" src="/calculatorIcon.png" />
+      <div className={styles.itemsInCalculatorFrame}>
+        {foods.length === 0 ? (
+          <div className={styles.nothingInCalculator}>
+            <p>You currently have nothing in your calculator!</p>
+          </div>
+        ) : (
+          <ul className={styles.foodsInCalculator}>
+            {foods.map((food) => (
+              <CalculatorFoodItem
+                key={food.id}
+                foodItem={food}
+                removeFromCalculator={removeFromCalculator}
+              />
+            ))}
+          </ul>
+        )}
+      </div>
       <div className={styles.bottomButtonsContainer}>
         <div className={styles.calculateButton}>calculate</div>
         <div className={styles.clearCalcButton} onClick={clearCalculator}>
