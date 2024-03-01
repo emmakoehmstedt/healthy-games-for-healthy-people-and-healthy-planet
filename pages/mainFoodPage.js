@@ -1,8 +1,7 @@
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 import HoverCard from "../components/hover-card";
 
 import { supabase } from "../lib/initSupabase";
-import { useEffect } from "react";
 import Layout from "../components/layouts/layout";
 import ColorDropDown from "../components/mainFoodPage/colorDropDown";
 import foods from "../data/food_images";
@@ -29,7 +28,10 @@ const MainFoodCardsPage = () => {
 
   const [colorFilterId, setColorFilterId] = useState(-1);
 
-  useEffect(() => {
+  const [searchInput, setSearchInput] = useState("");
+
+  const [filteredFoodCards, setFilteredFoodCards] = useState([]);
+
     const fetchData = async () => {
       try {
         //TODO: Add function to supabase database so you can fetch the food with color
@@ -52,8 +54,11 @@ const MainFoodCardsPage = () => {
         console.error("Error fetching data from Supabase:", error.message);
       }
     };
-    fetchData();
-  }, []);
+  
+    useEffect(() => {
+      fetchData();
+    }, []);
+
 
   useEffect(() => {
     const fetchColorData = async () => {
@@ -113,6 +118,32 @@ const MainFoodCardsPage = () => {
     setColorFilterId(id);
   }, []);
 
+
+  const handleSearch = useCallback((input) => {
+    // Update search input state
+    setSearchInput(input);
+
+    // Filter food cards based on search input
+    const filteredFoods = foodCards.filter((food) => {
+      const nameMatches = food.name.toLowerCase().includes(input.toLowerCase());
+      // const colorMatches = colorFilter === "all" || food.color === colorFilter;
+      return nameMatches; // && colorMatches;
+    });
+    // Update filtered food cards
+    setFilteredFoodCards(filteredFoods);
+  }, [foodCards]);
+
+  const resetFilter = () => {
+    setSearchInput(""); // Reset search input
+    setFilteredFoodCards([]); // Reset filtered food cards
+  };
+
+
+  const handleReset = () => {
+    setSearchInput(""); // Reset search input
+    fetchData(); // Refetch data to ensure you have the latest
+  };
+
   return (
     <Layout>
       <div className={styles.mainFoodCardsPage}>
@@ -128,10 +159,13 @@ const MainFoodCardsPage = () => {
               onColorClick={onColorsDropdownFrameContainerClick}
               selectedColor={colorFilter}
             />
-            <SearchBar />
+            <SearchBar handleSearch={handleSearch} handleReset={handleReset} /> 
+            {/* Reset button to clear the input field */}
+            <button className={styles.resetButton} onClick={resetFilter}>Reset</button>
           </div>
           <FoodCards
             foods={foodCards}
+            filteredFoodCards={filteredFoodCards} 
             selectedColorId={colorFilterId}
             addToCalculator={onAddToCalculator}
             onRemoveFromCalculator={onRemoveFromCalculator}
@@ -186,7 +220,7 @@ function CalculatorSideBar({ foods, removeFromCalculator, clearCalculator }) {
       <div className={styles.bottomButtonsContainer}>
         <div className={styles.calculateButton}>calculate</div>
         <div className={styles.clearCalcButton} onClick={clearCalculator}>
-          clear calculator
+          clear calculation
         </div>
       </div>
     </div>
@@ -207,47 +241,60 @@ function CalculatorFoodItem({ foodItem, removeFromCalculator }) {
   );
 }
 
-function SearchBar({ handleSearch }) {
+/*************************************************************************
+ * Component: SearchBar
+ * Description: Allow users to filter food cards by name. 
+ * Issues: At the moment the delete functionality is not working, expected
+ *  behavior would be that the food cards start to reappear once you start
+ *  to delete the characters. Seems like this may be an issues with the 
+ *  supabase fetch having null values at times or an unknown. 
+ *************************************************************************/
+function SearchBar({ handleSearch, handleReset }) {
+  const setSearchInput = (e) => {
+    handleSearch(e.target.value);
+  };
+
   return (
-    <div className={styles.searchcardsframe}>
+    <div className={styles.searchBarContainer}>
       <input
         className={styles.searchInput}
         type="text"
-        placeholder="Search by Name..."
+        placeholder="Search by Name"
         id="searchInput"
+        onChange={setSearchInput}
       />
-      <button onClick={handleSearch}>
-        <img className={styles.searchicon} alt="" src="/searchIcon.png" />
-      </button>
     </div>
   );
 }
 
 function FoodCards({
   foods,
+  filteredFoodCards, // Receive filteredFoodCards as prop
   selectedColorId,
   addToCalculator,
   onRemoveFromCalculator,
   isInCalculator,
 }) {
+  const cardsToRender = filteredFoodCards.length > 0 ? filteredFoodCards : foods;
+
   return (
     <div className={styles.foodcardsframe}>
-      {foods.map(
-        (food) =>
-          (selectedColorId == -1 || selectedColorId === food.color_id) && (
-            <FoodCard
-              key={food.id}
-              id={food.id}
-              name={food.name}
-              addToCalculator={addToCalculator}
-              removeFromCalculator={onRemoveFromCalculator}
-              isInCalculator={isInCalculator}
-            />
-          )
-      )}
+      {cardsToRender.map((food) => (
+        (selectedColorId == -1 || selectedColorId === food.color_id) && (
+          <FoodCard
+            key={food.id}
+            id={food.id}
+            name={food.name}
+            addToCalculator={addToCalculator}
+            removeFromCalculator={onRemoveFromCalculator}
+            isInCalculator={isInCalculator}
+          />
+        )
+      ))}
     </div>
   );
 }
+
 
 function FoodCard({
   id,
