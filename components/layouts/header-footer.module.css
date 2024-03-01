@@ -13,8 +13,8 @@
   object-fit: cover;
 }
 
-.informationbutton {
-  width: 188px;
+.homebutton {
+  width: 158px;
   height: 44.4px;
   border-radius: var(--br-56xl);
   background-color: var(--color-white);
@@ -22,8 +22,23 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-right: 30px;
   margin-left: auto;
+  margin-right: 6%; /* Adjust the margin-right as needed */
+  cursor: pointer;
+}
+
+.informationbutton {
+  width: 158px;
+  height: 44.4px;
+  border-radius: var(--br-56xl);
+  background-color: var(--color-white);
+  border: 1px solid var(--color-black);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin-right: 1%;
+  cursor: pointer;
 }
 
 .headerframe {
@@ -37,6 +52,7 @@
   text-align: center;
   font-size: var(--font-size-xl);
   color: var(--color-black);
+  position: relative;
 }
 
 /*CONTENT IN BETWEEN*/
@@ -95,3 +111,4 @@
   height: 100px;
   text-align: center;
 }
+
