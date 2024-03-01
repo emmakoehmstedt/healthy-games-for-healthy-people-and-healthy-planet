@@ -16,7 +16,8 @@
     align-items: center;
     justify-content: space-between;
 
-    margin: 20px 0px;
+
+    margin: 2% 0% 1% 0%;
 }
 .topBtnsBar{
     display: flex;
@@ -25,8 +26,9 @@
 
     width: 170px;
     height: 50px;
-    margin-right: 10px;
-    padding: 1vh;
+    /* margin-right: 10px; */
+    margin-right: 3%;
+    padding: 2%;
 
     background-color: #c2effa;
 
@@ -39,10 +41,11 @@
 .topBtnBarSubDiv{
     display: flex;
 }
-.topBtnBarSubDiv div:last-child {
+/* .topBtnBarSubDiv div:last-child {
     margin-right: 0;
-}
+} */
 .backBtn{
+    text-align: center;
     font-weight: 300;
     font-size: 24px;
 }
@@ -70,8 +73,8 @@
     align-items: center;
     flex: 1;
 
-    margin: 2px;
-    padding: 8px;
+    margin: 1%;
+    padding: 1%;
 
     border: 1px solid rgba(0, 0, 0, 0.25);
     border-radius: 10px;
@@ -83,7 +86,7 @@
     align-items: center;
 
     /* max-width: 30%; */
-    padding: 1vh;
+    padding: 2%;
 
     background-color: rgba(217,217,217,.2199999);
 
@@ -168,7 +171,7 @@
     justify-content: center;
 
     max-width: 90%;
-    padding: 0px 80px;
+    padding: 0% 10%;
     overflow: hidden;
 
     background-color: #Fdd939;
@@ -189,7 +192,7 @@
     align-items: center;
     justify-content: center;
 
-    padding: 10px;
+    padding: 1%;
     width: 90%;
 
     background-color: #D8E3F0;

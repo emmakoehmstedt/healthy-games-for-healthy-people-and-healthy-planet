@@ -21,7 +21,7 @@ const ResultsPage = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const { data, error } = await supabase.rpc("getFoodCardStars");
+                const { data, error } = await supabase.rpc("getfoodcardstars");
         
                 console.log("Data: ", data);
         
@@ -58,7 +58,7 @@ const ResultsPage = () => {
     return(
         <Layout>
             <div className={styles.resultsPage}>
-                <div className={styles.topBtnBar}>
+                <div style={{'margin-left': '1%'}} className={styles.topBtnBar}>
                     <div onClick={onBackClick}>
                         <div className={styles.topBtnsBar}>
                             <b className={styles.backBtn}>⬅ Back</b>
@@ -156,20 +156,7 @@ const ResultsPage = () => {
 
 export default ResultsPage;
 
-function TopBar() {
-    return (
-        <div className={styles.headerframe}>
-            <img
-                className={styles.oregonstateuniversityicon}
-                alt=""
-                src="/oregonStateUniversityIcon.png"
-            />
-            <div className={styles.informationbutton}>
-                <b>Information</b>
-            </div>
-        </div>
-    );
-}
+
 
 function CookedRawDropDown({ onCRClick, selectedCook }){
     return (
