@@ -1,6 +1,8 @@
+// Import statements should be at the top
 import { useRouter } from "next/router";
 import styles from "./header-footer.module.css";
 
+// Component definition
 function TopBar() {
   const router = useRouter();
 
@@ -28,7 +30,6 @@ function TopBar() {
           src="/oregonStateUniversityIcon.png"
         />
       </a>
-      {/* Conditionally render the "Home" button based on whether it's the homepage or not */}
       {router.pathname !== "/" && (
         <div className={styles.homebutton} onClick={handleHomeClick}>
           <b>Home</b>
