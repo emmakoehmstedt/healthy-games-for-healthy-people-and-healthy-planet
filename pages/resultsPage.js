@@ -112,64 +112,6 @@ const ResultsPage = () => {
                                     </div>
                                 </div>
                             </div>
-                            <div className={styles.foodItem}>
-                                <div className={styles.foodItemSection1}>
-                                    <img 
-                                        // className={}
-                                        alt=""
-                                        src=""
-                                    />
-                                    <div>
-                                        {/* cooked/raw dropdown */}
-                                        <CookedRawDropDown
-                                            onCRClick={onCookedRawDropdownFrameContainerClick}
-                                            selectedCook={cookedFilter}
-                                        />
-                                    </div>
-                                </div>
-                                <div className={styles.foodItemSection2}>
-                                    <p>[insert name]</p>
-                                    <div className={styles.selectAmountBtnDiv}>
-                                        {/* select amount button 
-                                        this is where the pop up comes in to select choices
-                                        */}
-                                        <b className={styles.selectAmountBtn}>Select Amount</b>
-                                    </div>
-                                    =
-                                    <div className={styles.selectAmountDisplayDiv}>
-                                        {/* selected amount display */}
-                                    </div>
-                                </div>
-                            </div>
-                            <div className={styles.foodItem}>
-                                <div className={styles.foodItemSection1}>
-                                    <img 
-                                        // className={}
-                                        alt=""
-                                        src=""
-                                    />
-                                    <div>
-                                        {/* cooked/raw dropdown */}
-                                        <CookedRawDropDown
-                                            onCRClick={onCookedRawDropdownFrameContainerClick}
-                                            selectedCook={cookedFilter}
-                                        />
-                                    </div>
-                                </div>
-                                <div className={styles.foodItemSection2}>
-                                    <p>[insert name]</p>
-                                    <div className={styles.selectAmountBtnDiv}>
-                                        {/* select amount button 
-                                        this is where the pop up comes in to select choices
-                                        */}
-                                        <b className={styles.selectAmountBtn}>Select Amount</b>
-                                    </div>
-                                    =
-                                    <div className={styles.selectAmountDisplayDiv}>
-                                        {/* selected amount display */}
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                     </div>
                     <div className={[styles.nutritionCard, styles.infoDivChild].join(' ')}>
