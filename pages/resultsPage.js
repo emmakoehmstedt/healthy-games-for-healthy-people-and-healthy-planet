@@ -82,50 +82,129 @@ const ResultsPage = () => {
                         probably auto generated food cards with like a loop that iterates through or something
                         for now ill put the divs and stuff for like the functionality
                         */}
-                        <div className={styles.foodItem}>
-                            <div className={styles.foodItemSection1}>
-                                <img 
-                                    // className={}
-                                    alt=""
-                                    src=""
-                                />
-                                <div>
-                                    {/* cooked/raw dropdown */}
-                                    <CookedRawDropDown
-                                        onCRClick={onCookedRawDropdownFrameContainerClick}
-                                        selectedCook={cookedFilter}
+                        <div className={styles.infoCardsScroll}>
+                            <div className={styles.foodItem}>
+                                <div className={styles.foodItemSection1}>
+                                    <img 
+                                        // className={}
+                                        alt=""
+                                        src=""
                                     />
+                                    <div>
+                                        {/* cooked/raw dropdown */}
+                                        <CookedRawDropDown
+                                            onCRClick={onCookedRawDropdownFrameContainerClick}
+                                            selectedCook={cookedFilter}
+                                        />
+                                    </div>
+                                </div>
+                                <div className={styles.foodItemSection2}>
+                                    <p>[insert name]</p>
+                                    <div className={styles.selectAmountBtnDiv}>
+                                        {/* select amount button 
+                                        this is where the pop up comes in to select choices
+                                        */}
+                                        <b className={styles.selectAmountBtn}>Select Amount</b>
+                                    </div>
+                                    =
+                                    <div className={styles.selectAmountDisplayDiv}>
+                                        {/* selected amount display */}
+                                    </div>
                                 </div>
                             </div>
-                            <div className={styles.foodItemSection2}>
-                                <p>[insert name]</p>
-                                <div className={styles.selectAmountBtnDiv}>
-                                    {/* select amount button 
-                                    this is where the pop up comes in to select choices
-                                    */}
-                                    <b className={styles.selectAmountBtn}>Select Amount</b>
+                            <div className={styles.foodItem}>
+                                <div className={styles.foodItemSection1}>
+                                    <img 
+                                        // className={}
+                                        alt=""
+                                        src=""
+                                    />
+                                    <div>
+                                        {/* cooked/raw dropdown */}
+                                        <CookedRawDropDown
+                                            onCRClick={onCookedRawDropdownFrameContainerClick}
+                                            selectedCook={cookedFilter}
+                                        />
+                                    </div>
                                 </div>
-                                =
-                                <div className={styles.selectAmountDisplayDiv}>
-                                    {/* selected amount display */}
+                                <div className={styles.foodItemSection2}>
+                                    <p>[insert name]</p>
+                                    <div className={styles.selectAmountBtnDiv}>
+                                        {/* select amount button 
+                                        this is where the pop up comes in to select choices
+                                        */}
+                                        <b className={styles.selectAmountBtn}>Select Amount</b>
+                                    </div>
+                                    =
+                                    <div className={styles.selectAmountDisplayDiv}>
+                                        {/* selected amount display */}
+                                    </div>
+                                </div>
+                            </div>
+                            <div className={styles.foodItem}>
+                                <div className={styles.foodItemSection1}>
+                                    <img 
+                                        // className={}
+                                        alt=""
+                                        src=""
+                                    />
+                                    <div>
+                                        {/* cooked/raw dropdown */}
+                                        <CookedRawDropDown
+                                            onCRClick={onCookedRawDropdownFrameContainerClick}
+                                            selectedCook={cookedFilter}
+                                        />
+                                    </div>
+                                </div>
+                                <div className={styles.foodItemSection2}>
+                                    <p>[insert name]</p>
+                                    <div className={styles.selectAmountBtnDiv}>
+                                        {/* select amount button 
+                                        this is where the pop up comes in to select choices
+                                        */}
+                                        <b className={styles.selectAmountBtn}>Select Amount</b>
+                                    </div>
+                                    =
+                                    <div className={styles.selectAmountDisplayDiv}>
+                                        {/* selected amount display */}
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div className={[styles.nutritionCard, styles.infoDivChild].join(' ')}>
                         <h1>Nutrition</h1>
-                        {/* insert star cards */}
-                        <p>Total Score</p>
-                        {/* insert stars */}
-                        <h1>{/* number */} stars!</h1>
-                        {/* insert ingredient cards*/}
-                        <div>
+                        {/* just enter the value of the total amount of stars */}
+                        <TotalStarsCalculation numOfStars={27} />
+
+                        {/* separate div for a scroll wheel */}
+                        <div className={styles.infoCardsScroll}>
+                            {/* ????????? im sure the issue is that it can't seem to find the supabase query bc idk how to fix......... it gotta be a simple error */}
                             <FoodCards foods={foodCards}/>
+                            <div style={{ width: '300px', height: '200px', border: '1px solid rgba(0,0,0,.25)' }}>Test</div>
+                            <div style={{ width: '300px', height: '200px', border: '1px solid rgba(0,0,0,.25)' }}>Test</div>
+                            <div style={{ width: '300px', height: '200px', border: '1px solid rgba(0,0,0,.25)' }}>Test</div>
+                            <div style={{ width: '300px', height: '200px', border: '1px solid rgba(0,0,0,.25)' }}>Test</div>
                         </div>
                     </div>
                     <div className={[styles.foodPrintCard, styles.infoDivChild].join(' ')}>
                         <h1>Foodprint</h1>
-                        {/* insert foodprint info */}
+                        <div className={styles.totalFoodPrint}>
+                            <h2>Total Foodprint</h2>
+                            <p>Your meal uses the same amount of water as...</p>
+                            {/*  */}
+                            <p>and emits the same amount of carbon as...</p>
+                            {/*  */}
+                        </div>
+
+                        {/* separate div for a scroll wheel */}
+                        <div className={styles.infoCardsScroll}>
+                            {/* insert foodprint info */}
+                            <div style={{ width: '300px', height: '200px', border: '1px solid rgba(0,0,0,.25)' }}>Test</div>
+                            <div style={{ width: '300px', height: '200px', border: '1px solid rgba(0,0,0,.25)' }}>Test</div>
+                            <div style={{ width: '300px', height: '200px', border: '1px solid rgba(0,0,0,.25)' }}>Test</div>
+                            <div style={{ width: '300px', height: '200px', border: '1px solid rgba(0,0,0,.25)' }}>Test</div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -161,6 +240,19 @@ function CookedRawDropDown({ onCRClick, selectedCook }){
             <option value="cooked">Cooked</option>
             <option value="raw">Raw</option>
         </select>
+    );
+}
+
+function TotalStarsCalculation({numOfStars}){
+    const starsCount = typeof numOfStars === 'number' && numOfStars > 0 ? Math.floor(numOfStars) : 0;
+    const starText = '⭐'.repeat(starsCount);
+
+    return (
+        <div className={styles.totalStars}>
+            <h2>Total Score</h2>
+            <p>{starText}</p>
+            <h1>{starsCount} stars!</h1>
+        </div>
     );
 }
 

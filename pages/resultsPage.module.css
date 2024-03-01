@@ -142,6 +142,7 @@
     min-width: 200px;
     height: 70px;
 
+    background-color: white;
     border: 1px solid rgba(0, 0, 0, 0.25);
     border-radius: 10px;
     
@@ -158,4 +159,46 @@
     
     border: 1px solid rgba(0, 0, 0, 0.25);
     border-radius: 10px;
+}
+
+.totalStars{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    max-width: 90%;
+    padding: 0px 80px;
+    overflow: hidden;
+
+    background-color: #Fdd939;
+
+    border: 1px solid rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+}
+.totalStars p {
+    text-align: center;
+    word-break: break-all;
+
+    font-size: x-large;
+}
+
+.totalFoodPrint{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    padding: 10px;
+    width: 90%;
+
+    background-color: #D8E3F0;
+
+    border: 1px solid rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+}
+.infoCardsScroll{
+    /* choose the amount of cards to see */
+    height: 400px;
+    overflow-y: auto;
 }
