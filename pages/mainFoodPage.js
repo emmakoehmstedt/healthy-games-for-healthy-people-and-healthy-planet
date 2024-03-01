@@ -9,6 +9,8 @@ import foods from "../data/food_images";
 
 import PortalPopup from "../components/portal-popup";
 import styles from "./mainFoodPage.module.css";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrashCan } from '@fortawesome/free-solid-svg-icons';
 
 /*************************************************************************
  * Component:
@@ -184,7 +186,7 @@ function CalculatorSideBar({ foods, removeFromCalculator, clearCalculator }) {
       <div className={styles.bottomButtonsContainer}>
         <div className={styles.calculateButton}>calculate</div>
         <div className={styles.clearCalcButton} onClick={clearCalculator}>
-          clear calculation
+          clear calculator
         </div>
       </div>
     </div>
@@ -197,7 +199,9 @@ function CalculatorFoodItem({ foodItem, removeFromCalculator }) {
       <div>
         <img src={`/${foodItem.imagePath}`} alt={foodItem.name} />
         <p>{foodItem.name}</p>
-        <button onClick={() => removeFromCalculator(foodItem.id)}>-</button>
+        <button onClick={() => removeFromCalculator(foodItem.id)}>
+            <FontAwesomeIcon icon={faTrashCan} className={styles.removeButtonTrashIcon} />
+        </button>
       </div>
     </li>
   );

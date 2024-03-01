@@ -78,11 +78,11 @@
 }
 
 .addFoodButton {
-  background-color: #33b249;
+  background-color: #B3DB73;
 }
 
 .removeFoodButton {
-  background-color: #ed0800;
+  background-color: #DB9173;
 }
 
 .plus-sign {
@@ -170,15 +170,61 @@
   padding: 15px;
 }
 
+/*Garrett - Adding CSS to functionality  */
 .foodsInCalculator {
+  display: flex;
+  flex-direction: column;
+  list-style-type: none; /* Remove bullet points */
+  width: 100%;
   height: calc(100vh - 410px);
   overflow-y: auto;
+  padding: auto;
+}
+
+.foodsInCalculator div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2%;
+  background-color: rgba(128, 128, 128, 0.1); /* Gray color with 15% transparency */
+  width: min-content;
+  box-sizing: border-box;
+  border-radius: 10px;
+  width: 80%;
+  border: 1px solid rgba(0, 0, 0, 0.096); /* Thin black border */
+}
+
+.foodsInCalculator li {
+  padding-top: 10px;
+
 }
 
 .foodsInCalculator img {
-  width: 40px;
-  height: 40px;
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
 }
+
+.foodsInCalculator p {
+  margin: auto; 
+  font-size: larger;
+  font-family: serif;
+  color: rgba(0, 0, 0, 0.7); /* 70% transparency */
+}
+
+.foodsInCalculator button {
+  margin-left: auto; /* Remove default margin for paragraphs */
+  width: 50px;
+  height: 50px;
+  border: 0px;
+}
+
+.removeButtonTrashIcon{
+  width: 35px;
+  height: 35px;
+}
+
+/* End garrett edits */
 
 .bottomButtonsContainer {
   width: 100%;
@@ -200,16 +246,16 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid black; /* Thin black border */
+  border: 1px solid rgba(0, 0, 0, 0.16); /* Thin black border */
   font-size: 35px;
 }
 
 .calculateButton {
-  background-color: #33b249;
+  background-color: #83C41A9C;
 }
 
 .clearCalcButton {
-  background-color: #ed0800;
+  background-color: #C44D1A9C;
 }
 
 /*Styles for Filter by Color Dropdown*/
