@@ -1,6 +1,7 @@
+/*styles for food page frame (in between header and footer*/
 .mainFoodCardsPage {
   width: 100%;
-  min-height: 100vh;
+  min-height: calc(100vh - 123px);
   display: flex;
   justify-content: flex-start;
   flex-direction: row;
@@ -11,9 +12,18 @@
   font-family: var(--font-calibri);
 }
 
+.rightOfSidebar {
+  top: 0;
+  height: calc(100vh - 123px);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/*styles for food cards*/
 .foodcard {
   width: 250px;
-  height: 360px;
+  height: 440px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -23,41 +33,74 @@
   padding-top: 7px;
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
   border: 1px solid var(--color-gray-200);
+  z-index: 1;
 }
 
 .foodcardimage {
   width: 235px;
   height: 290px;
+  z-index: 1;
 }
 
 .foodcardsframe {
-  position: absolute;
-  top: 190px;
-  left: 340px;
-  right: 0;
-  bottom: 0;
   display: flex;
   flex-wrap: wrap;
   padding: 50px;
   padding-top: 35px;
   gap: 60px;
-  margin-top: 20px;
+  margin-top: 10px;
   justify-content: flex-start;
   align-items: flex-start;
-  overflow-y: scroll;
+  overflow-y: auto;
   font-size: var(--font-size-19xl);
   color: var(--color-dimgray-100);
+  z-index: 1;
 }
 
+.addFoodButtonContainer {
+  position: relative;
+}
+
+.addFoodButton,
+.removeFoodButton {
+  position: relative;
+  bottom: 8px;
+  left: 41%;
+  transform: translateX(-50%);
+  height: 65px;
+  width: 65px;
+  margin-bottom: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 15px;
+  border: 1px solid black;
+}
+
+.addFoodButton {
+  background-color: #33b249;
+}
+
+.removeFoodButton {
+  background-color: #ed0800;
+}
+
+.plus-sign {
+  position: relative;
+  font-size: 40px;
+}
+
+.addFoodButtonContainer {
+  position: relative;
+}
+
+/*Styles for search*/
 .dropDownSearchContainer {
-  position: absolute;
   padding: 10px;
   display: flex;
-  top: 123px;
-  left: 340px;
   height: 50px;
-  width: calc(100% - 340px);
-  display: flex;
+  width: calc(100% - 20px);
+  z-index: 3000;
 }
 
 .searchInput {
@@ -118,13 +161,94 @@
   background-color: #d32f2f; 
 }
 
-.allColors {
-  position: relative;
-  font-weight: 300;
-  margin-top: 10px;
-  left: 25px;
+/*Styles for Calculator Side Bar*/
+.calculatorsidebarframe {
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid lightgrey;
+  top: 0;
+  left: 0;
+  width: 340px;
+  height: calc(100vh - 123px);
+  overflow: hidden;
+  text-align: center;
+  font-size: var(--font-size-xl);
+  color: var(--color-black);
 }
 
+.myCalculatorHeader {
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+  padding: 15px;
+  padding-left: 35px;
+  padding-bottom: 0px;
+  width: calc(100% - 50px);
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.calculatoricon {
+  width: 93px;
+  height: 113px;
+  object-fit: cover;
+}
+
+.myCalculatorTitle {
+  font-size: var(--font-size-5xl);
+}
+
+.itemsInCalculatorFrame {
+  flex: 1;
+}
+
+.nothingInCalculator {
+  padding: 15px;
+}
+
+.foodsInCalculator {
+  height: calc(100vh - 410px);
+  overflow-y: auto;
+}
+
+.foodsInCalculator img {
+  width: 40px;
+  height: 40px;
+}
+
+.bottomButtonsContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  margin-bottom: 10px;
+}
+
+.calculateButton,
+.clearCalcButton {
+  height: 50px;
+  width: 95%;
+  padding: 10px;
+  box-sizing: border-box;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid black; /* Thin black border */
+  font-size: 35px;
+}
+
+.calculateButton {
+  background-color: #33b249;
+}
+
+.clearCalcButton {
+  background-color: #ed0800;
+}
+
+/*Styles for Filter by Color Dropdown*/
 .colorsdropdownframe {
   min-width: 200px;
   height: 40px;
@@ -136,129 +260,17 @@
   font-weight: 300;
 }
 
-.youCurrentlyHave {
-  margin: 0;
-}
-.youCurrentlyHaveContainer1 {
-  width: 100%;
-}
-.myCalculator,
-.youCurrentlyHaveContainer {
-  position: absolute;
-  top: 184.8px;
-  left: 38.8px;
-  display: flex;
-  align-items: center;
-  width: 277.3px;
-  height: 177.9px;
-}
-.myCalculator {
-  top: 51.6px;
-  left: 64px;
-  font-size: var(--font-size-5xl);
-  justify-content: center;
-  width: 290px;
-  height: 62.6px;
-}
-.calculatoricon {
-  position: absolute;
-  top: 21px;
-  left: 21px;
-  width: 93px;
-  height: 113px;
-  object-fit: cover;
-}
-.calculatorsidebarframe {
-  position: absolute;
-  top: 123px;
-  left: 0;
-  width: 340px;
-  height: 100%;
-  overflow: hidden;
-  text-align: center;
-  font-size: var(--font-size-xl);
-  color: var(--color-black);
-}
-/* .oregonstateuniversityicon {
-  width: 311px;
-  position: relative;
-  height: 75.5px;
-  object-fit: cover;
+.colorOption {
+  width: 100px;
+  height: 40px;
+  background-color: lightgray;
+  color: white;
+  font-weight: 300;
 }
 
-.informationbutton {
-  width: 188px;
-  height: 44.4px;
-  border-radius: var(--br-56xl);
-  background-color: var(--color-white);
-  border: 1px solid var(--color-black);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-right: 30px;
-  margin-left: auto;
-}
-
-.headerframe {
-  background-color: var(--color-orangered);
-  width: 100%;
-  height: 122px;
-  display: flex;
-  align-items: center;
-  padding: 21px var(--padding-11xs) 25px;
-  box-sizing: border-box;
-  text-align: center;
-  font-size: var(--font-size-xl);
-  color: var(--color-black);
-} */
-/* .dividerlineIcon,
-.headerframe,
-.osufootericon {
-  position: absolute;
-  overflow: hidden;
-}
-.dividerlineIcon {
-  top: 80px;
-  left: 719px;
-  max-width: 100%;
-  height: 276px;
-  object-fit: contain;
-}
-.osufootericon {
-  top: 42px;
-  left: 222px;
-  width: 234.7px;
-  height: 75px;
-}
-.collegeOfHealth,
-.oregonStateUniversitys {
-  position: absolute;
-  top: 194px;
-  left: 168px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 368px;
-}
-.oregonStateUniversitys {
-  top: 265px;
-  left: 170px;
-  font-size: var(--font-size-xl);
-  color: var(--color-white);
-  width: 361px;
-  height: 100px;
-  text-align: center;
-}
-.footerframe {
-  width: 1440px;
-  top: 3930px;
-  background-color: #212529;
-  height: 458px;
-  flex-shrink: 0;
-  font-size: var(--font-size-7xl);
-  color: var(--color-orangered);
-}
-.footerframe {
+.allColors {
   position: relative;
-  overflow: hidden;
-} */
+  font-weight: 300;
+  margin-top: 10px;
+  left: 25px;
+}

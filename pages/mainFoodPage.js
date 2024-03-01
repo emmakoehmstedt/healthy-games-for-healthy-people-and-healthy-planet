@@ -1,8 +1,11 @@
 import { useState, useCallback, useEffect } from "react";
 import HoverCard from "../components/hover-card";
+
 import { supabase } from "../lib/initSupabase";
 import Layout from "../components/layouts/layout";
+import ColorDropDown from "../components/mainFoodPage/colorDropDown";
 import foods from "../data/food_images";
+
 import PortalPopup from "../components/portal-popup";
 import styles from "./mainFoodPage.module.css";
 
@@ -11,42 +14,74 @@ import styles from "./mainFoodPage.module.css";
  * Description:
  *************************************************************************/
 const MainFoodCardsPage = () => {
+  const [calculatorItems, setCalculatorItems] = useState([]);
+
   const [isHoverCardOpen, setHoverCardOpen] = useState(false);
+
   const [foodCards, setFoodCards] = useState([]);
+
+  const [colorArray, setColorArray] = useState([]);
+
   const [colorFilter, setColorFilter] = useState("all");
+
+  const [colorFilterId, setColorFilterId] = useState(-1);
+
   const [searchInput, setSearchInput] = useState("");
-  
 
-  const fetchData = async () => {
-    try {
-      //TODO: Add function to supabase database so you can fetch the food with color
-      const { data, error } = await supabase.from("foods").select("*");
+  const [filteredFoodCards, setFilteredFoodCards] = useState([]);
 
-      if (error) {
-        throw error;
+    const fetchData = async () => {
+      try {
+        //TODO: Add function to supabase database so you can fetch the food with color
+        const { data, error } = await supabase.rpc("getfoodcardinformation");
+        console.log("Data: ", data);
+
+        if (error) {
+          throw error;
+        }
+
+        const foodsArray = data.map((food) => ({
+          id: food.id,
+          name: food.food_name,
+          color_name: food.color_name,
+          color_id: food.color_id,
+        }));
+        setFoodCards(foodsArray);
+        console.log("Data from the table:", foodsArray);
+      } catch (error) {
+        console.error("Error fetching data from Supabase:", error.message);
       }
+    };
+  
+    useEffect(() => {
+      fetchData();
+    }, []);
 
-      const foodsArray = data.map((food) => ({
-        id: food.id,
-        name: food.food,
-      }));
-      setFoodCards(foodsArray);
-      console.log("Data from the table:", foodsArray);
-    } catch (error) {
-      console.error("Error fetching data from Supabase:", error.message);
-    }
-  };
-    fetchData();
+
+  useEffect(() => {
+    const fetchColorData = async () => {
+      try {
+        //TODO: Add function to supabase database so you can fetch the food with color
+        const { data, error } = await supabase.from("colors").select("*");
+
+        console.log("Color Data: ", data);
+
+        if (error) {
+          throw error;
+        }
+
+        const colorArray = data.map((color) => ({
+          id: color.color_id,
+          name: color.color,
+        }));
+        setColorArray(colorArray);
+        console.log("Data from the table:", colorArray);
+      } catch (error) {
+        console.error("Error fetching data from Supabase:", error.message);
+      }
+    };
+    fetchColorData();
   }, []);
-
-
-  const resetFilter = () => {
-    setSearchInput(""); // Reset search input
-    // Fetch data with no filters (all cards)
-    fetchData();
-    // Ensure the input field is cleared
-    document.getElementById("searchInput").value = "";
-  };
 
   const openHoverCard = useCallback(() => {
     setHoverCardOpen(true);
@@ -56,34 +91,69 @@ const MainFoodCardsPage = () => {
     setHoverCardOpen(false);
   }, []);
 
-  const onColorsDropdownFrameContainerClick = useCallback((val) => {
+  function onAddToCalculator(newFoodItem) {
+    setCalculatorItems((prevFoods) => [newFoodItem, ...prevFoods]);
+    console.log("Food: ", newFoodItem);
+  }
+
+  function onRemoveFromCalculator(id) {
+    setCalculatorItems((prevFoods) =>
+      prevFoods.filter((food) => food.id !== id)
+    );
+  }
+
+  function isInCalculator(id) {
+    return calculatorItems.some((item) => item.id === id);
+  }
+
+  function onClearCalculator() {
+    setCalculatorItems([]);
+  }
+
+  const onColorsDropdownFrameContainerClick = useCallback((val, id) => {
     // Please sync "Main Food Cards Page wtih Dropdown" to the project
     setColorFilter(val);
+    setColorFilterId(id);
   }, []);
 
-  const handleSearch =useCallback((input) => {
+
+  const handleSearch = useCallback((input) => {
+    // Update search input state
+    setSearchInput(input);
+
     // Filter food cards based on search input
     const filteredFoods = foodCards.filter((food) => {
-        const nameMatches = food.name.toLowerCase().includes(input.toLowerCase());
-        // const colorMatches = colorFilter === "all" || food.color === colorFilter;
-        return nameMatches// && colorMatches;
+      const nameMatches = food.name.toLowerCase().includes(input.toLowerCase());
+      // const colorMatches = colorFilter === "all" || food.color === colorFilter;
+      return nameMatches; // && colorMatches;
     });
-    setFoodCards(filteredFoods);
+    // Update filtered food cards
+    setFilteredFoodCards(filteredFoods);
   }, [foodCards]);
+
+  const resetFilter = () => {
+    setSearchInput(""); // Reset search input
+    setFilteredFoodCards([]); // Reset filtered food cards
+  };
+
 
   const handleReset = () => {
     setSearchInput(""); // Reset search input
-    // Fetch data with no filters (all cards)
-    fetchData();
+    fetchData(); // Refetch data to ensure you have the latest
   };
 
   return (
     <Layout>
       <div className={styles.mainFoodCardsPage}>
-        <CalculatorSideBar />
-        <div className="right-of-sidebar">
+        <CalculatorSideBar
+          foods={calculatorItems}
+          removeFromCalculator={onRemoveFromCalculator}
+          clearCalculator={onClearCalculator}
+        />
+        <div className={styles.rightOfSidebar}>
           <div className={styles.dropDownSearchContainer}>
             <ColorDropDown
+              colors={colorArray}
               onColorClick={onColorsDropdownFrameContainerClick}
               selectedColor={colorFilter}
             />
@@ -91,7 +161,14 @@ const MainFoodCardsPage = () => {
             {/* Reset button to clear the input field */}
             <button className={styles.resetButton} onClick={resetFilter}>Reset</button>
           </div>
-          <FoodCards foods={foodCards} />
+          <FoodCards
+            foods={foodCards}
+            filteredFoodCards={filteredFoodCards} 
+            selectedColorId={colorFilterId}
+            addToCalculator={onAddToCalculator}
+            onRemoveFromCalculator={onRemoveFromCalculator}
+            isInCalculator={isInCalculator}
+          />
         </div>
       </div>
 
@@ -110,67 +187,53 @@ const MainFoodCardsPage = () => {
 
 export default MainFoodCardsPage;
 
-/*************************************************************************
- * Component:
- * Description:
- *************************************************************************/
-function TopBar() {
-  return (
-    <div className={styles.headerframe}>
-      <img
-        className={styles.oregonstateuniversityicon}
-        alt=""
-        src="/oregonStateUniversityIcon.png"
-      />
-      <div className={styles.informationbutton}>
-        <b>Information</b>
-      </div>
-    </div>
-  );
-}
-
-/*************************************************************************
- * Component:
- * Description:
- *************************************************************************/
-function CalculatorSideBar() {
+function CalculatorSideBar({ foods, removeFromCalculator, clearCalculator }) {
   return (
     <div className={styles.calculatorsidebarframe}>
-      <div className={styles.youCurrentlyHaveContainer}>
-        <span className={styles.youCurrentlyHaveContainer1}>
-          <p className={styles.youCurrentlyHave}>
-            You currently have nothing in your calculator!
-          </p>
-          <p className={styles.youCurrentlyHave}>&nbsp;</p>
-          <p className={styles.youCurrentlyHave}>
-            Hover over a food card to add it to the calculator
-          </p>
-        </span>
+      <div className={styles.myCalculatorHeader}>
+        <img
+          className={styles.calculatoricon}
+          alt=""
+          src="/calculatorIcon.png"
+        />
+        <b className={styles.myCalculatorTitle}>My Calculator</b>
       </div>
-      <b className={styles.myCalculator}>My Calculator</b>
-      <img className={styles.calculatoricon} alt="" src="/calculatorIcon.png" />
+      <div className={styles.itemsInCalculatorFrame}>
+        {foods.length === 0 ? (
+          <div className={styles.nothingInCalculator}>
+            <p>You currently have nothing in your calculator!</p>
+          </div>
+        ) : (
+          <ul className={styles.foodsInCalculator}>
+            {foods.map((food) => (
+              <CalculatorFoodItem
+                key={food.id}
+                foodItem={food}
+                removeFromCalculator={removeFromCalculator}
+              />
+            ))}
+          </ul>
+        )}
+      </div>
+      <div className={styles.bottomButtonsContainer}>
+        <div className={styles.calculateButton}>calculate</div>
+        <div className={styles.clearCalcButton} onClick={clearCalculator}>
+          clear calculation
+        </div>
+      </div>
     </div>
   );
 }
 
-/*************************************************************************
- * Component:
- * Description:
- *************************************************************************/
-function ColorDropDown({ onColorClick, selectedColor }) {
+function CalculatorFoodItem({ foodItem, removeFromCalculator }) {
   return (
-    <select
-      className={styles.colorsdropdownframe}
-      id="dropdown"
-      value={selectedColor}
-      onChange={(e) => onColorClick(e.target.value)}
-    >
-      <option value="all">All Colors!</option>
-      <option value="blue">Blue </option>
-      <option value="green">Green </option>
-      <option value="yellow">Yellow </option>
-      <option value="purple">Purple </option>
-    </select>
+    <li key={foodItem.id}>
+      <div>
+        <img src={`/${foodItem.imagePath}`} alt={foodItem.name} />
+        <p>{foodItem.name}</p>
+        <button onClick={() => removeFromCalculator(foodItem.id)}>-</button>
+      </div>
+    </li>
   );
 }
 
@@ -199,32 +262,67 @@ function SearchBar({ handleSearch, handleReset }) {
     </div>
   );
 }
-/*************************************************************************
- * Component:
- * Description:
- *************************************************************************/
-function FoodCards({ foods }) {
+
+function FoodCards({
+  foods,
+  filteredFoodCards, // Receive filteredFoodCards as prop
+  selectedColorId,
+  addToCalculator,
+  onRemoveFromCalculator,
+  isInCalculator,
+}) {
+  const cardsToRender = filteredFoodCards.length > 0 ? filteredFoodCards : foods;
+
   return (
     <div className={styles.foodcardsframe}>
-      {foods.map((food) => (
-        <FoodCard key={food.id} id={food.id} name={food.name} />
+      {cardsToRender.map((food) => (
+        (selectedColorId == -1 || selectedColorId === food.color_id) && (
+          <FoodCard
+            key={food.id}
+            id={food.id}
+            name={food.name}
+            addToCalculator={addToCalculator}
+            removeFromCalculator={onRemoveFromCalculator}
+            isInCalculator={isInCalculator}
+          />
+        )
       ))}
     </div>
   );
 }
 
-/*************************************************************************
- * Component:
- * Description:
- *************************************************************************/
-function FoodCard({ id, name }) {
+
+function FoodCard({
+  id,
+  name,
+  addToCalculator,
+  removeFromCalculator,
+  isInCalculator,
+}) {
   const food = foods.find((foodItem) => foodItem.id === id);
+
   if (!food) return null;
   const imagePath = food.image;
+
   return (
     <div className={styles.foodcard}>
       <img className={styles.foodcardimage} src={`/${imagePath}`} alt={name} />
       <p>{name}</p>
+      {isInCalculator(id) ? (
+        <div
+          className={styles.removeFoodButton}
+          onClick={() => removeFromCalculator(id)}
+        >
+          <p className={styles.plusSign}>-</p>
+        </div>
+      ) : (
+        <div
+          className={styles.addFoodButton}
+          onClick={() => addToCalculator({ id, name, imagePath })}
+        >
+          <p className={styles.plusSign}>+</p>
+        </div>
+      )}
     </div>
   );
 }

@@ -14,7 +14,7 @@
 }
 
 .homebutton {
-  width: 158px; /* Adjust the percentage as needed */
+  width: 158px;
   height: 44.4px;
   border-radius: var(--br-56xl);
   background-color: var(--color-white);
@@ -23,12 +23,12 @@
   align-items: center;
   justify-content: center;
   margin-left: auto;
-  margin-right: 1%; /* Adjust the percentage as needed */
+  margin-right: 6%; /* Adjust the margin-right as needed */
   cursor: pointer;
 }
 
 .informationbutton {
-  width: 158px; /* Adjust the percentage as needed */
+  width: 158px;
   height: 44.4px;
   border-radius: var(--br-56xl);
   background-color: var(--color-white);
@@ -36,8 +36,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-right: 5%;
-  margin-left: 1%; /* Adjust the percentage as needed */
+  position: relative;
+  margin-right: 1%;
+  right: 5%; /* Adjust the right position as needed */
   cursor: pointer;
 }
 
@@ -52,6 +53,7 @@
   text-align: center;
   font-size: var(--font-size-xl);
   color: var(--color-black);
+  position: relative;
 }
 
 /*CONTENT IN BETWEEN*/

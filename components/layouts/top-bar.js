@@ -28,9 +28,12 @@ function TopBar() {
           src="/oregonStateUniversityIcon.png"
         />
       </a>
-      <div className={styles.homebutton} onClick={handleHomeClick}>
-        <b>Home</b>
-      </div>
+      {/* Conditionally render the "Home" button based on whether it's the homepage or not */}
+      {router.pathname !== "/" && (
+        <div className={styles.homebutton} onClick={handleHomeClick}>
+          <b>Home</b>
+        </div>
+      )}
       <div className={styles.informationbutton} onClick={handleInformationClick}>
         <b>Information</b>
       </div>
