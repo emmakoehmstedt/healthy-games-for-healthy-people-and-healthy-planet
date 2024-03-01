@@ -58,7 +58,7 @@ const ResultsPage = () => {
     return(
         <Layout>
             <div className={styles.resultsPage}>
-                <div style={{'margin-left': '1%'}} className={styles.topBtnBar}>
+                <div style={{'marginLeft': '1%'}} className={styles.topBtnBar}>
                     <div onClick={onBackClick}>
                         <div className={styles.topBtnsBar}>
                             <b className={styles.backBtn}>⬅ Back</b>
