@@ -1,6 +1,7 @@
+/*styles for food page frame (in between header and footer*/
 .mainFoodCardsPage {
   width: 100%;
-  min-height: 100vh;
+  min-height: calc(100vh - 123px);
   display: flex;
   justify-content: flex-start;
   flex-direction: row;
@@ -11,6 +12,15 @@
   font-family: var(--font-calibri);
 }
 
+.rightOfSidebar {
+  top: 0;
+  height: calc(100vh - 123px);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/*styles for food cards*/
 .foodcard {
   width: 250px;
   height: 440px;
@@ -33,20 +43,15 @@
 }
 
 .foodcardsframe {
-  position: absolute;
-  top: 190px;
-  left: 340px;
-  right: 0;
-  bottom: 0;
   display: flex;
   flex-wrap: wrap;
   padding: 50px;
   padding-top: 35px;
   gap: 60px;
-  margin-top: 20px;
+  margin-top: 10px;
   justify-content: flex-start;
   align-items: flex-start;
-  overflow-y: scroll;
+  overflow-y: auto;
   font-size: var(--font-size-19xl);
   color: var(--color-dimgray-100);
   z-index: 1;
@@ -56,7 +61,8 @@
   position: relative;
 }
 
-.addFoodButton {
+.addFoodButton,
+.removeFoodButton {
   position: relative;
   bottom: 8px;
   left: 41%;
@@ -67,9 +73,16 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #33b249;
   border-radius: 15px;
   border: 1px solid black;
+}
+
+.addFoodButton {
+  background-color: #B3DB73;
+}
+
+.removeFoodButton {
+  background-color: #DB9173;
 }
 
 .plus-sign {
@@ -81,38 +94,15 @@
   position: relative;
 }
 
-.addFoodButton {
-  position: relative;
-  bottom: 8px;
-  left: 41%;
-  transform: translateX(-50%);
-  height: 65px;
-  width: 65px;
-  margin-bottom: 5px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #33b249;
-  border-radius: 15px;
-  border: 1px solid black;
-}
-
-.plus-sign {
-  position: relative;
-  font-size: 40px;
-}
-
 .dropDownSearchContainer {
-  position: absolute;
   padding: 10px;
   display: flex;
-  top: 123px;
-  left: 340px;
   height: 50px;
-  width: calc(100% - 360px);
+  width: calc(100% - 20px);
   z-index: 3000;
 }
 
+/*Styles for search*/
 .searchicon {
   width: 34px;
   height: 34px;
@@ -134,13 +124,141 @@
   margin-left: auto;
   margin-right: 30px;
 }
-.allColors {
-  position: relative;
-  font-weight: 300;
-  margin-top: 10px;
-  left: 25px;
+
+/*Styles for Calculator Side Bar*/
+.calculatorsidebarframe {
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid lightgrey;
+  top: 0;
+  left: 0;
+  width: 340px;
+  height: calc(100vh - 123px);
+  overflow: hidden;
+  text-align: center;
+  font-size: var(--font-size-xl);
+  color: var(--color-black);
 }
 
+.myCalculatorHeader {
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+  padding: 15px;
+  padding-left: 35px;
+  padding-bottom: 0px;
+  width: calc(100% - 50px);
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.calculatoricon {
+  width: 93px;
+  height: 113px;
+  object-fit: cover;
+}
+
+.myCalculatorTitle {
+  font-size: var(--font-size-5xl);
+}
+
+.itemsInCalculatorFrame {
+  flex: 1;
+}
+
+.nothingInCalculator {
+  padding: 15px;
+}
+
+/*Garrett - Adding CSS to functionality  */
+.foodsInCalculator {
+  display: flex;
+  flex-direction: column;
+  list-style-type: none; /* Remove bullet points */
+  width: 100%;
+  height: calc(100vh - 410px);
+  overflow-y: auto;
+  padding: auto;
+}
+
+.foodsInCalculator div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2%;
+  background-color: rgba(128, 128, 128, 0.1); /* Gray color with 15% transparency */
+  width: min-content;
+  box-sizing: border-box;
+  border-radius: 10px;
+  width: 80%;
+  border: 1px solid rgba(0, 0, 0, 0.096); /* Thin black border */
+}
+
+.foodsInCalculator li {
+  padding-top: 10px;
+
+}
+
+.foodsInCalculator img {
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
+}
+
+.foodsInCalculator p {
+  margin: auto; 
+  font-size: larger;
+  font-family: serif;
+  color: rgba(0, 0, 0, 0.7); /* 70% transparency */
+}
+
+.foodsInCalculator button {
+  margin-left: auto; /* Remove default margin for paragraphs */
+  width: 50px;
+  height: 50px;
+  border: 0px;
+}
+
+.removeButtonTrashIcon{
+  width: 35px;
+  height: 35px;
+}
+
+/* End garrett edits */
+
+.bottomButtonsContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  margin-bottom: 10px;
+}
+
+.calculateButton,
+.clearCalcButton {
+  height: 50px;
+  width: 95%;
+  padding: 10px;
+  box-sizing: border-box;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(0, 0, 0, 0.16); /* Thin black border */
+  font-size: 35px;
+}
+
+.calculateButton {
+  background-color: #83C41A9C;
+}
+
+.clearCalcButton {
+  background-color: #C44D1A9C;
+}
+
+/*Styles for Filter by Color Dropdown*/
 .colorsdropdownframe {
   min-width: 200px;
   height: 40px;
@@ -160,84 +278,9 @@
   font-weight: 300;
 }
 
-.youCurrentlyHave {
-  margin: 0;
-}
-.youCurrentlyHaveContainer1 {
-  width: 100%;
-}
-.myCalculator,
-.youCurrentlyHaveContainer {
-  position: absolute;
-  top: 184.8px;
-  left: 38.8px;
-  display: flex;
-  align-items: center;
-  width: 277.3px;
-  height: 177.9px;
-}
-
-.myCalculator {
-  top: 51.6px;
-  left: 64px;
-  font-size: var(--font-size-5xl);
-  justify-content: center;
-  width: 290px;
-  height: 62.6px;
-}
-
-.calculatoricon {
-  position: absolute;
-  top: 21px;
-  left: 21px;
-  width: 93px;
-  height: 113px;
-  object-fit: cover;
-}
-
-.calculatorsidebarframe {
-  position: absolute;
-  top: 123px;
-  left: 0;
-  width: 340px;
-  height: 100%;
-  overflow: hidden;
-  text-align: center;
-  font-size: var(--font-size-xl);
-  color: var(--color-black);
-}
-.bottomButtonsContainer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-}
-
-.calculateButton {
-  height: 65px;
-  width: 100%;
-  background-color: #33b249;
-  padding: 10px;
-  box-sizing: border-box;
-  margin-bottom: 5px;
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid black; /* Thin black border */
-  font-size: 40px;
-}
-
-.clearCalcButton {
-  height: 65px;
-  width: 100%;
-  background-color: #ed0800;
-  padding: 10px;
-  box-sizing: border-box;
-  margin-bottom: 5px;
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid black; /* Thin black border */
-  font-size: 40px;
+.allColors {
+  position: relative;
+  font-weight: 300;
+  margin-top: 10px;
+  left: 25px;
 }

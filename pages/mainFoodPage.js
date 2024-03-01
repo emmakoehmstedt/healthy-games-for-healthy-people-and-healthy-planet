@@ -9,6 +9,8 @@ import foods from "../data/food_images";
 
 import PortalPopup from "../components/portal-popup";
 import styles from "./mainFoodPage.module.css";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrashCan } from '@fortawesome/free-solid-svg-icons';
 
 /*************************************************************************
  * Component:
@@ -86,12 +88,24 @@ const MainFoodCardsPage = () => {
     setHoverCardOpen(false);
   }, []);
 
-  const onAddToCalculator = useCallback(
-    (food) => {
-      setCalculatorItems((prevFoods) => [...prevFoods, food]);
-    },
-    [setCalculatorItems]
-  );
+  function onAddToCalculator(newFoodItem) {
+    setCalculatorItems((prevFoods) => [newFoodItem, ...prevFoods]);
+    console.log("Food: ", newFoodItem);
+  }
+
+  function onRemoveFromCalculator(id) {
+    setCalculatorItems((prevFoods) =>
+      prevFoods.filter((food) => food.id !== id)
+    );
+  }
+
+  function isInCalculator(id) {
+    return calculatorItems.some((item) => item.id === id);
+  }
+
+  function onClearCalculator() {
+    setCalculatorItems([]);
+  }
 
   const onColorsDropdownFrameContainerClick = useCallback((val, id) => {
     // Please sync "Main Food Cards Page wtih Dropdown" to the project
@@ -102,8 +116,12 @@ const MainFoodCardsPage = () => {
   return (
     <Layout>
       <div className={styles.mainFoodCardsPage}>
-        <CalculatorSideBar foods={calculatorItems} />
-        <div className="right-of-sidebar">
+        <CalculatorSideBar
+          foods={calculatorItems}
+          removeFromCalculator={onRemoveFromCalculator}
+          clearCalculator={onClearCalculator}
+        />
+        <div className={styles.rightOfSidebar}>
           <div className={styles.dropDownSearchContainer}>
             <ColorDropDown
               colors={colorArray}
@@ -116,6 +134,8 @@ const MainFoodCardsPage = () => {
             foods={foodCards}
             selectedColorId={colorFilterId}
             addToCalculator={onAddToCalculator}
+            onRemoveFromCalculator={onRemoveFromCalculator}
+            isInCalculator={isInCalculator}
           />
         </div>
       </div>
@@ -135,27 +155,55 @@ const MainFoodCardsPage = () => {
 
 export default MainFoodCardsPage;
 
-function CalculatorSideBar({ foods }) {
+function CalculatorSideBar({ foods, removeFromCalculator, clearCalculator }) {
   return (
     <div className={styles.calculatorsidebarframe}>
-      <div className={styles.youCurrentlyHaveContainer}>
-        <span className={styles.youCurrentlyHaveContainer1}>
-          <p className={styles.youCurrentlyHave}>
-            You currently have nothing in your calculator!
-          </p>
-          <p className={styles.youCurrentlyHave}>&nbsp;</p>
-          <p className={styles.youCurrentlyHave}>
-            Hover over a food card to add it to the calculator
-          </p>
-        </span>
+      <div className={styles.myCalculatorHeader}>
+        <img
+          className={styles.calculatoricon}
+          alt=""
+          src="/calculatorIcon.png"
+        />
+        <b className={styles.myCalculatorTitle}>My Calculator</b>
       </div>
-      <b className={styles.myCalculator}>My Calculator</b>
-      <img className={styles.calculatoricon} alt="" src="/calculatorIcon.png" />
+      <div className={styles.itemsInCalculatorFrame}>
+        {foods.length === 0 ? (
+          <div className={styles.nothingInCalculator}>
+            <p>You currently have nothing in your calculator!</p>
+          </div>
+        ) : (
+          <ul className={styles.foodsInCalculator}>
+            {foods.map((food) => (
+              <CalculatorFoodItem
+                key={food.id}
+                foodItem={food}
+                removeFromCalculator={removeFromCalculator}
+              />
+            ))}
+          </ul>
+        )}
+      </div>
       <div className={styles.bottomButtonsContainer}>
         <div className={styles.calculateButton}>calculate</div>
-        <div className={styles.clearCalcButton}>clear calculation</div>
+        <div className={styles.clearCalcButton} onClick={clearCalculator}>
+          clear calculator
+        </div>
       </div>
     </div>
+  );
+}
+
+function CalculatorFoodItem({ foodItem, removeFromCalculator }) {
+  return (
+    <li key={foodItem.id}>
+      <div>
+        <img src={`/${foodItem.imagePath}`} alt={foodItem.name} />
+        <p>{foodItem.name}</p>
+        <button onClick={() => removeFromCalculator(foodItem.id)}>
+            <FontAwesomeIcon icon={faTrashCan} className={styles.removeButtonTrashIcon} />
+        </button>
+      </div>
+    </li>
   );
 }
 
@@ -175,7 +223,13 @@ function SearchBar({ handleSearch }) {
   );
 }
 
-function FoodCards({ foods, selectedColorId, addToCalculator }) {
+function FoodCards({
+  foods,
+  selectedColorId,
+  addToCalculator,
+  onRemoveFromCalculator,
+  isInCalculator,
+}) {
   return (
     <div className={styles.foodcardsframe}>
       {foods.map(
@@ -186,6 +240,8 @@ function FoodCards({ foods, selectedColorId, addToCalculator }) {
               id={food.id}
               name={food.name}
               addToCalculator={addToCalculator}
+              removeFromCalculator={onRemoveFromCalculator}
+              isInCalculator={isInCalculator}
             />
           )
       )}
@@ -193,7 +249,13 @@ function FoodCards({ foods, selectedColorId, addToCalculator }) {
   );
 }
 
-function FoodCard({ id, name, addToCalculator }) {
+function FoodCard({
+  id,
+  name,
+  addToCalculator,
+  removeFromCalculator,
+  isInCalculator,
+}) {
   const food = foods.find((foodItem) => foodItem.id === id);
 
   if (!food) return null;
@@ -203,9 +265,21 @@ function FoodCard({ id, name, addToCalculator }) {
     <div className={styles.foodcard}>
       <img className={styles.foodcardimage} src={`/${imagePath}`} alt={name} />
       <p>{name}</p>
-      <div className={styles.addFoodButton}>
-        <p className={styles.plusSign}>+</p>
-      </div>
+      {isInCalculator(id) ? (
+        <div
+          className={styles.removeFoodButton}
+          onClick={() => removeFromCalculator(id)}
+        >
+          <p className={styles.plusSign}>-</p>
+        </div>
+      ) : (
+        <div
+          className={styles.addFoodButton}
+          onClick={() => addToCalculator({ id, name, imagePath })}
+        >
+          <p className={styles.plusSign}>+</p>
+        </div>
+      )}
     </div>
   );
 }
