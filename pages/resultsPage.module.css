@@ -1,0 +1,207 @@
+.results {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: row;
+    align-items: flex-start;
+    background-color: var(--color-white);
+    font-size: var(--font-size-xl);
+    color: var(--color-black);
+    font-family: var(--font-calibri);
+}
+.topBtnBar{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+
+    margin: 2% 0% 1% 0%;
+}
+.topBtnsBar{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 170px;
+    height: 50px;
+    /* margin-right: 10px; */
+    margin-right: 3%;
+    padding: 2%;
+
+    background-color: #c2effa;
+
+    border: 1px solid rgba(0, 0, 0, 0.38);
+    border-radius: 10px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+
+    cursor: pointer;
+}
+.topBtnBarSubDiv{
+    display: flex;
+}
+/* .topBtnBarSubDiv div:last-child {
+    margin-right: 0;
+} */
+.backBtn{
+    text-align: center;
+    font-weight: 300;
+    font-size: 24px;
+}
+.newCalculationBtn{
+    font-weight: 300;
+    font-size: 24px;
+}
+.exportBtnColor{
+    background-color: #7de281;
+}
+.exportBtn{
+    font-weight: 300;
+    font-size: 24px;
+}
+.infoDiv{
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-evenly;
+
+    width: 100%;
+}
+.infoDivChild{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+
+    margin: 1%;
+    padding: 1%;
+
+    border: 1px solid rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.foodItem{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    /* max-width: 30%; */
+    padding: 2%;
+
+    background-color: rgba(217,217,217,.2199999);
+
+    border: 2px solid rgba(194, 220, 25, 0.903);
+    border-radius: 10px;
+}
+.dropdownStyle{
+    display: flex;
+    text-align: center;
+
+    background-color: #F16966;
+    width: 120px;
+    height: 50px;
+
+    border: 1px solid rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+    font-family: Inria Serif;
+    font-size: 20px;
+
+    cursor: pointer;
+    appearance: none;
+}
+.dropdownStyle::after{
+    content: '\25BC';
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    color: #fff;
+    font-size: 16px;
+}
+.foodItemSection1{
+    flex: .3;
+    
+    margin: 1vh;
+}
+.foodItemSection2{
+    flex: .7;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    margin: 1vh;
+
+    font-size: larger;
+}
+.selectAmountBtnDiv{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    /* width: 200px; */
+    min-width: 200px;
+    height: 70px;
+
+    background-color: white;
+    border: 1px solid rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    
+    cursor: pointer;
+
+    font-size: 20px;
+    font-weight: lighter;
+}
+.selectAmountDisplayDiv{
+    display: flex;
+
+    min-width: 200px;
+    height: 70px;
+    
+    border: 1px solid rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+}
+
+.totalStars{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    max-width: 90%;
+    padding: 0% 10%;
+    overflow: hidden;
+
+    background-color: #Fdd939;
+
+    border: 1px solid rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+}
+.totalStars p {
+    text-align: center;
+    word-break: break-all;
+
+    font-size: x-large;
+}
+
+.totalFoodPrint{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    padding: 1%;
+    width: 90%;
+
+    background-color: #D8E3F0;
+
+    border: 1px solid rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+}
+.infoCardsScroll{
+    /* choose the amount of cards to see */
+    height: 400px;
+    overflow-y: auto;
+}
