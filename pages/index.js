@@ -2,8 +2,14 @@ import Head from "next/head";
 import Layout from "../components/layouts/layout";
 import { useCallback } from "react";
 import { useRouter } from "next/router";
-import styles from "./home.module.css";
+import styles from "./styles/home.module.css";
 
+/*************************************************************************
+ * Component: Home
+ * Description: This is the home screen of the application. It provides
+ * brief info about the project and lets the user navigate to the
+ * calculator
+ *************************************************************************/
 const Home = () => {
   const router = useRouter();
 
