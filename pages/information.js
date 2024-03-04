@@ -1,6 +1,11 @@
 import Layout from "../components/layouts/layout";
-import styles from "./information.module.css";
+import styles from "./styles/information.module.css";
 
+/*************************************************************************
+ * Component: Information
+ * Description: This component displays a page providing information
+ * about the project / JOFN
+ *************************************************************************/
 const Information = () => {
   return (
     <Layout>

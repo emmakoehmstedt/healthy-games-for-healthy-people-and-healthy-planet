@@ -1,6 +1,11 @@
 import { useState } from "react";
-import styles from "./colorDropDown.module.css";
+import styles from "./styles/colorDropDown.module.css";
 
+/*************************************************************************
+ * Component: ColorDropDown
+ * Description: This component handles the sort by color functionality on
+ * the main food page.
+ *************************************************************************/
 export default function ColorDropDown({ colors, onColorClick, selectedColor }) {
   const [isOpen, setIsOpen] = useState(false);
 

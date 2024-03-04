@@ -91,6 +91,14 @@ const foods = [
     id: 23,
     image: "pineappleImage.png",
   },
+  {
+    id: 24,
+    image: "freshHerbsImage.png",
+  },
+  {
+    id: 25,
+    image: "freshHerbsImage.png",
+  },
 ];
 
 export default foods;
