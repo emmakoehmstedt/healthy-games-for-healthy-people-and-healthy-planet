@@ -1,8 +1,12 @@
 // Import statements should be at the top
 import { useRouter } from "next/router";
-import styles from "./header-footer.module.css";
+import styles from "./styles/header-footer.module.css";
 
-// Component definition
+/*************************************************************************
+ * Component: TopBar
+ * Description: This component renders the header that will appear on
+ * every page in the application
+ *************************************************************************/
 function TopBar() {
   const router = useRouter();
 
@@ -35,7 +39,10 @@ function TopBar() {
           <b>Home</b>
         </div>
       )}
-      <div className={styles.informationbutton} onClick={handleInformationClick}>
+      <div
+        className={styles.informationbutton}
+        onClick={handleInformationClick}
+      >
         <b>Information</b>
       </div>
     </div>

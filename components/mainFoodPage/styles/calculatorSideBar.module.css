@@ -1,0 +1,133 @@
+/*Styles for Calculator Side Bar*/
+.calculatorsidebarframe {
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid lightgrey;
+  top: 0;
+  left: 0;
+  width: 340px;
+  height: calc(100vh - 123px);
+  overflow: hidden;
+  text-align: center;
+  font-size: var(--font-size-xl);
+  color: var(--color-black);
+}
+
+.myCalculatorHeader {
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+  padding: 15px;
+  padding-left: 35px;
+  padding-bottom: 0px;
+  width: calc(100% - 50px);
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.calculatoricon {
+  width: 93px;
+  height: 113px;
+  object-fit: cover;
+}
+
+.myCalculatorTitle {
+  font-size: var(--font-size-5xl);
+}
+
+.itemsInCalculatorFrame {
+  flex: 1;
+}
+
+.nothingInCalculator {
+  padding: 15px;
+}
+
+.foodsInCalculator {
+  display: flex;
+  flex-direction: column;
+  list-style-type: none; /* Remove bullet points */
+  width: 100%;
+  height: calc(100vh - 410px);
+  overflow-y: auto;
+  padding: auto;
+}
+
+.foodsInCalculator div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2%;
+  background-color: rgba(
+    128,
+    128,
+    128,
+    0.1
+  ); /* Gray color with 15% transparency */
+  width: min-content;
+  box-sizing: border-box;
+  border-radius: 10px;
+  width: 80%;
+  border: 1px solid rgba(0, 0, 0, 0.096); /* Thin black border */
+}
+
+.foodsInCalculator li {
+  padding-top: 10px;
+}
+
+.foodsInCalculator img {
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
+}
+
+.foodsInCalculator p {
+  margin: auto;
+  font-size: larger;
+  font-family: serif;
+  color: rgba(0, 0, 0, 0.7); /* 70% transparency */
+}
+
+.foodsInCalculator button {
+  margin-left: auto; /* Remove default margin for paragraphs */
+  width: 50px;
+  height: 50px;
+  border: 0px;
+}
+
+.removeButtonTrashIcon {
+  width: 35px;
+  height: 35px;
+}
+
+.bottomButtonsContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  margin-bottom: 10px;
+}
+
+.calculateButton,
+.clearCalcButton {
+  height: 50px;
+  width: 95%;
+  padding: 10px;
+  box-sizing: border-box;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(0, 0, 0, 0.16); /* Thin black border */
+  font-size: 35px;
+}
+
+.calculateButton {
+  background-color: #83c41a9c;
+}
+
+.clearCalcButton {
+  background-color: #c44d1a9c;
+}

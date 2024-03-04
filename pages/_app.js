@@ -1,6 +1,7 @@
 import { Fragment } from "react";
+import { CalculatorProvider } from "../context/calculatorContext";
 import Head from "next/head";
-import "./global.css";
+import "./styles/global.css";
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -12,7 +13,9 @@ function MyApp({ Component, pageProps }) {
           content="minimum-scale=1, initial-scale=1, width=device-width"
         />
       </Head>
-      <Component {...pageProps} />
+      <CalculatorProvider>
+        <Component {...pageProps} />
+      </CalculatorProvider>
     </Fragment>
   );
 }

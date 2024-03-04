@@ -1,5 +1,10 @@
-import styles from "./header-footer.module.css";
+import styles from "./styles/header-footer.module.css";
 
+/*************************************************************************
+ * Component: footer
+ * Description: This component renders the footer that will appear on 
+ * every page in the application
+ *************************************************************************/
 function Footer() {
   return (
     <div className={styles.footerframe}>

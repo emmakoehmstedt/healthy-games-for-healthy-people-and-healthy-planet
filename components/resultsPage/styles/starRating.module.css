@@ -1,0 +1,21 @@
+.totalStars {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  max-width: 90%;
+  padding: 0% 10%;
+  overflow: hidden;
+
+  background-color: #fdd939;
+
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+}
+.totalStars p {
+  text-align: center;
+  word-break: break-all;
+
+  font-size: x-large;
+}
