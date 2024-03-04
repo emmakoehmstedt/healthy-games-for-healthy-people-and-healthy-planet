@@ -4,6 +4,7 @@ import HoverCard from "../components/hover-card";
 import { supabase } from "../lib/initSupabase";
 import Layout from "../components/layouts/layout";
 import ColorDropDown from "../components/mainFoodPage/colorDropDown";
+import CalcErrorPrevent from "../components/mainFoodPage/calcErrorPrevent-popup";
 import foods from "../data/food_images";
 
 import PortalPopup from "../components/portal-popup";
@@ -219,8 +220,11 @@ function CalculatorSideBar({ foods, removeFromCalculator, clearCalculator }) {
       </div>
       <div className={styles.bottomButtonsContainer}>
         <div className={styles.calculateButton}>calculate</div>
-        <div className={styles.clearCalcButton} onClick={clearCalculator}>
+        {/* <div className={styles.clearCalcButton} onClick={clearCalculator}> */}
+        <div className={styles.clearCalcButton}>
+        {/* show popup first */}
           clear calculation
+          <CalcErrorPrevent/>
         </div>
       </div>
     </div>
