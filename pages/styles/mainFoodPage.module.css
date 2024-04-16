@@ -2,6 +2,7 @@
 .mainFoodCardsPage {
   width: 100%;
   min-height: calc(100vh - 123px);
+  margin-bottom: 50px;
   display: flex;
   justify-content: flex-start;
   flex-direction: row;
