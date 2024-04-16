@@ -85,7 +85,7 @@ const foods = [
   },
   {
     id: 22,
-    image: "freshHerbsImage.png",
+    image: "basilImage.png",
   },
   {
     id: 23,
@@ -93,11 +93,11 @@ const foods = [
   },
   {
     id: 24,
-    image: "freshHerbsImage.png",
+    image: "chivesImage.png",
   },
   {
     id: 25,
-    image: "freshHerbsImage.png",
+    image: "oreganoImage.png",
   },
 ];
 
