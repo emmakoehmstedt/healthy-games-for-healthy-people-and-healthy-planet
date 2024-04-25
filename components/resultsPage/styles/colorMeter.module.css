@@ -1,0 +1,11 @@
+.colorMeter {
+  margin: 20px;
+  display: flex;
+  height: 20px;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.colorSegment {
+  height: 100%;
+}
