@@ -54,6 +54,7 @@ const ResultsPage = () => {
         carbon_footprint: food.carbon_footprint,
         water_footprint: food.water_footprint,
         facts: food.facts,
+        stars: food.nutrition_stars,
       }));
       const completeInfo = informationArray.filter((info) =>
         calculatorItems.some((item) => item.id === info.id)
@@ -125,10 +126,21 @@ function FoodResult({ currentFood }) {
         <h2 className={styles.currentFoodName}>{currentFood.name}</h2>
       </div>
       <div className={styles.AmountAndFootprint}>
-        PUT AMOUNT AND FOOTPRINT INFO HERE
+      <div className={styles.amountBox}>
+          amount box
+        </div>
+        <div className={styles.footprintBox}>
+          footprint box
+        </div>
       </div>
       <div className={styles.nutritionAndFunFacts}>
-        PUT NUTRITION AND FUN FACTS HERE
+        <div className={styles.nutritionBox}>
+          Nutrition Value
+          <h2 className={styles.currentNutritionStars}>{currentFood.nutrition_stars}</h2>
+        </div>
+        <div className={styles.funFactBox}>
+          funfact box
+        </div>
       </div>
     </div>
   );

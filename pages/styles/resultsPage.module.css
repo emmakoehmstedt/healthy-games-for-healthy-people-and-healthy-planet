@@ -70,6 +70,62 @@
   gap: 15px;
 }
 
+.AmountAndFootprint{
+  width: 50%;
+
+}
+
+.amountBox {
+  width: 100%;
+  border-radius: 10px;
+  border: 2px solid black;
+  height: 130px;
+  margin-bottom: 10px;
+}
+
+.footprintBox {
+  width: 100%;
+  border-radius: 10px;
+  border: 2px solid black;
+  height: 200px;
+}
+
+.nutritionAndFunFacts{
+  width: 50%;
+
+}
+
+.nutritionBox {
+  width: 100%;
+  border-radius: 10px;
+  border: 2px solid black;
+  height: 121px;
+  margin-bottom: 10px;
+  text-align: center; 
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  font-size: 46px; 
+  text-decoration: underline;
+  padding-top: 9px;
+  font-family: Arial, sans-serif; 
+}
+
+.nutrtionStarsImg{
+  max-width: 50px; 
+  max-height: 50px; 
+  margin-right: 10px;
+}
+
+
+
+.funFactBox {
+  width: 100%;
+  border-radius: 10px;
+  border: 2px solid black;
+  height: 200px;
+}
+
 .individualResultsCard img {
   width: 280px;
   height: 280px;
@@ -82,3 +138,9 @@
 .currentFoodName {
   color: grey;
 }
+
+.currentNutritionStars{
+  color: black;
+
+}
+
