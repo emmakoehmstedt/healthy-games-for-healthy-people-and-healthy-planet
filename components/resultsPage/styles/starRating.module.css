@@ -1,21 +1,26 @@
 .totalStars {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
 
   max-width: 90%;
   padding: 0% 10%;
   overflow: hidden;
-
-  background-color: #fdd939;
-
-  border: 1px solid rgba(0, 0, 0, 0.25);
-  border-radius: 10px;
 }
-.totalStars p {
-  text-align: center;
-  word-break: break-all;
 
-  font-size: x-large;
+.emptyStar {
+  height: 35px;
+  width: 35px;
+  color: lightgrey;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.filledStar {
+  height: 35px;
+  width: 35px;
+  color: #fdd939;
+  margin-left: 10px;
+  margin-right: 10px;
 }

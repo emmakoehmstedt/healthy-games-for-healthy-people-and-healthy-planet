@@ -27,6 +27,7 @@ const ResultsPage = () => {
   const calculatorFunctions = useCalculatorUpdate();
 
   const [informationCards, setInformationCards] = useState([]);
+  const [totalStars, setTotalStars] = useState(0);
   //const [cookedFilter, setCookedRawFilter] = useState("all");
 
   const onBackClick = useCallback(() => {
@@ -61,6 +62,14 @@ const ResultsPage = () => {
         calculatorItems.some((item) => item.id === info.id)
       );
 
+      //iterate over each food in completeInfo arra. Add stars to the the total, with total starting at 0
+      const allStars = completeInfo.reduce(
+        (total, info) => total + info.stars,
+        0
+      );
+
+      setTotalStars(allStars);
+
       //make a mapping between id and image paths to be able to add image paths to the foods field
       //this could be fixed later by adding image paths to the database
       const mapBetweenIdsandPaths = {};
@@ -88,12 +97,6 @@ const ResultsPage = () => {
   //   setCookedRawFilter(val);
   // }, []);
 
-  // Calculate total stars count
-  const totalStarsCount = informationCards.reduce(
-    (acc, card) => acc + Math.floor(card.carbon_footprint), 
-    0
-  );
-  
   return (
     <Layout>
       {/* THIS IS FOR THE TOP BAR W/ BACK BUTTON AND NEW CALCULATION BUTTON*/}
@@ -116,7 +119,7 @@ const ResultsPage = () => {
         {/*GERALD: here is where you can put the placeholder overall results card*/}
         {/*THIS IS TO GO THROUGH EACH CALCULATED FOOD AND DISPLAY IT IN THE FOODRESULT COMPONENT*/}
         <div className={styles.individualResultsContainer}>
-        <MainBanner foods={informationCards} numOfStars={totalStarsCount} />
+          <MainBanner foods={informationCards} numOfStars={totalStars} />
           {informationCards.map((card) => (
             <FoodResult key={card.id} currentFood={card} />
           ))}
@@ -134,21 +137,18 @@ function FoodResult({ currentFood }) {
         <h2 className={styles.currentFoodName}>{currentFood.name}</h2>
       </div>
       <div className={styles.AmountAndFootprint}>
-      <div className={styles.amountBox}>
-          amount box
-        </div>
-        <div className={styles.footprintBox}>
-          footprint box
-        </div>
+        <div className={styles.amountBox}>amount box</div>
+        <div className={styles.footprintBox}>footprint box</div>
       </div>
       <div className={styles.nutritionAndFunFacts}>
         <div className={styles.nutritionBox}>
-          Nutrition Value
-          <h2 className={styles.currentNutritionStars}>{currentFood.nutrition_stars}</h2>
+          <p className={styles.nutritionBoxTitle}>Nutrition Value</p>
+          {/* <h2 className={styles.currentNutritionStars}>
+            {currentFood.nutrition_stars}
+          </h2> */}
+          <TotalStarsCalculation numOfStars={currentFood.stars} />
         </div>
-        <div className={styles.funFactBox}>
-          funfact box
-        </div>
+        <div className={styles.funFactBox}>funfact box</div>
       </div>
     </div>
   );
