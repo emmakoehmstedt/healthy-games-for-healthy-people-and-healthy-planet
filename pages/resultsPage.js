@@ -7,6 +7,7 @@ import {
   useCalculatorUpdate,
 } from "../context/calculatorContext";
 
+import MainBanner from "../components/resultsPage/mainBanner";
 import Layout from "../components/layouts/layout";
 import CookedRawDropDown from "../components/resultsPage/cookedRawDropdown";
 import FoodCards from "../components/resultsPage/foodCards";
@@ -87,6 +88,12 @@ const ResultsPage = () => {
   //   setCookedRawFilter(val);
   // }, []);
 
+  // Calculate total stars count
+  const totalStarsCount = informationCards.reduce(
+    (acc, card) => acc + Math.floor(card.carbon_footprint), 
+    0
+  );
+  
   return (
     <Layout>
       {/* THIS IS FOR THE TOP BAR W/ BACK BUTTON AND NEW CALCULATION BUTTON*/}
@@ -109,6 +116,7 @@ const ResultsPage = () => {
         {/*GERALD: here is where you can put the placeholder overall results card*/}
         {/*THIS IS TO GO THROUGH EACH CALCULATED FOOD AND DISPLAY IT IN THE FOODRESULT COMPONENT*/}
         <div className={styles.individualResultsContainer}>
+        <MainBanner foods={informationCards} numOfStars={totalStarsCount} />
           {informationCards.map((card) => (
             <FoodResult key={card.id} currentFood={card} />
           ))}
