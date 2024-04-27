@@ -149,6 +149,9 @@ function FoodResult({ currentFood }) {
           <TotalStarsCalculation numOfStars={currentFood.stars} />
         </div>
         <div className={styles.funFactBox}>funfact box</div>
+        <div className={styles.funFactBox}>
+          <p className={styles.funFactText}> {currentFood.facts}</p>
+        </div>
       </div>
     </div>
   );

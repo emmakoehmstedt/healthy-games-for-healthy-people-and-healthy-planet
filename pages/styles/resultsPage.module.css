@@ -89,6 +89,26 @@
   height: 200px;
 }
 
+.footprintText {
+  padding-left: 7px;
+  padding-right: 2px;
+  margin-top: 7px;
+}
+
+.footprintBoxBold {
+  font-weight: bold;
+}
+
+.footprintText {
+  padding-left: 7px;
+  padding-right: 2px;
+  margin-top: 7px;
+}
+
+.footprintBoxBold {
+  font-weight: bold;
+}
+
 .nutritionAndFunFacts {
   width: 50%;
 }
@@ -129,6 +149,14 @@
   border-radius: 10px;
   border: 2px solid black;
   height: 200px;
+  white-space: pre-line;
+  overflow: auto;
+}
+
+.funFactText {
+  padding-left: 7px;
+  padding-right: 2px;
+  margin-top: 5px;
 }
 
 .individualResultsCard img {
