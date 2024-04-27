@@ -138,17 +138,23 @@ function FoodResult({ currentFood }) {
       </div>
       <div className={styles.AmountAndFootprint}>
         <div className={styles.amountBox}>amount box</div>
-        <div className={styles.footprintBox}>footprint box</div>
+        <div className={styles.footprintBox}>
+          <p className={styles.footprintText}>
+            Water Footprint: {currentFood.water_footprint}
+            <br></br> <br></br>
+            Carbon Footprint: {currentFood.carbon_footprint}
+            <p className={styles.footprintBoxBold}>
+              Total Footprint:
+              {currentFood.water_footprint + currentFood.carbon_footprint}
+            </p>
+          </p>
+        </div>
       </div>
       <div className={styles.nutritionAndFunFacts}>
         <div className={styles.nutritionBox}>
           <p className={styles.nutritionBoxTitle}>Nutrition Value</p>
-          {/* <h2 className={styles.currentNutritionStars}>
-            {currentFood.nutrition_stars}
-          </h2> */}
           <TotalStarsCalculation numOfStars={currentFood.stars} />
         </div>
-        <div className={styles.funFactBox}>funfact box</div>
         <div className={styles.funFactBox}>
           <p className={styles.funFactText}> {currentFood.facts}</p>
         </div>
