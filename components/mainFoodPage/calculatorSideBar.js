@@ -15,22 +15,8 @@ import CalcErrorPrevent from "./calcErrorPrevent-popup";
  * calculation. It has buttons to clear the calculator and to calculate
  *************************************************************************/
 export default function CalculatorSideBar({ onCalcClick }) {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const handleClearButtonClick = () => {
-    // Show the modal when the clear button is clicked
-    setIsModalOpen(true);
-    console.log("true");
-  };
-
-  const handleCloseModal = () => {
-    // Close the modal when it's dismissed
-    setIsModalOpen(false);
-    console.log("false  ");
-  };
-
   const foods = useCalculator();
-  const calculatorFunctions = useCalculatorUpdate();
+  // const calculatorFunctions = useCalculatorUpdate();
 
   return (
     <div className={styles.calculatorsidebarframe}>
@@ -61,17 +47,8 @@ export default function CalculatorSideBar({ onCalcClick }) {
             calculate
           </div>
         )}
-        <div
-          className={styles.clearCalcButton}
-          // onClick={calculatorFunctions.onClearCalculator}
-          onClick={handleClearButtonClick}
-        >
-          clear calculation
-          <CalcErrorPrevent/>
-          {isModalOpen && <CalcErrorPrevent onClose={handleCloseModal} />}
-        </div>
+        {CalcErrorPrevent()}
       </div>
-      {/* Render the modal only if isModalOpen is true */}
     </div>
   );
 }
