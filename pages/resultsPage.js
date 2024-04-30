@@ -12,6 +12,7 @@ import Layout from "../components/layouts/layout";
 import CookedRawDropDown from "../components/resultsPage/cookedRawDropdown";
 import FoodCards from "../components/resultsPage/foodCards";
 import TotalStarsCalculation from "../components/resultsPage/starRating";
+import AmountSelection from "../components/resultsPage/amountSelection";
 
 import styles from "./styles/resultsPage.module.css";
 
@@ -137,7 +138,12 @@ function FoodResult({ currentFood }) {
         <h2 className={styles.currentFoodName}>{currentFood.name}</h2>
       </div>
       <div className={styles.AmountAndFootprint}>
-        <div className={styles.amountBox}>amount box</div>
+        {/* input serving size changes */}
+        {/* <div className={styles.amountBox}>
+          Amount
+          {AmountSelection()}
+        </div> */}
+        {AmountSelection()}
         <div className={styles.footprintBox}>
           <p className={styles.footprintText}>
             Water Footprint: {currentFood.water_footprint}
