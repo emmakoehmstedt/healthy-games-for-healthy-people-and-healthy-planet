@@ -32,7 +32,7 @@ export default function CalcErrorPrevent() {
 								alt=""
 								src="/calculatorIcon.png"
 							/>
-							<h3>Are you sure you want to clear your calculator?</h3>
+							<h1>Are you sure you want to clear your calculator?</h1>
 						</div>
 						<div className={styles.errorPreventPopup_div2}>
 							If you clear your calculator, it will be empty!
