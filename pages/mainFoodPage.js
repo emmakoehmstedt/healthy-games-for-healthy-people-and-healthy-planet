@@ -4,7 +4,6 @@ import { useRouter } from "next/router";
 
 import Layout from "../components/layouts/layout";
 import ColorDropDown from "../components/mainFoodPage/colorDropDown";
-import CalcErrorPrevent from "../components/mainFoodPage/calcErrorPrevent-popup";
 import CalculatorSideBar from "../components/mainFoodPage/calculatorSideBar";
 import FoodCards from "../components/mainFoodPage/foodCards";
 import SearchBar from "../components/mainFoodPage/search";
@@ -152,46 +151,46 @@ const MainFoodCardsPage = () => {
 
 export default MainFoodCardsPage;
 
-function CalculatorSideBar({ foods, removeFromCalculator, clearCalculator }) {
-  return (
-    <div className={styles.calculatorsidebarframe}>
-      <div className={styles.myCalculatorHeader}>
-        <img
-          className={styles.calculatoricon}
-          alt=""
-          src="/calculatorIcon.png"
-        />
-        <b className={styles.myCalculatorTitle}>My Calculator</b>
-      </div>
-      <div className={styles.itemsInCalculatorFrame}>
-        {foods.length === 0 ? (
-          <div className={styles.nothingInCalculator}>
-            <p>You currently have nothing in your calculator!</p>
-          </div>
-        ) : (
-          <ul className={styles.foodsInCalculator}>
-            {foods.map((food) => (
-              <CalculatorFoodItem
-                key={food.id}
-                foodItem={food}
-                removeFromCalculator={removeFromCalculator}
-              />
-            ))}
-          </ul>
-        )}
-      </div>
-      <div className={styles.bottomButtonsContainer}>
-        <div className={styles.calculateButton}>calculate</div>
-        {/* <div className={styles.clearCalcButton} onClick={clearCalculator}> */}
-        <div className={styles.clearCalcButton}>
-        {/* show popup first */}
-          clear calculation
-          <CalcErrorPrevent/>
-        </div>
-      </div>
-    </div>
-  );
-}
+// function CalculatorSideBar({ foods, removeFromCalculator, clearCalculator }) {
+//   return (
+//     <div className={styles.calculatorsidebarframe}>
+//       <div className={styles.myCalculatorHeader}>
+//         <img
+//           className={styles.calculatoricon}
+//           alt=""
+//           src="/calculatorIcon.png"
+//         />
+//         <b className={styles.myCalculatorTitle}>My Calculator</b>
+//       </div>
+//       <div className={styles.itemsInCalculatorFrame}>
+//         {foods.length === 0 ? (
+//           <div className={styles.nothingInCalculator}>
+//             <p>You currently have nothing in your calculator!</p>
+//           </div>
+//         ) : (
+//           <ul className={styles.foodsInCalculator}>
+//             {foods.map((food) => (
+//               <CalculatorFoodItem
+//                 key={food.id}
+//                 foodItem={food}
+//                 removeFromCalculator={removeFromCalculator}
+//               />
+//             ))}
+//           </ul>
+//         )}
+//       </div>
+//       <div className={styles.bottomButtonsContainer}>
+//         <div className={styles.calculateButton}>calculate</div>
+//         {/* <div className={styles.clearCalcButton} onClick={clearCalculator}> */}
+//         <div className={styles.clearCalcButton}>
+//         {/* show popup first */}
+//           clear calculation
+//           <CalcErrorPrevent/>
+//         </div>
+//       </div>
+//     </div>
+//   );
+// }
 
 function CalculatorFoodItem({ foodItem, removeFromCalculator }) {
   return (
@@ -215,84 +214,84 @@ function CalculatorFoodItem({ foodItem, removeFromCalculator }) {
  *  to delete the characters. Seems like this may be an issues with the 
  *  supabase fetch having null values at times or an unknown. 
  *************************************************************************/
-function SearchBar({ handleSearch, handleReset }) {
-  const setSearchInput = (e) => {
-    handleSearch(e.target.value);
-  };
+// function SearchBar({ handleSearch, handleReset }) {
+//   const setSearchInput = (e) => {
+//     handleSearch(e.target.value);
+//   };
 
-  return (
-    <div className={styles.searchBarContainer}>
-      <input
-        className={styles.searchInput}
-        type="text"
-        placeholder="Search by Name"
-        id="searchInput"
-        onChange={setSearchInput}
-      />
-    </div>
-  );
-}
+//   return (
+//     <div className={styles.searchBarContainer}>
+//       <input
+//         className={styles.searchInput}
+//         type="text"
+//         placeholder="Search by Name"
+//         id="searchInput"
+//         onChange={setSearchInput}
+//       />
+//     </div>
+//   );
+// }
 
-function FoodCards({
-  foods,
-  filteredFoodCards, // Receive filteredFoodCards as prop
-  selectedColorId,
-  addToCalculator,
-  onRemoveFromCalculator,
-  isInCalculator,
-}) {
-  const cardsToRender = filteredFoodCards.length > 0 ? filteredFoodCards : foods;
+// function FoodCards({
+//   foods,
+//   filteredFoodCards, // Receive filteredFoodCards as prop
+//   selectedColorId,
+//   addToCalculator,
+//   onRemoveFromCalculator,
+//   isInCalculator,
+// }) {
+//   const cardsToRender = filteredFoodCards.length > 0 ? filteredFoodCards : foods;
 
-  return (
-    <div className={styles.foodcardsframe}>
-      {cardsToRender.map((food) => (
-        (selectedColorId == -1 || selectedColorId === food.color_id) && (
-          <FoodCard
-            key={food.id}
-            id={food.id}
-            name={food.name}
-            addToCalculator={addToCalculator}
-            removeFromCalculator={onRemoveFromCalculator}
-            isInCalculator={isInCalculator}
-          />
-        )
-      ))}
-    </div>
-  );
-}
+//   return (
+//     <div className={styles.foodcardsframe}>
+//       {cardsToRender.map((food) => (
+//         (selectedColorId == -1 || selectedColorId === food.color_id) && (
+//           <FoodCard
+//             key={food.id}
+//             id={food.id}
+//             name={food.name}
+//             addToCalculator={addToCalculator}
+//             removeFromCalculator={onRemoveFromCalculator}
+//             isInCalculator={isInCalculator}
+//           />
+//         )
+//       ))}
+//     </div>
+//   );
+// }
 
 
-function FoodCard({
-  id,
-  name,
-  addToCalculator,
-  removeFromCalculator,
-  isInCalculator,
-}) {
-  const food = foods.find((foodItem) => foodItem.id === id);
+// function FoodCard({
+//   id,
+//   name,
+//   addToCalculator,
+//   removeFromCalculator,
+//   isInCalculator,
+// }) {
+//   const food = foods.find((foodItem) => foodItem.id === id);
 
-  if (!food) return null;
-  const imagePath = food.image;
+//   if (!food) return null;
+//   const imagePath = food.image;
 
-  return (
-    <div className={styles.foodcard}>
-      <img className={styles.foodcardimage} src={`/${imagePath}`} alt={name} />
-      <p>{name}</p>
-      {isInCalculator(id) ? (
-        <div
-          className={styles.removeFoodButton}
-          onClick={() => removeFromCalculator(id)}
-        >
-          <p className={styles.plusSign}>-</p>
-        </div>
-      ) : (
-        <div
-          className={styles.addFoodButton}
-          onClick={() => addToCalculator({ id, name, imagePath })}
-        >
-          <p className={styles.plusSign}>+</p>
-        </div>
-      )}
-    </div>
-  );
-}
+//   return (
+//     <div className={styles.foodcard}>
+//       <img className={styles.foodcardimage} src={`/${imagePath}`} alt={name} />
+//       <p>{name}</p>
+//       {isInCalculator(id) ? (
+//         <div
+//           className={styles.removeFoodButton}
+//           onClick={() => removeFromCalculator(id)}
+//         >
+//           <p className={styles.plusSign}>-</p>
+//         </div>
+//       ) : (
+//         <div
+//           className={styles.addFoodButton}
+//           onClick={() => addToCalculator({ id, name, imagePath })}
+//         >
+//           <p className={styles.plusSign}>+</p>
+//         </div>
+//       )}
+//     </div>
+//   );
+// }
