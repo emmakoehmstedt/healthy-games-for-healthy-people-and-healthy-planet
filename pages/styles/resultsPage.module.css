@@ -74,13 +74,20 @@
   width: 50%;
 }
 
-.amountBox {
+/* .amountBox {
+  font-family: Arial, sans-serif;
+  font-size: 38px;
   width: 100%;
   border-radius: 10px;
   border: 2px solid black;
   height: 130px;
   margin-bottom: 10px;
-}
+
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+} */
+
 
 .footprintBox {
   width: 100%;
