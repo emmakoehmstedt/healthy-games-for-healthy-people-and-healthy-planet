@@ -1,3 +1,6 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faStar } from "@fortawesome/free-solid-svg-icons";
+
 import styles from "./styles/starRating.module.css";
 
 /*************************************************************************
@@ -5,17 +8,26 @@ import styles from "./styles/starRating.module.css";
  * Description:
  *************************************************************************/
 export default function TotalStarsCalculation({ numOfStars }) {
-  const starsCount =
-    typeof numOfStars === "number" && numOfStars > 0
-      ? Math.floor(numOfStars)
-      : 0;
-  const starText = "⭐".repeat(starsCount);
+  const maxStars = 5;
+  const filledStars = Math.floor(numOfStars);
+  let stars = [];
 
-  return (
-    <div className={styles.totalStars}>
-      <h2>Total Score</h2>
-      <p>{starText}</p>
-      <h1>{starsCount} stars!</h1>
-    </div>
-  );
+  for (let i = 0; i < filledStars; i++) {
+    stars.push(
+      <FontAwesomeIcon key={i} icon={faStar} className={styles.filledStar} />
+    );
+  }
+
+  for (let i = filledStars; i < maxStars; i++) {
+    stars.push(
+      <FontAwesomeIcon
+        key={i}
+        icon={faStar}
+        color="d3d3d3"
+        className={styles.emptyStar}
+      />
+    );
+  }
+
+  return <div className={styles.totalStars}>{stars}</div>;
 }

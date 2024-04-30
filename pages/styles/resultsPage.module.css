@@ -70,9 +70,8 @@
   gap: 15px;
 }
 
-.AmountAndFootprint{
+.AmountAndFootprint {
   width: 50%;
-
 }
 
 .amountBox {
@@ -90,19 +89,18 @@
   height: 200px;
 }
 
-.footprintText{
+.footprintText {
   padding-left: 7px;
   padding-right: 2px;
   margin-top: 7px;
 }
 
-.footprintBoxBold{
+.footprintBoxBold {
   font-weight: bold;
 }
 
-.nutritionAndFunFacts{
+.nutritionAndFunFacts {
   width: 50%;
-
 }
 
 .nutritionBox {
@@ -111,23 +109,30 @@
   border: 2px solid black;
   height: 121px;
   margin-bottom: 10px;
-  text-align: center; 
+  text-align: center;
   display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  font-size: 46px; 
-  text-decoration: underline;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
   padding-top: 9px;
-  font-family: Arial, sans-serif; 
 }
 
-.nutrtionStarsImg{
-  max-width: 50px; 
-  max-height: 50px; 
+.nutritionBoxTitle {
+  font-family: Arial, sans-serif;
+  font-size: 38px;
+  text-decoration: underline;
+  height: 50px;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  padding-bottom: 5px;
+}
+
+.nutrtionStarsImg {
+  max-width: 50px;
+  max-height: 50px;
   margin-right: 10px;
 }
-
-
 
 .funFactBox {
   width: 100%;
@@ -138,12 +143,11 @@
   overflow: auto;
 }
 
-.funFactText{
+.funFactText {
   padding-left: 7px;
   padding-right: 2px;
   margin-top: 5px;
 }
-
 
 .individualResultsCard img {
   width: 280px;
@@ -157,9 +161,3 @@
 .currentFoodName {
   color: grey;
 }
-
-.currentNutritionStars{
-  color: black;
-
-}
-
