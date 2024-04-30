@@ -7,10 +7,12 @@ import {
   useCalculatorUpdate,
 } from "../context/calculatorContext";
 
+import MainBanner from "../components/resultsPage/mainBanner";
 import Layout from "../components/layouts/layout";
 import CookedRawDropDown from "../components/resultsPage/cookedRawDropdown";
 import FoodCards from "../components/resultsPage/foodCards";
 import TotalStarsCalculation from "../components/resultsPage/starRating";
+import AmountSelection from "../components/resultsPage/amountSelection";
 
 import styles from "./styles/resultsPage.module.css";
 
@@ -25,8 +27,9 @@ const ResultsPage = () => {
   const calculatorItems = useCalculator();
   const calculatorFunctions = useCalculatorUpdate();
 
-  const [foodCards, setFoodCards] = useState([]);
-  const [cookedFilter, setCookedRawFilter] = useState("all");
+  const [informationCards, setInformationCards] = useState([]);
+  const [totalStars, setTotalStars] = useState(0);
+  //const [cookedFilter, setCookedRawFilter] = useState("all");
 
   const onBackClick = useCallback(() => {
     router.push("/mainFoodPage");
@@ -37,45 +40,68 @@ const ResultsPage = () => {
     router.push("/mainFoodPage");
   }, [router]);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const { data, error } = await supabase.rpc("getfoodcardstars");
+  //function to fetch foods with color information
+  const fetchData = async () => {
+    try {
+      //function in database to fetch foods with color information
+      const { data, error } = await supabase.rpc("getdetailedinformation");
 
-        console.log("Data: ", data);
-        console.log("Results Page -> Calculator Items: ", calculatorItems);
-
-        if (error) {
-          throw error;
-        }
-
-        const foodsArray = data.map((food) => ({
-          id: food.id,
-          name: food.food_name,
-          info_id: food.info_id,
-          facts: food.facts,
-          carbon_footprint: food.carbon_footprint,
-          water_footprint: food.water_footprint,
-        }));
-
-        setFoodCards(foodsArray);
-        console.log("Data from the table:", foodsArray);
-      } catch (error) {
-        console.error("Error fetching data from Supabase:", error.message);
+      if (error) {
+        throw error;
       }
-    };
+      console.log("RESULTS PAGE food data: ", calculatorItems);
+      //map each food to its own object
+      const informationArray = data.map((food) => ({
+        id: food.id,
+        name: food.food_name,
+        carbon_footprint: food.carbon_footprint,
+        water_footprint: food.water_footprint,
+        facts: food.facts,
+        stars: food.nutrition_stars,
+      }));
+      const completeInfo = informationArray.filter((info) =>
+        calculatorItems.some((item) => item.id === info.id)
+      );
 
+      //iterate over each food in completeInfo arra. Add stars to the the total, with total starting at 0
+      const allStars = completeInfo.reduce(
+        (total, info) => total + info.stars,
+        0
+      );
+
+      setTotalStars(allStars);
+
+      //make a mapping between id and image paths to be able to add image paths to the foods field
+      //this could be fixed later by adding image paths to the database
+      const mapBetweenIdsandPaths = {};
+      for (const item of calculatorItems) {
+        mapBetweenIdsandPaths[item.id] = item.imagePath;
+      }
+      const completeInfoWithImagePath = completeInfo.map((info) => {
+        const itemWithPath = { ...info };
+        itemWithPath.imagePath = mapBetweenIdsandPaths[info.id];
+        return itemWithPath;
+      });
+      setInformationCards(completeInfoWithImagePath);
+      console.log("Information Array", completeInfoWithImagePath);
+    } catch (error) {
+      console.error("Error fetching data from Supabase:", error.message);
+    }
+  };
+
+  useEffect(() => {
     fetchData();
   }, []);
 
-  const onCookedRawDropdownFrameContainerClick = useCallback((val) => {
-    //sync to proj
-    setCookedRawFilter(val);
-  }, []);
+  // const onCookedRawDropdownFrameContainerClick = useCallback((val) => {
+  //   //sync to proj
+  //   setCookedRawFilter(val);
+  // }, []);
 
   return (
     <Layout>
-      <div className={styles.resultsPage}>
+      {/* THIS IS FOR THE TOP BAR W/ BACK BUTTON AND NEW CALCULATION BUTTON*/}
+      <div className={styles.resultsContainer}>
         <div style={{ marginLeft: "1%" }} className={styles.topBtnBar}>
           <div onClick={onBackClick}>
             <div className={styles.topBtnsBar}>
@@ -89,159 +115,58 @@ const ResultsPage = () => {
                 New Calculation
               </b>
             </div>
-            <div
-              className={[styles.topBtnsBar, styles.exportBtnColor].join(" ")}
-            >
-              {/* whats the purpose of the export and what file type? */}
-              <b className={styles.exportBtn}>Export</b>
-            </div>
           </div>
         </div>
-        <div className={styles.infoDiv}>
-          <div className={[styles.amountCard, styles.infoDivChild].join(" ")}>
-            <h1>Amount</h1>
-            {/* insert food cards 
-                        probably auto generated food cards with like a loop that iterates through or something
-                        for now ill put the divs and stuff for like the functionality
-                        */}
-            <div className={styles.infoCardsScroll}>
-              <div className={styles.foodItem}>
-                <div className={styles.foodItemSection1}>
-                  <img
-                    // className={}
-                    alt=""
-                    src=""
-                  />
-                  <div>
-                    {/* cooked/raw dropdown */}
-                    <CookedRawDropDown
-                      onCRClick={onCookedRawDropdownFrameContainerClick}
-                      selectedCook={cookedFilter}
-                    />
-                  </div>
-                </div>
-                <div className={styles.foodItemSection2}>
-                  <p>[insert name]</p>
-                  <div className={styles.selectAmountBtnDiv}>
-                    {/* select amount button 
-                                        this is where the pop up comes in to select choices
-                                        */}
-                    <b className={styles.selectAmountBtn}>Select Amount</b>
-                  </div>
-                  =
-                  <div className={styles.selectAmountDisplayDiv}>
-                    {/* selected amount display */}
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div
-            className={[styles.nutritionCard, styles.infoDivChild].join(" ")}
-          >
-            <h1>Nutrition</h1>
-            {/* just enter the value of the total amount of stars */}
-            <TotalStarsCalculation numOfStars={27} />
-
-            {/* separate div for a scroll wheel */}
-            <div className={styles.infoCardsScroll}>
-              {/* ????????? im sure the issue is that it can't seem to find the supabase query bc idk how to fix......... it gotta be a simple error */}
-              <FoodCards foods={foodCards} />
-              <div
-                style={{
-                  width: "300px",
-                  height: "200px",
-                  border: "1px solid rgba(0,0,0,.25)",
-                }}
-              >
-                Test
-              </div>
-              <div
-                style={{
-                  width: "300px",
-                  height: "200px",
-                  border: "1px solid rgba(0,0,0,.25)",
-                }}
-              >
-                Test
-              </div>
-              <div
-                style={{
-                  width: "300px",
-                  height: "200px",
-                  border: "1px solid rgba(0,0,0,.25)",
-                }}
-              >
-                Test
-              </div>
-              <div
-                style={{
-                  width: "300px",
-                  height: "200px",
-                  border: "1px solid rgba(0,0,0,.25)",
-                }}
-              >
-                Test
-              </div>
-            </div>
-          </div>
-          <div
-            className={[styles.foodPrintCard, styles.infoDivChild].join(" ")}
-          >
-            <h1>Foodprint</h1>
-            <div className={styles.totalFoodPrint}>
-              <h2>Total Foodprint</h2>
-              <p>Your meal uses the same amount of water as...</p>
-              {/*  */}
-              <p>and emits the same amount of carbon as...</p>
-              {/*  */}
-            </div>
-
-            {/* separate div for a scroll wheel */}
-            <div className={styles.infoCardsScroll}>
-              {/* insert foodprint info */}
-              <div
-                style={{
-                  width: "300px",
-                  height: "200px",
-                  border: "1px solid rgba(0,0,0,.25)",
-                }}
-              >
-                Test
-              </div>
-              <div
-                style={{
-                  width: "300px",
-                  height: "200px",
-                  border: "1px solid rgba(0,0,0,.25)",
-                }}
-              >
-                Test
-              </div>
-              <div
-                style={{
-                  width: "300px",
-                  height: "200px",
-                  border: "1px solid rgba(0,0,0,.25)",
-                }}
-              >
-                Test
-              </div>
-              <div
-                style={{
-                  width: "300px",
-                  height: "200px",
-                  border: "1px solid rgba(0,0,0,.25)",
-                }}
-              >
-                Test
-              </div>
-            </div>
-          </div>
+        {/*GERALD: here is where you can put the placeholder overall results card*/}
+        {/*THIS IS TO GO THROUGH EACH CALCULATED FOOD AND DISPLAY IT IN THE FOODRESULT COMPONENT*/}
+        <div className={styles.individualResultsContainer}>
+          <MainBanner foods={informationCards} numOfStars={totalStars} />
+          {informationCards.map((card) => (
+            <FoodResult key={card.id} currentFood={card} />
+          ))}
         </div>
       </div>
     </Layout>
   );
 };
+
+function FoodResult({ currentFood }) {
+  return (
+    <div className={styles.individualResultsCard}>
+      <div className={styles.imageAndFoodName}>
+        <img src={currentFood.imagePath} alt={currentFood.name} />
+        <h2 className={styles.currentFoodName}>{currentFood.name}</h2>
+      </div>
+      <div className={styles.AmountAndFootprint}>
+        {/* input serving size changes */}
+        {/* <div className={styles.amountBox}>
+          Amount
+          {AmountSelection()}
+        </div> */}
+        {AmountSelection()}
+        <div className={styles.footprintBox}>
+          <p className={styles.footprintText}>
+            Water Footprint: {currentFood.water_footprint}
+            <br></br> <br></br>
+            Carbon Footprint: {currentFood.carbon_footprint}
+            <p className={styles.footprintBoxBold}>
+              Total Footprint:
+              {currentFood.water_footprint + currentFood.carbon_footprint}
+            </p>
+          </p>
+        </div>
+      </div>
+      <div className={styles.nutritionAndFunFacts}>
+        <div className={styles.nutritionBox}>
+          <p className={styles.nutritionBoxTitle}>Nutrition Value</p>
+          <TotalStarsCalculation numOfStars={currentFood.stars} />
+        </div>
+        <div className={styles.funFactBox}>
+          <p className={styles.funFactText}> {currentFood.facts}</p>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 export default ResultsPage;

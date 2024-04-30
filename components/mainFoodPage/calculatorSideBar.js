@@ -31,6 +31,7 @@ export default function CalculatorSideBar({ onCalcClick }) {
 
   const foods = useCalculator();
   const calculatorFunctions = useCalculatorUpdate();
+
   return (
     <div className={styles.calculatorsidebarframe}>
       <div className={styles.myCalculatorHeader}>
@@ -55,9 +56,11 @@ export default function CalculatorSideBar({ onCalcClick }) {
         )}
       </div>
       <div className={styles.bottomButtonsContainer}>
-        <div className={styles.calculateButton} onClick={onCalcClick}>
-          calculate
-        </div>
+        {foods.length > 0 && (
+          <div className={styles.calculateButton} onClick={onCalcClick}>
+            calculate
+          </div>
+        )}
         <div
           className={styles.clearCalcButton}
           // onClick={calculatorFunctions.onClearCalculator}

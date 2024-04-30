@@ -134,9 +134,9 @@ const MainFoodCardsPage = () => {
             />
             <SearchBar handleSearch={handleSearch} handleReset={handleReset} />
             {/* Reset button to clear the input field */}
-            <button className={styles.resetButton} onClick={resetFilter}>
+            {/* <button className={styles.resetButton} onClick={resetFilter}>
               Reset
-            </button>
+            </button> */}
           </div>
           <FoodCards
             foods={foodCards}
