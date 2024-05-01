@@ -1,5 +1,5 @@
-// Import statements should be at the top
 import { useRouter } from "next/router";
+import { useCalculatorUpdate } from "../../context/calculatorContext"; 
 import styles from "./styles/header-footer.module.css";
 
 /*************************************************************************
@@ -9,13 +9,17 @@ import styles from "./styles/header-footer.module.css";
  *************************************************************************/
 function TopBar() {
   const router = useRouter();
+  const calculatorFunctions = useCalculatorUpdate();
 
-  const handleInformationClick = () => {
-    // Use the router to navigate to the information page or handle it as needed
-    router.push("/information");
-  };
+  // const handleInformationClick = () => {
+  //   // Use the router to navigate to the information page or handle it as needed
+  //   router.push("/information");
+  // };
 
   const handleHomeClick = () => {
+    // Clear the calculator state when the home button is clicked
+    calculatorFunctions.onClearCalculator();
+    
     // Use the router to navigate to the home page
     router.push("/");
   };
@@ -36,15 +40,15 @@ function TopBar() {
       </a>
       {router.pathname !== "/" && (
         <div className={styles.homebutton} onClick={handleHomeClick}>
-          <b>Home</b>
+        <b>Home</b>
         </div>
       )}
-      <div
+      {/* <div
         className={styles.informationbutton}
         onClick={handleInformationClick}
       >
         <b>Information</b>
-      </div>
+      </div> */}
     </div>
   );
 }
