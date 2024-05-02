@@ -1,45 +1,41 @@
-.amountBox {
-    font-family: Arial, sans-serif;
-    font-size: 38px;
-    width: 100%;
-    border-radius: 10px;
-    border: 2px solid black;
-    height: 130px;
-    margin-bottom: 10px;
-  
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-  }
-  
-.amountBoxSelectBtn{
-    width: 90px;
-    height: 90px;
+.amountBoxSelectBtn {
+  width: 85px;
+  height: 50px;
+  border: 2px solid black;
+  border-radius: 4px;
 }
-.modalBackground{
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.modalBackground {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.modalContent{
-    z-index: 10000;
-    width: auto;
-    height: auto;
-    padding: 50px;
-    background-color: white;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Shadow effect */
+.modalContent {
+  z-index: 10000;
+  width: auto;
+  height: auto;
+  padding: 50px;
+  background-color: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Shadow effect */
 }
-.servingSizeBtnsContainer{
-    display: flex;
-    justify-content: center;
+.servingSizeBtnsContainer {
+  display: flex;
+  justify-content: center;
 }
-.servingSizeBtn{
-    width: 150px;
-    height: 200px;
+.servingSizeBtn {
+  width: 150px;
+  height: 200px;
+}
+
+/*INPUT BOX STYLES*/
+.inputBox {
+  width: 90px;
+  height: 30px;
+  border: 2px solid black;
+  border-radius: 4px;
 }
