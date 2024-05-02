@@ -12,7 +12,8 @@ import Layout from "../components/layouts/layout";
 import CookedRawDropDown from "../components/resultsPage/cookedRawDropdown";
 import FoodCards from "../components/resultsPage/foodCards";
 import TotalStarsCalculation from "../components/resultsPage/starRating";
-import AmountSelection from "../components/resultsPage/amountSelection";
+import ServingSizeSelection from "../components/resultsPage/servingSizeSelection";
+import ServingAmountSelection from "../components/resultsPage/servingAmountSelection";
 
 import styles from "./styles/resultsPage.module.css";
 
@@ -44,7 +45,7 @@ const ResultsPage = () => {
   const fetchData = async () => {
     try {
       //function in database to fetch foods with color information
-      const { data, error } = await supabase.rpc("getdetailedinformation");
+      const { data, error } = await supabase.rpc("newgetdetailedinformation");
 
       if (error) {
         throw error;
@@ -55,9 +56,12 @@ const ResultsPage = () => {
         id: food.id,
         name: food.food_name,
         carbon_footprint: food.carbon_footprint,
+        carbon_footprint_rating: food.carbon_footprint_rating,
         water_footprint: food.water_footprint,
         facts: food.facts,
         stars: food.nutrition_stars,
+        serving_size: "half_cup",
+        serving_amount: 1,
       }));
       const completeInfo = informationArray.filter((info) =>
         calculatorItems.some((item) => item.id === info.id)
@@ -98,6 +102,28 @@ const ResultsPage = () => {
   //   setCookedRawFilter(val);
   // }, []);
 
+  const updateServingSize = (foodId, servingSize) => {
+    const updatedCards = informationCards.map((card) => {
+      if (card.id === foodId) {
+        return { ...card, serving_size: servingSize };
+      } else {
+        return card;
+      }
+    });
+    setInformationCards(updatedCards);
+  };
+
+  const updateServingAmount = (foodId, servingAmount) => {
+    const updatedCards = informationCards.map((card) => {
+      if (card.id === foodId) {
+        return { ...card, serving_amount: servingAmount };
+      } else {
+        return card;
+      }
+    });
+    setInformationCards(updatedCards);
+  };
+
   return (
     <Layout>
       {/* THIS IS FOR THE TOP BAR W/ BACK BUTTON AND NEW CALCULATION BUTTON*/}
@@ -117,12 +143,16 @@ const ResultsPage = () => {
             </div>
           </div>
         </div>
-        {/*GERALD: here is where you can put the placeholder overall results card*/}
         {/*THIS IS TO GO THROUGH EACH CALCULATED FOOD AND DISPLAY IT IN THE FOODRESULT COMPONENT*/}
         <div className={styles.individualResultsContainer}>
           <MainBanner foods={informationCards} numOfStars={totalStars} />
           {informationCards.map((card) => (
-            <FoodResult key={card.id} currentFood={card} />
+            <FoodResult
+              key={card.id}
+              currentFood={card}
+              updateServingSize={updateServingSize}
+              updateServingAmount={updateServingAmount}
+            />
           ))}
         </div>
       </div>
@@ -130,7 +160,53 @@ const ResultsPage = () => {
   );
 };
 
-function FoodResult({ currentFood }) {
+function FoodResult({ currentFood, updateServingSize, updateServingAmount }) {
+  //this function returns how many half cups the amount is that the user inputs
+  function servingSizeConversion(servingSize, servingAmount, waterFootprint) {
+    let finalVal = 0;
+    //this switch case finds how big the servingsize is in comparison to a half cup
+    switch (servingSize) {
+      case "half_teaspoon":
+        finalVal = 1 / 48;
+        break;
+      case "teaspoon":
+        finalVal = 1 / 24;
+        break;
+      case "tablespoon":
+        finalVal = 1 / 8;
+        break;
+      case "third_cup":
+        finalVal = 2 / 3;
+        break;
+      case "half_cup":
+        finalVal = 1;
+        break;
+      case "cup":
+        finalVal = 2;
+        break;
+      default:
+        finalVal = 1;
+    }
+    finalVal *= servingAmount;
+    let roundedVal = Math.round(finalVal * waterFootprint * 100) / 100;
+    return roundedVal;
+  }
+
+  function ChooseColor(carbonRating) {
+    switch (carbonRating) {
+      case "very low":
+        return { color: "lightgreen" };
+      case "low":
+        return { color: "greenyellow" };
+      case "medium":
+        return { color: "orange" };
+      case "high":
+        return { color: "red" };
+      default:
+        return { color: "black" };
+    }
+  }
+
   return (
     <div className={styles.individualResultsCard}>
       <div className={styles.imageAndFoodName}>
@@ -138,21 +214,36 @@ function FoodResult({ currentFood }) {
         <h2 className={styles.currentFoodName}>{currentFood.name}</h2>
       </div>
       <div className={styles.AmountAndFootprint}>
-        {/* input serving size changes */}
-        {/* <div className={styles.amountBox}>
-          Amount
-          {AmountSelection()}
-        </div> */}
-        {AmountSelection()}
+        <div className={styles.amountBox}>
+          <p className={styles.nutritionBoxTitle}>Amount</p>
+          <div className={styles.amountInput}>
+            <ServingAmountSelection
+              curFood={currentFood}
+              updateServingAmount={updateServingAmount}
+            />
+            <p className={styles.servingsOfText}>serving(s) of</p>
+            <ServingSizeSelection
+              curFood={currentFood}
+              updateServingSize={updateServingSize}
+            />
+          </div>
+        </div>
         <div className={styles.footprintBox}>
-          <p className={styles.footprintText}>
-            Water Footprint: {currentFood.water_footprint}
-            <br></br> <br></br>
-            Carbon Footprint: {currentFood.carbon_footprint}
-            <p className={styles.footprintBoxBold}>
-              Total Footprint:
-              {currentFood.water_footprint + currentFood.carbon_footprint}
-            </p>
+          <p className={styles.footprintText}>Water Footprint </p>
+          <p className={styles.waterFootprintText}>
+            {servingSizeConversion(
+              currentFood.serving_size,
+              currentFood.serving_amount,
+              currentFood.water_footprint
+            )}{" "}
+            gallon(s)
+          </p>
+          <p className={styles.footprintText}>Carbon Footprint</p>
+          <p
+            className={styles.carbonFootprintText}
+            style={ChooseColor(currentFood.carbon_footprint_rating)}
+          >
+            {currentFood.carbon_footprint_rating}
           </p>
         </div>
       </div>

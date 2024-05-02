@@ -74,36 +74,61 @@
   width: 50%;
 }
 
-/* .amountBox {
+.amountBox {
   font-family: Arial, sans-serif;
   font-size: 38px;
   width: 100%;
   border-radius: 10px;
   border: 2px solid black;
-  height: 130px;
+  height: 121px;
   margin-bottom: 10px;
 
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-evenly;
-} */
+  justify-content: flex-start;
+  text-align: center;
+  padding-top: 9px;
+}
 
+.amountInput {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+}
 
 .footprintBox {
   width: 100%;
   border-radius: 10px;
   border: 2px solid black;
   height: 200px;
+  text-align: center;
 }
 
 .footprintText {
+  font-family: Arial, sans-serif;
   padding-left: 7px;
   padding-right: 2px;
   margin-top: 7px;
+  font-size: 25px;
 }
 
 .footprintBoxBold {
   font-weight: bold;
+}
+
+.waterFootprintText {
+  font-family: Arial, sans-serif;
+  color: rgb(40, 136, 196);
+  font-size: 20px;
+}
+
+.carbonFootprintText {
+  font-family: Arial, sans-serif;
+  font-size: 20px;
 }
 
 .nutritionAndFunFacts {
@@ -167,4 +192,10 @@
 }
 .currentFoodName {
   color: grey;
+}
+
+.servingsOfText {
+  font-size: 20px;
+  margin-bottom: 10px;
+  color: black;
 }
