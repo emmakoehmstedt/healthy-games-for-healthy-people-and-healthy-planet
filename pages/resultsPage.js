@@ -124,44 +124,6 @@ const ResultsPage = () => {
     setInformationCards(updatedCards);
   };
 
-  return (
-    <Layout>
-      {/* THIS IS FOR THE TOP BAR W/ BACK BUTTON AND NEW CALCULATION BUTTON*/}
-      <div className={styles.resultsContainer}>
-        <div style={{ marginLeft: "1%" }} className={styles.topBtnBar}>
-          <div onClick={onBackClick}>
-            <div className={styles.topBtnsBar}>
-              <b className={styles.backBtn}>⬅ Back</b>
-            </div>
-            {/* we have to make sure the data between the mainFoodPage and resultsPage is consistent/same */}
-          </div>
-          <div className={styles.topBtnBarSubDiv}>
-            <div className={styles.topBtnsBar} onClick={onBackClick}>
-              <b className={styles.newCalculationBtn} onClick={onNewCalcClick}>
-                New Calculation
-              </b>
-            </div>
-          </div>
-        </div>
-        {/*THIS IS TO GO THROUGH EACH CALCULATED FOOD AND DISPLAY IT IN THE FOODRESULT COMPONENT*/}
-        <div className={styles.individualResultsContainer}>
-          <MainBanner foods={informationCards} numOfStars={totalStars} />
-          {informationCards.map((card) => (
-            <FoodResult
-              key={card.id}
-              currentFood={card}
-              updateServingSize={updateServingSize}
-              updateServingAmount={updateServingAmount}
-            />
-          ))}
-        </div>
-      </div>
-    </Layout>
-  );
-};
-
-function FoodResult({ currentFood, updateServingSize, updateServingAmount }) {
-  //this function returns how many half cups the amount is that the user inputs
   function servingSizeConversion(servingSize, servingAmount, waterFootprint) {
     let finalVal = 0;
     //this switch case finds how big the servingsize is in comparison to a half cup
@@ -191,6 +153,55 @@ function FoodResult({ currentFood, updateServingSize, updateServingAmount }) {
     let roundedVal = Math.round(finalVal * waterFootprint * 100) / 100;
     return roundedVal;
   }
+
+  return (
+    <Layout>
+      {/* THIS IS FOR THE TOP BAR W/ BACK BUTTON AND NEW CALCULATION BUTTON*/}
+      <div className={styles.resultsContainer}>
+        <div style={{ marginLeft: "1%" }} className={styles.topBtnBar}>
+          <div onClick={onBackClick}>
+            <div className={styles.topBtnsBar}>
+              <b className={styles.backBtn}>⬅ Back</b>
+            </div>
+            {/* we have to make sure the data between the mainFoodPage and resultsPage is consistent/same */}
+          </div>
+          <div className={styles.topBtnBarSubDiv}>
+            <div className={styles.topBtnsBar} onClick={onBackClick}>
+              <b className={styles.newCalculationBtn} onClick={onNewCalcClick}>
+                New Calculation
+              </b>
+            </div>
+          </div>
+        </div>
+        {/*THIS IS TO GO THROUGH EACH CALCULATED FOOD AND DISPLAY IT IN THE FOODRESULT COMPONENT*/}
+        <div className={styles.individualResultsContainer}>
+          <MainBanner
+            foods={informationCards}
+            numOfStars={totalStars}
+            servingSizeConversion={servingSizeConversion}
+          />
+          {informationCards.map((card) => (
+            <FoodResult
+              key={card.id}
+              currentFood={card}
+              updateServingSize={updateServingSize}
+              updateServingAmount={updateServingAmount}
+              servingSizeConversion={servingSizeConversion}
+            />
+          ))}
+        </div>
+      </div>
+    </Layout>
+  );
+};
+
+function FoodResult({
+  currentFood,
+  updateServingSize,
+  updateServingAmount,
+  servingSizeConversion,
+}) {
+  //this function returns how many half cups the amount is that the user inputs
 
   function ChooseColor(carbonRating) {
     switch (carbonRating) {
