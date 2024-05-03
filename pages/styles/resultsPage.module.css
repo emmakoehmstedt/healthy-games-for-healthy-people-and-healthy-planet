@@ -199,3 +199,52 @@
   margin-bottom: 10px;
   color: black;
 }
+
+.legend {
+  margin-top: 20px;
+  text-align: center; /* Center the text */
+}
+
+.legendText {
+  font-weight: bold;  
+  font-family: Arial, sans-serif;
+  font-size: 36px;
+}
+
+.legendItems {
+  display: flex;
+  justify-content: center; /* Center the items horizontally */
+  margin-top: 10px;
+}
+
+.legendItem {
+  display: flex;
+  align-items: center;
+  margin-right: 20px;
+}
+
+.legendColor {
+  width: 40px;
+  height: 20px;
+  margin-right: 5px;
+}
+
+.legendDescription {
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+}
+
+.colorDisplay {
+  width: 75%;
+  margin: 20px auto; /* Center horizontally */
+  display: flex;
+  height: 20px;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+
+.colorSegment {
+  height: 100%;
+}
+

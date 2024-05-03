@@ -15,6 +15,8 @@ import TotalStarsCalculation from "../components/resultsPage/starRating";
 import ServingSizeSelection from "../components/resultsPage/servingSizeSelection";
 import ServingAmountSelection from "../components/resultsPage/servingAmountSelection";
 
+import colorStyles from "../components/resultsPage/styles/colorMeter.module.css"
+
 import styles from "./styles/resultsPage.module.css";
 
 /*************************************************************************
@@ -154,6 +156,15 @@ const ResultsPage = () => {
     return roundedVal;
   }
 
+  // Define some sample colors
+  const colors = ["#FF0000", "#FFA500", "#FFFF00", "#90EE90", "#008000"];
+  // Define corresponding values (just for demonstration)
+  const values = [1, 2, 3, 4, 5]; // These values should add up to 100%
+
+  // Calculate total value
+  const totalValue = values.reduce((acc, value) => acc + value, 0);
+
+
   return (
     <Layout>
       {/* THIS IS FOR THE TOP BAR W/ BACK BUTTON AND NEW CALCULATION BUTTON*/}
@@ -165,6 +176,7 @@ const ResultsPage = () => {
             </div>
             {/* we have to make sure the data between the mainFoodPage and resultsPage is consistent/same */}
           </div>
+          
           <div className={styles.topBtnBarSubDiv}>
             <div className={styles.topBtnsBar} onClick={onBackClick}>
               <b className={styles.newCalculationBtn} onClick={onNewCalcClick}>
@@ -173,12 +185,54 @@ const ResultsPage = () => {
             </div>
           </div>
         </div>
+     {/* Color bar legend */}
+     <div className={styles.legend}>
+  <p className={styles.legendText}>Star Ratings:</p>
+  <div className={styles.legendItems}>
+    <div className={styles.legendItem}>
+      <div className={styles.legendColor} style={{ backgroundColor: colors[0] }}></div>
+      <p className={styles.legendDescription}>{"<"} 20% of Stars</p>
+    </div>
+    <div className={styles.legendItem}>
+      <div className={styles.legendColor} style={{ backgroundColor: colors[1] }}></div>
+      <p className={styles.legendDescription}>{"<"} 40% of Stars</p>
+    </div>
+    <div className={styles.legendItem}>
+      <div className={styles.legendColor} style={{ backgroundColor: colors[2] }}></div>
+      <p className={styles.legendDescription}>{"<"} 60% of Stars</p>
+    </div>
+    <div className={styles.legendItem}>
+      <div className={styles.legendColor} style={{ backgroundColor: colors[3] }}></div>
+      <p className={styles.legendDescription}>{"<"} 80% of Stars</p>
+    </div>
+    <div className={styles.legendItem}>
+      <div className={styles.legendColor} style={{ backgroundColor: colors[4] }}></div>
+      <p className={styles.legendDescription}>{">"} 80% of Stars</p>
+    </div>
+  </div>
+</div>
+
+        {/* Color bar */}
+        <div className={styles.colorDisplay}>
+          {values.map((value, index) => (
+            <div
+              key={index}
+              className={styles.colorSegment}
+              style={{
+                backgroundColor: colors[index],
+                width: `${(value / totalValue) * 100}%`
+              }}
+            ></div>
+          ))}
+        </div>
         {/*THIS IS TO GO THROUGH EACH CALCULATED FOOD AND DISPLAY IT IN THE FOODRESULT COMPONENT*/}
         <div className={styles.individualResultsContainer}>
+         {/* <ColorDisplay colors={colors} values={values} /> */}
           <MainBanner
             foods={informationCards}
             numOfStars={totalStars}
             servingSizeConversion={servingSizeConversion}
+            maxStars={informationCards.length * 5}
           />
           {informationCards.map((card) => (
             <FoodResult
