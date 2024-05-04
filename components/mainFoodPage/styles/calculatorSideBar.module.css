@@ -110,8 +110,9 @@
   margin-bottom: 10px;
 }
 
-.calculateButton,
-.clearCalcButton {
+/* .calculateButton,
+.clearCalcButton { */
+.calculateButton{
   height: 50px;
   width: 95%;
   padding: 10px;
@@ -128,7 +129,7 @@
 .calculateButton {
   background-color: #83c41a9c;
 }
-
+/* 
 .clearCalcButton {
   background-color: #c44d1a9c;
-}
+} */

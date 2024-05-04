@@ -43,9 +43,12 @@ export default function CalculatorSideBar({ onCalcClick }) {
       </div>
       <div className={styles.bottomButtonsContainer}>
         {foods.length > 0 && (
-          <div className={styles.calculateButton} onClick={onCalcClick}>
+          // <div className={styles.calculateButton} onClick={onCalcClick}>
+          //   calculate
+          // </div>
+          <button className={styles.calculateButton} onClick={onCalcClick}>
             calculate
-          </div>
+          </button>
         )}
         {CalcErrorPrevent()}
       </div>

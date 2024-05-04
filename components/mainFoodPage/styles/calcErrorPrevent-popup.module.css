@@ -68,8 +68,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 1px solid rgba(0, 0, 0, 0.16); /* Thin black border */
-    font-size: 25px;
+    border: 1px solid rgba(0, 0, 0, 0.16);
+    font-size: 35px;
     cursor: pointer;
     background-color: #c44d1a9c;
+    min-width: 323px;
+    white-space: nowrap;
 }
