@@ -8,6 +8,6 @@
     text-align: center;
     font-size: var(--font-size-xl);
     color: var(--color-black);
-    font-family: var(--font-calibri);
+    font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
   }
   

@@ -1,6 +1,7 @@
 /*LAYOUT CONTAINER*/
 .layoutContainer {
   display: flex;
+  
   flex-direction: column;
   min-height: 100vh; /*make sure height is at least as tall as the screen*/
 }
@@ -25,6 +26,7 @@
   margin-left: auto;
   margin-right: 6%; /* Adjust the margin-right as needed */
   cursor: pointer;
+  font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
 }
 
 .informationbutton {
@@ -39,6 +41,7 @@
   position: relative;
   margin-right: 1%;
   cursor: pointer;
+  font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
 }
 
 .headerframe {
@@ -72,6 +75,7 @@
   flex-shrink: 0;
   font-size: var(--font-size-7xl);
   color: var(--color-orangered);
+  font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
 }
 
 .footerInfoContainer {
@@ -100,6 +104,8 @@
   align-items: center;
   justify-content: center;
   width: 368px;
+  font-size: x-large;
+  font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
 }
 .oregonStateUniversitys {
   top: 265px;

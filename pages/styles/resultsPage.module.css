@@ -3,6 +3,7 @@
   min-height: calc(100vh - 123px);
   background-color: rgb(228, 228, 228);
   padding-bottom: 50px;
+  font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
 }
 
 /*STYLES FOR TOP BAR WITH BACK BUTTON AND NEW CALCULATION BUTTON*/
@@ -75,7 +76,7 @@
 }
 
 .amountBox {
-  font-family: Arial, sans-serif;
+  font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
   font-size: 38px;
   width: 100%;
   border-radius: 10px;
@@ -109,7 +110,7 @@
 }
 
 .footprintText {
-  font-family: Arial, sans-serif;
+  font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
   padding-left: 7px;
   padding-right: 2px;
   margin-top: 7px;
@@ -121,13 +122,13 @@
 }
 
 .waterFootprintText {
-  font-family: Arial, sans-serif;
+  font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
   color: rgb(40, 136, 196);
   font-size: 20px;
 }
 
 .carbonFootprintText {
-  font-family: Arial, sans-serif;
+  font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
   font-size: 20px;
 }
 
@@ -150,7 +151,7 @@
 }
 
 .nutritionBoxTitle {
-  font-family: Arial, sans-serif;
+  font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
   font-size: 38px;
   text-decoration: underline;
   height: 50px;
@@ -207,12 +208,13 @@
 
 .legendText {
   font-weight: bold;  
-  font-family: Arial, sans-serif;
+  font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
   font-size: 36px;
 }
 
 .legendItems {
   display: flex;
+  font-weight: bold;  
   justify-content: center; /* Center the items horizontally */
   margin-top: 10px;
 }
@@ -230,7 +232,7 @@
 }
 
 .legendDescription {
-  font-family: Arial, sans-serif;
+  font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
   font-size: 16px;
 }
 
