@@ -44,6 +44,10 @@ const MainFoodCardsPage = () => {
       if (error) {
         throw error;
       }
+
+      // Sort the data alphabetically by food_name
+      const sortedData = data.sort((a, b) => a.food_name.localeCompare(b.food_name));
+
       //map each food to its own object
       const foodsArray = data.map((food) => ({
         id: food.id,

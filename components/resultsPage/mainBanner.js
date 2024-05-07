@@ -1,12 +1,25 @@
 import React from "react";
-
 import ColorMeter from "./colorMeter";
-
 import styles from "./styles/mainBanner.module.css";
 
 const MainBanner = ({ foods, numOfStars, servingSizeConversion }) => {
-  const colors = ["#FF0000", "#FFA500", "#FFFF00", "#90EE90", "#008000"];
-  const values = [1, 2, 3, 4, 5];
+  const maxStars = foods.length * 5;
+
+  const starPercentage = (numOfStars / maxStars) * 100;
+  let color;
+  if (starPercentage <= 19) {
+    color = "red";
+  } else if (starPercentage <= 39) {
+    color = "orange";
+  } else if (starPercentage <= 59) {
+    color = "yellow";
+  } else if (starPercentage <= 79) {
+    color = "lightgreen";
+  } else {
+    color = "green";
+  }
+
+  const totalStarsText = `${Math.floor(numOfStars)}/${maxStars} Stars`;
 
   function TotalWaterFootprint() {
     let totalGallons = 0;
@@ -34,7 +47,9 @@ const MainBanner = ({ foods, numOfStars, servingSizeConversion }) => {
         ))}
       </div>
       <div>
-        <ColorMeter colors={colors} values={values} />
+      <div>
+        <ColorMeter colors={[color]} value={starPercentage} />
+      </div>
       </div>
       <div className={styles.contentBottom}>
         <h2 className={styles.currentFoodName}>Your Meal</h2>
@@ -44,7 +59,7 @@ const MainBanner = ({ foods, numOfStars, servingSizeConversion }) => {
         </div>
         <div className={styles.totalStars}>
           <div className={styles.largeStar}>Nutrition ⭐</div>
-          <h1>{Math.floor(numOfStars)} stars!</h1>
+          <h1>{Math.floor(numOfStars)} / {maxStars} stars!</h1>
         </div>
       </div>
     </div>
