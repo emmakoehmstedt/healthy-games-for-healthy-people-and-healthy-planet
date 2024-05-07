@@ -112,8 +112,9 @@
   margin-bottom: 10px;
 }
 
-.calculateButton,
-.clearCalcButton {
+/* .calculateButton,
+.clearCalcButton { */
+.calculateButton{
   height: 50px;
   width: 95%;
   padding: 10px;
@@ -124,12 +125,13 @@
   justify-content: center;
   border: 1px solid rgba(0, 0, 0, 0.16); /* Thin black border */
   font-size: 35px;
+  cursor: pointer;
 }
 
 .calculateButton {
   background-color: #83c41a9c;
 }
-
+/* 
 .clearCalcButton {
   background-color: #c44d1a9c;
-}
+} */

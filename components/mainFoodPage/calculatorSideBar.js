@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
 import styles from "./styles/calculatorSideBar.module.css";
@@ -5,6 +6,7 @@ import {
   useCalculator,
   useCalculatorUpdate,
 } from "../../context/calculatorContext";
+import CalcErrorPrevent from "./calcErrorPrevent-popup";
 
 /*************************************************************************
  * Component: CalculatorSideBar
@@ -14,7 +16,7 @@ import {
  *************************************************************************/
 export default function CalculatorSideBar({ onCalcClick }) {
   const foods = useCalculator();
-  const calculatorFunctions = useCalculatorUpdate();
+  // const calculatorFunctions = useCalculatorUpdate();
 
   return (
     <div className={styles.calculatorsidebarframe}>
@@ -41,16 +43,14 @@ export default function CalculatorSideBar({ onCalcClick }) {
       </div>
       <div className={styles.bottomButtonsContainer}>
         {foods.length > 0 && (
-          <div className={styles.calculateButton} onClick={onCalcClick}>
+          // <div className={styles.calculateButton} onClick={onCalcClick}>
+          //   calculate
+          // </div>
+          <button className={styles.calculateButton} onClick={onCalcClick}>
             calculate
-          </div>
+          </button>
         )}
-        <div
-          className={styles.clearCalcButton}
-          onClick={calculatorFunctions.onClearCalculator}
-        >
-          clear calculation
-        </div>
+        {CalcErrorPrevent()}
       </div>
     </div>
   );
