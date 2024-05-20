@@ -10,4 +10,19 @@
     color: var(--color-black);
     font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
   }
+
+  
+
+  .purposeFrame {
+    width: 100%;
+    min-height: 200px;
+    overflow: hidden;
+    flex-shrink: 0;
+    font-size: 21px;
+  }
+
+  .purposeTextContainer {
+    white-space: pre-wrap;
+  }
+  
   

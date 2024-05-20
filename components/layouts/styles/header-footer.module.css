@@ -116,3 +116,57 @@
   height: 100px;
   text-align: center;
 }
+
+.authorAndContributorContainer {
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex;
+}
+
+.authorAndContibutorText {
+
+  font-size: var(--font-size-xl);
+  color: var(--color-white);
+  font-weight: bold;
+  margin: 10px;
+
+}
+
+.authorAndContibutorMemberText {
+  font-size: var(--font-size-xl);
+  color: var(--color-white);
+  margin: 10px;
+
+}
+
+.communityContainer {
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex;
+}
+
+.communityTextBold {
+  font-size: var(--font-size-xl);
+  color: var(--color-white);
+  margin: 10px;
+  font-weight: bold;
+
+
+}
+
+.communityText {
+  font-size: var(--font-size-xl);
+  color: var(--color-white);
+  margin: 10px;
+
+}
+
+.feedbackLink {
+  text-decoration: none; 
+  font-size: var(--font-size-xl);
+  color: var(--color-orangered);
+}
