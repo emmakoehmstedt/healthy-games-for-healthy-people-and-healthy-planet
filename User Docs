@@ -1,6 +1,43 @@
-Navigate to https://capstone-deployment-test-topaz.vercel.app/
-User is presented with a home page. Click on the “Calculator” button to navigate to the food selection page.
-The user clicks on the “+” button of the foods the user would like to add.
-After the user has added all the foods they would like to put in their meal, the user can click the “calculate” button to be taken to the results page.
-The user can now see their result and edit the serving sizes of their ingredients.
-The user can press the “Back” or “New Calculation” buttons to be taken back to the previous page or the “Home” button to go home.
+Project Description
+
+The Food Calculator is an educational tool designed to teach children about nutrition and climate advocacy. Users can enter food ingredients from a meal to calculate the carbon footprint, water footprint, and nutrition score of the meal.
+
+How to Use
+
+Navigate to the Application
+Visit: Food Calculator
+
+Home Page
+On the home page, click the “Calculator” button to proceed to the food selection page.
+
+Select Foods
+Click the “+” button next to the foods you want to add to your meal.
+
+Calculate
+After adding all the desired foods, click the “Calculate” button to view the results.
+
+View and Edit Results
+On the results page, you can see the calculated footprints and nutrition score. You can also edit the serving sizes of the ingredients.
+
+Navigation
+
+Click “Back” to return to the previous page.
+Click “New Calculation” to start a new calculation.
+Click “Home” to return to the home page.
+About Us: Games for Healthy People and Healthy Planet
+
+We are a team of faculty and students from Oregon State University. The Food Calculator is a collaborative effort led by:
+
+Dr. Siew Sun Wong (College of Nutrition)
+Dr. Sharon Shen (College of Forestry)
+The project team also includes five senior Computer Science students at OSU.
+
+Contact
+
+For more information or inquiries, please contact:
+
+Emma Koehmstedt: koehmste@oregonstate.edu
+Garrett Berliner: berlineg@oregonstate.edu
+Gerald Hendrix: hendrige@oregonstate.edu
+Kyu Sung Kwon: kwonk@oregonstate.edu
+Mitch Stephenson: stephean@oregonstate.edu
