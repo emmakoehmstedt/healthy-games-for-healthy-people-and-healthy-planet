@@ -1,0 +1,6 @@
+Navigate to https://capstone-deployment-test-topaz.vercel.app/
+User is presented with a home page. Click on the “Calculator” button to navigate to the food selection page.
+The user clicks on the “+” button of the foods the user would like to add.
+After the user has added all the foods they would like to put in their meal, the user can click the “calculate” button to be taken to the results page.
+The user can now see their result and edit the serving sizes of their ingredients.
+The user can press the “Back” or “New Calculation” buttons to be taken back to the previous page or the “Home” button to go home.
