@@ -1,5 +1,7 @@
 import React from "react";
 import ColorMeter from "./colorMeter";
+import Image from "next/image";
+
 import styles from "./styles/mainBanner.module.css";
 
 const MainBanner = ({ foods, numOfStars, servingSizeConversion }) => {
@@ -38,18 +40,20 @@ const MainBanner = ({ foods, numOfStars, servingSizeConversion }) => {
     <div className={styles.mainBanner}>
       <div className={styles.imageColumn}>
         {foods.map((food) => (
-          <img
+          <Image
             key={food.id}
             className={styles.foodImage}
-            src={food.imagePath}
+            src={`/${food.imagePath}`}
             alt={food.name}
+            width={470}
+            height={520}
           />
         ))}
       </div>
       <div>
-      <div>
-        <ColorMeter colors={[color]} value={starPercentage} />
-      </div>
+        <div>
+          <ColorMeter colors={[color]} value={starPercentage} />
+        </div>
       </div>
       <div className={styles.contentBottom}>
         <h2 className={styles.currentFoodName}>Your Meal</h2>
@@ -59,7 +63,9 @@ const MainBanner = ({ foods, numOfStars, servingSizeConversion }) => {
         </div>
         <div className={styles.totalStars}>
           <div className={styles.largeStar}>Nutrition ⭐</div>
-          <h1>{Math.floor(numOfStars)} / {maxStars} stars!</h1>
+          <h1>
+            {Math.floor(numOfStars)} / {maxStars} stars!
+          </h1>
         </div>
       </div>
     </div>

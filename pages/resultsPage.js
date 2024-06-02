@@ -14,8 +14,8 @@ import FoodCards from "../components/resultsPage/foodCards";
 import TotalStarsCalculation from "../components/resultsPage/starRating";
 import ServingSizeSelection from "../components/resultsPage/servingSizeSelection";
 import ServingAmountSelection from "../components/resultsPage/servingAmountSelection";
-
-import colorStyles from "../components/resultsPage/styles/colorMeter.module.css"
+import Image from "next/image";
+import colorStyles from "../components/resultsPage/styles/colorMeter.module.css";
 
 import styles from "./styles/resultsPage.module.css";
 
@@ -41,7 +41,7 @@ const ResultsPage = () => {
   const onNewCalcClick = useCallback(() => {
     calculatorFunctions.onClearCalculator();
     router.push("/mainFoodPage");
-  }, [router]);
+  }, [calculatorFunctions, router]);
 
   //function to fetch foods with color information
   const fetchData = async () => {
@@ -97,6 +97,7 @@ const ResultsPage = () => {
 
   useEffect(() => {
     fetchData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // const onCookedRawDropdownFrameContainerClick = useCallback((val) => {
@@ -164,7 +165,6 @@ const ResultsPage = () => {
   // Calculate total value
   const totalValue = values.reduce((acc, value) => acc + value, 0);
 
-
   return (
     <Layout>
       {/* THIS IS FOR THE TOP BAR W/ BACK BUTTON AND NEW CALCULATION BUTTON*/}
@@ -176,7 +176,7 @@ const ResultsPage = () => {
             </div>
             {/* we have to make sure the data between the mainFoodPage and resultsPage is consistent/same */}
           </div>
-          
+
           <div className={styles.topBtnBarSubDiv}>
             <div className={styles.topBtnsBar} onClick={onBackClick}>
               <b className={styles.newCalculationBtn} onClick={onNewCalcClick}>
@@ -185,32 +185,47 @@ const ResultsPage = () => {
             </div>
           </div>
         </div>
-     {/* Color bar legend */}
-     <div className={styles.legend}>
-  <p className={styles.legendText}>Star Ratings:</p>
-  <div className={styles.legendItems}>
-    <div className={styles.legendItem}>
-      <div className={styles.legendColor} style={{ backgroundColor: colors[0] }}></div>
-      <p className={styles.legendDescription}>{"<"} 20% of Stars</p>
-    </div>
-    <div className={styles.legendItem}>
-      <div className={styles.legendColor} style={{ backgroundColor: colors[1] }}></div>
-      <p className={styles.legendDescription}>{"<"} 40% of Stars</p>
-    </div>
-    <div className={styles.legendItem}>
-      <div className={styles.legendColor} style={{ backgroundColor: colors[2] }}></div>
-      <p className={styles.legendDescription}>{"<"} 60% of Stars</p>
-    </div>
-    <div className={styles.legendItem}>
-      <div className={styles.legendColor} style={{ backgroundColor: colors[3] }}></div>
-      <p className={styles.legendDescription}>{"<"} 80% of Stars</p>
-    </div>
-    <div className={styles.legendItem}>
-      <div className={styles.legendColor} style={{ backgroundColor: colors[4] }}></div>
-      <p className={styles.legendDescription}>{">"} 80% of Stars</p>
-    </div>
-  </div>
-</div>
+        {/* Color bar legend */}
+        <div className={styles.legend}>
+          <p className={styles.legendText}>Star Ratings:</p>
+          <div className={styles.legendItems}>
+            <div className={styles.legendItem}>
+              <div
+                className={styles.legendColor}
+                style={{ backgroundColor: colors[0] }}
+              ></div>
+              <p className={styles.legendDescription}>{"<"} 20% of Stars</p>
+            </div>
+            <div className={styles.legendItem}>
+              <div
+                className={styles.legendColor}
+                style={{ backgroundColor: colors[1] }}
+              ></div>
+              <p className={styles.legendDescription}>{"<"} 40% of Stars</p>
+            </div>
+            <div className={styles.legendItem}>
+              <div
+                className={styles.legendColor}
+                style={{ backgroundColor: colors[2] }}
+              ></div>
+              <p className={styles.legendDescription}>{"<"} 60% of Stars</p>
+            </div>
+            <div className={styles.legendItem}>
+              <div
+                className={styles.legendColor}
+                style={{ backgroundColor: colors[3] }}
+              ></div>
+              <p className={styles.legendDescription}>{"<"} 80% of Stars</p>
+            </div>
+            <div className={styles.legendItem}>
+              <div
+                className={styles.legendColor}
+                style={{ backgroundColor: colors[4] }}
+              ></div>
+              <p className={styles.legendDescription}>{">"} 80% of Stars</p>
+            </div>
+          </div>
+        </div>
 
         {/* Color bar */}
         <div className={styles.colorDisplay}>
@@ -220,14 +235,14 @@ const ResultsPage = () => {
               className={styles.colorSegment}
               style={{
                 backgroundColor: colors[index],
-                width: `${(value / totalValue) * 100}%`
+                width: `${(value / totalValue) * 100}%`,
               }}
             ></div>
           ))}
         </div>
         {/*THIS IS TO GO THROUGH EACH CALCULATED FOOD AND DISPLAY IT IN THE FOODRESULT COMPONENT*/}
         <div className={styles.individualResultsContainer}>
-         {/* <ColorDisplay colors={colors} values={values} /> */}
+          {/* <ColorDisplay colors={colors} values={values} /> */}
           <MainBanner
             foods={informationCards}
             numOfStars={totalStars}
@@ -275,7 +290,12 @@ function FoodResult({
   return (
     <div className={styles.individualResultsCard}>
       <div className={styles.imageAndFoodName}>
-        <img src={currentFood.imagePath} alt={currentFood.name} />
+        <Image
+          src={`/${currentFood.imagePath}`}
+          alt={currentFood.name}
+          width={470}
+          height={520}
+        />
         <h2 className={styles.currentFoodName}>{currentFood.name}</h2>
       </div>
       <div className={styles.AmountAndFootprint}>

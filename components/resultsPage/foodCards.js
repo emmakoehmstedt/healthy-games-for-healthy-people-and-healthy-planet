@@ -1,4 +1,5 @@
 import styles from "./styles/foodCards.module.css";
+import Image from "next/image";
 
 /*************************************************************************
  * Component: FoodCards
@@ -33,7 +34,13 @@ function FoodCard({ id, name }) {
   const imagePath = food.image;
   return (
     <div className={styles.foodcard}>
-      <img className={styles.foodcardimage} src={`/${imagePath}`} alt={name} />
+      <Image
+        className={styles.foodcardimage}
+        src={`/${imagePath}`}
+        alt={name}
+        width={470}
+        height={520}
+      />
       <p>{name}</p>
       <p>{food.facts}</p>
     </div>

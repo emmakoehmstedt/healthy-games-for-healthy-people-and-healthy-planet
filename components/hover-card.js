@@ -1,4 +1,5 @@
 import styles from "./hover-card.module.css";
+import Image from "next/image";
 
 const HoverCard = () => {
   return (
@@ -7,10 +8,12 @@ const HoverCard = () => {
       <div className={styles.addToCalculatorButton}>
         <div className={styles.addToCalculatorRectangle} />
         <b className={styles.addToCalculator}>Add to Calculator</b>
-        <img
+        <Image
           className={styles.calculatorIcon}
           alt=""
           src="/calculator-icon@2x.png"
+          height={100}
+          width={100}
         />
       </div>
       <div className={styles.informationButton}>

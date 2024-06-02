@@ -5,6 +5,7 @@ import {
   useCalculator,
   useCalculatorUpdate,
 } from "../../context/calculatorContext";
+import Image from "next/image";
 
 /*************************************************************************
  * Component: CalculatorSideBar
@@ -19,10 +20,12 @@ export default function CalculatorSideBar({ onCalcClick }) {
   return (
     <div className={styles.calculatorsidebarframe}>
       <div className={styles.myCalculatorHeader}>
-        <img
+        <Image
           className={styles.calculatoricon}
-          alt=""
           src="/calculatorIcon.png"
+          alt={""}
+          width={100}
+          height={100}
         />
         <b className={styles.myCalculatorTitle}>My Calculator</b>
       </div>
@@ -67,7 +70,12 @@ function CalculatorFoodItem({ foodItem }) {
   return (
     <li key={foodItem.id}>
       <div>
-        <img src={`/${foodItem.imagePath}`} alt={foodItem.name} />
+        <Image
+          src={`/${foodItem.imagePath}`}
+          alt={foodItem.name}
+          width={100}
+          height={100}
+        />
         <p>{foodItem.name}</p>
         <button
           onClick={() =>
