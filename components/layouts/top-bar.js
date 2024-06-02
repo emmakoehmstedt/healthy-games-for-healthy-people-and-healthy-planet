@@ -1,6 +1,8 @@
 import { useRouter } from "next/router";
-import { useCalculatorUpdate } from "../../context/calculatorContext"; 
+import { useCalculatorUpdate } from "../../context/calculatorContext";
 import styles from "./styles/header-footer.module.css";
+
+import Image from "next/image";
 
 /*************************************************************************
  * Component: TopBar
@@ -19,7 +21,7 @@ function TopBar() {
   const handleHomeClick = () => {
     // Clear the calculator state when the home button is clicked
     calculatorFunctions.onClearCalculator();
-    
+
     // Use the router to navigate to the home page
     router.push("/");
   };
@@ -32,15 +34,17 @@ function TopBar() {
         rel="noopener noreferrer"
         className={styles.osuLink}
       >
-        <img
+        <Image
           className={styles.oregonstateuniversityicon}
+          width={622}
+          height={152}
           alt=""
           src="/oregonStateUniversityIcon.png"
         />
       </a>
       {router.pathname !== "/" && (
         <div className={styles.homebutton} onClick={handleHomeClick}>
-        <b>Home</b>
+          <b>Home</b>
         </div>
       )}
       {/* <div

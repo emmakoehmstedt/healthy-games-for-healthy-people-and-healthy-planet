@@ -2,6 +2,8 @@ import Head from "next/head";
 import Layout from "../components/layouts/layout";
 import { useCallback } from "react";
 import { useRouter } from "next/router";
+import Image from "next/image";
+
 import styles from "./styles/home.module.css";
 
 /*************************************************************************
@@ -21,10 +23,12 @@ const Home = () => {
     <Layout>
       <div className={styles.home}>
         <div className={styles.homepagebackgroundframe}>
-          <img
+          <Image
             className={styles.homepagebackgroundimageIcon}
             alt=""
             src="/homepageBackgroundImage.png"
+            width={2880}
+            height={1039}
           />
           <b className={styles.juniorOutdoorFoodContainer}>
             <p>Junior Outdoor Food Navigators Food App</p>
@@ -47,10 +51,12 @@ const Home = () => {
         <div className={styles.calculatorframe} onClick={onCalculatorClick}>
           <div>
             <div className={styles.calculatorbutton}>
-              <img
+              <Image
                 className={styles.calculatoricon}
                 alt=""
                 src="/calculatorIcon.png"
+                width={100}
+                height={100}
               />
               <b className={styles.calculator}>Calculator</b>
             </div>
