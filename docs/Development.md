@@ -93,15 +93,15 @@ Our team met weekly outside of project partner meetings for issue management. Du
 Issues are created and put in the “Backlog” or “Todo” Sections
 Each issue should contain the following
 
-** Description **  (Description of issue requirements, usually with a reference of what the complete issue should look like)
+** Description ** (Description of issue requirements, usually with a reference of what the complete issue should look like)
 
 ** Requirements ** Functional requirements and guidelines that must be met for the issue to be marked as completed
 
-** Dependencies **  Issues that must be completed before this issue can be worked on. Blockers could also be written here.
+** Dependencies ** Issues that must be completed before this issue can be worked on. Blockers could also be written here.
 
-** Estimated Time **  Estimated time to complete
+** Estimated Time ** Estimated time to complete
 
-** Number of People **  Number of people expected to work on this task. Usually each task is assigned to 1 team member but an especially large or complex task may be assigned to multiple.
+** Number of People ** Number of people expected to work on this task. Usually each task is assigned to 1 team member but an especially large or complex task may be assigned to multiple.
 
 ## Version Control
 Github was used for version control. (See Team Github Guide https://docs.google.com/document/d/1b1WWi0wAWdkEKpzrHgF7SgBjLXmuqTqFWBDgihuB4q8/edit?usp=share_link).
