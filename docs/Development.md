@@ -14,7 +14,6 @@ Welcome to the project documentation for Healthy Games for Healthy People. This 
 Games for Healthy People & Healthy Planet aims to teach how children engage with their food consumption habits, promoting sustainability and health awareness. The application provides a user-friendly interface where individuals can track their food choices, explore nutritional information, and evaluate the environmental impact of their dietary decisions. Games for Healthy People & Healthy Planet represents a holistic approach to fostering healthier, more sustainable lifestyles. Through its intuitive interface and comprehensive features, the platform empowers children to make informed decisions that contribute to their well-being and the health of the planet.
 
 # 3. Technologies Used
-[The technologies, frameworks, libraries, and tools used in the project.]
 
 ## Frontend
 - ### Prototype - Figma
@@ -27,7 +26,7 @@ Games for Healthy People & Healthy Planet aims to teach how children engage with
 - ### Vercel
 
 # 4. Development Environment Setup
-[Instructions on setting up the development environment, including installation steps for required software, dependencies, and configuration.]
+
 ## Getting Started
 
 git clone [github url] <br>
@@ -75,7 +74,7 @@ To learn more about Next.js, take a look at the following resources:
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
 # 5. Project Structure
-[Explain the project structure, including directory layout, key files, and their purposes.]
+
 ## Directory Layout and Key Files
 Every file needed to support the website is located in the Github Repository.
 
@@ -84,7 +83,6 @@ The CS Capstone Games for Healthy People and Healthy Planet google drive has oth
 The main pages of the project are located in the "pages" directory where their stylings can also be found in the same location in the "styles" directory.
 
 # 6. Development Workflow
-[The development workflow, including version control practices, branching strategy, code review process, and issue tracking.]
 
 ## Issue Management
 Our team met weekly outside of project partner meetings for issue management. During this time we would create issues based on out last project partner meeting (see Issue Requirements). Then each team member assigned themself an issue to complete by its expected deadline. 
@@ -114,47 +112,34 @@ Lastly, they should create a pull request on Github (see Code Review Process).
 ## Code Review Process
 After a pull request has been made, a different team member will review the work. If the changes look acceptable then the branch can be merged aned deleted. The issue can be moved from "In Review" to "Done"
 
-
-# 7. Coding Standards
-[Define coding standards and guidelines for consistent code formatting, naming conventions, commenting, and documentation.]
-## Code Formattingf
-
-## Naming Conventions
-Use camelCase as the naming convention. 
-
-## Commenting
-Code should be well commented, explaining intent as well as functionality.
-
-## Documentation
-Notes should be taken by a a member of the team designated at the start of each meeting. The project documentation should be updated as design, workflow, and other important changes are made.
-
-# 8. Testing Strategy
-[The testing strategy, including unit testing, integration testing, and end-to-end testing. Provide instructions for running tests and reporting issues.]
-## Integration Testing
-Test the new feature or fix added in the issue you are testing, check desription and requ
+# 7. Testing Strategy
 
 ## User Testing
 Documentation has been created to use for user testing (see Testing Procedure https://docs.google.com/document/d/1U2PbzDxy5eGq0peJgallrt_4CHgNS625LYwPjV9bp2k/edit?usp=sharing)
 
-## End-to-End Testing
-Run through full site functionality. Navigate from the home page to the food cards page. Add foods to the calculator section, remove them and add them again. Press calculate to navigate to the results page and check if your results matched the food calculated.
-
-
-
-# 9. Deployment Process
-[Detail the deployment process, including deployment environments, CI/CD pipelines, deployment scripts, and rollback procedures.]
+# 8. Deployment Process
 
 Our website is currently using vercel for deployment.
 
-# 10. Troubleshooting
-[Document common issues and their resolutions, troubleshooting tips, and debugging techniques.]
+This Github repository is attached to a Vercel Deployment at this link: https://healthy-games-for-healthy-people-and-healthy-planet-coral.vercel.app/.
 
-# 11. Future Designs
+In order to make changes to the application:
 
-## Plans for future designs involve synthesizing and implementing feedback gathered from our presentation/user testing done at the FCH Conference.
+1) Make a new branch. The branch's name should reflect the task at hand. For example, if the task is to add a button the branch should be titled 'add-button'.
 
-# 12. Additional Resources
-[Links to additional resources, such as external documentation, tutorials, and support channels.]
+2) Make changes to that branch and commit them.
+
+3) Push the branch to the github repo.
+
+4) Create a pull request for the branch.
+
+5) Have a team member review the pull request and either merge it into the main branch, which will automatically deploy it to Vercel, or request changes.
+
+# 9. Future Designs
+
+Plans for future designs involve synthesizing and implementing feedback gathered from our presentation/user testing done at the FCH Conference.
+
+# 10. Additional Resources
 
 The CS Capstone Games for Healthy People and Healthy Planet google drive has other documentation, and team meeting notes (2023-2024) (see drive: https://drive.google.com/drive/u/0/folders/0ADCT01vyDaVBUk9PVA)
 
