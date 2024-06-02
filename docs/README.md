@@ -18,6 +18,10 @@ Then, run npm install
 
 With the code on you local machine navagate to the branches root directory.
 
+# Database Information
+
+You will need to create an .env.local folder for accessing Supabase data in the main directory. In this folder you will add the Supabase Database URL and ANON KEY. The URL and KEY are protected and will require admin authorization from the Project Administrator. 
+
 Run the development server:
 
 ```bash
