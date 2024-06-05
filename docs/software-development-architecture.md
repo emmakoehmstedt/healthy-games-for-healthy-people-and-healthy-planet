@@ -3,13 +3,13 @@ This project is called “Healthy Games for Healthy People and Healthy Planet”
 
 This document discusses the architecture for a web-based food calculator application that calculates the footprints (carbon and water) and the nutrition scores of various foods. The calculator’s objective is to provide food information for students who partake in a summer camp hosted by the College of Nutrition & College of Forestry at Oregon State. Ensuring this architecture will be easily usable, aesthetically pleasing, and fully functional is key to the success of the project.
 # Architectural Goals and Principles
-## Goals:
+## Goals
 - The application will be scalable, stable, testable, and flexible.
 - The application will be integrated into the JOFN camps and curriculum, and potentially expanded to regional education and outreach programs.
 - The application will continue working and be updated after the capstone project is over.
 - The application will grow in complexity with newer modules added over time.
 
-## Principles:
+## Principles
 - Do not suffer from “tunnel vision”
   - Our process should be holistic and not limited to only focusing on task completion.
 - Do not “reinvent the wheel”
@@ -27,7 +27,7 @@ This document discusses the architecture for a web-based food calculator applica
 - Database: PostgreSQL
   - PostgreSQL is a very popular open-source relational database management system.
 - Third-Party APIs: REST, Elastic Search
-![alt text](image.png)
+![Three different sections in a top down format where each leads to the next. First section is "User Interfaces" which is comprised of the web browser like Edge and Chrome. The second section is "Front-end" that is made up of React.js and NEXT.js. The last section is the "Back-end" or the Data Sources. THis is made up of Supabase where the data tables are stored.](software-development-architecture-image.png)
 
 # Architectural Patterns
 ## Client Server Pattern
@@ -45,10 +45,10 @@ This architecture combines multiple services that will work interdependently to 
 Develop a relational database utilizing RESTful APIS & test with Insomnia/Supabase. The database will contain nutritional scores, carbon footprint, and water footprint for individual foods, along with being accessed by using an API offered by Supabase.  PostgreSQL will be the relational database we use as that is utilized within Supabase. 
 
 # Interface Definitions
-GET /	      tasks return the information requested from the user once the = or finish buttons are pressed.<br>
-PATCH /    update any information inserted to the database through a logged-in user<br>
-POST /      send any information that was requested from the front end<br>
-DEL /        Delete information if inserted accidentally/incorrectly (or need to update nutrition information)<br>
+**GET /**	      tasks return the information requested from the user once the = or finish buttons are pressed.<br>
+**PATCH /**    update any information inserted to the database through a logged-in user<br>
+**POST /**      send any information that was requested from the front end<br>
+**DEL /**        Delete information if inserted accidentally/incorrectly (or need to update nutrition information)<br>
 
 # Considerations
 ## Security
@@ -74,13 +74,13 @@ For testing team members can run their server locally. For deploying the product
 
 # Testing Strategy
 Our testing environment will consist of unit tests, integration tests, system tests, and user tests.
-## Unit Test:
+## Unit Test
 - The product will be broken into pieces during development with each unit being tested.
-## Integration Test:
+## Integration Test
 - Each time a new module is developed, the system will go through an integration test in which that module is tested
-## System Test:
+## System Test
 - Before any user tests are performed the entire system will go through an end-to-end system analysis.
-## User Test:
+## User Test
 - The interface and functions of the web app will be tested by end users.
 - The users will perform specific tasks in simulated real-life environments.
 

@@ -13,13 +13,13 @@ The product is a calculator that allows users to enter the name of a food ingred
 - A stretch goal of implementing a comparison function that lets users compare different food ingredients or dishes in terms of their environmental and nutritional impacts.
 
 # Purpose and Vision (Background)
-Our purpose is to improve children’s health and environmental health through climate-resilient food citizenship. By developing interactive tools and games to engage children and young adults, we can teach people about food systems and climate change. We
-want to provide technology to empower children with scientific-based resources to become aware of the connections between climate change and their daily activities.
+Our purpose is to improve children’s health and environmental health through climate-resilient food citizenship. By developing interactive tools and games to engage children and young adults, we can teach people about food systems and climate change. We want to provide technology to empower children with scientific-based resources to become aware of the connections between climate change and their daily activities.
 We want to increase children’s climate literacy by teaching them how food systems impact climate change. We want children to have positive experiences with all stages of their food.
 - Planning
 - Shopping
 - Cooking
 - Eating
+
 We want to do this by applying JOFN’s findings and research to our work. This program has already found what works well for these children and young adults. We can take the principles and teachings that work best for each age group. Lastly, we’ll take this information to build our tools which will go back into the camp to bolster the curriculum and activities. Empowered with informed knowledge these children can make climate-based food choices. Ultimately, contributing to healthy people and a healthy planet.
 
 # Stakeholders
@@ -93,13 +93,50 @@ These functional requirements use MoSCoW Prioritization. A description of this i
 - **C**ould Have: Nice to have initiatives that will have a small impact if left out
 - **W**ill Not Have: Initiatives that are not priority for this specific time frame
 
-| User Story    | Feature       |  Priority     | Github Issue  | Dependencies  |
-| --- | --- | --- | --- | --- |
-| As a young student, I want to be able to see a nutritional health score for the foods that I eat so I don’t have to do extra research into my foods.  | Nutritional Score  | Must Have | TBD | N/A |
-| As a young student, I want to be able to easily see if my foods are climate resilient since I don’t know how to research this on my own yet.  | Food Calculator (Foodprints)  | Must Have | TBD | N/A |
-| As a camp counselor, I want the supplemental nutritional information to be very user-friendly so I can understand it well and not be confused when explaining it to campers | Food Calculator | UI/UX | Should Have | TBD | N/A |
-| As a parent to a young student, I want a food calculator that uses images to represent the portion sizes of the foods I am calculating so my child can understand how much food they are entering. | Food Calculator Image Representation of Size | Should Have | TBD | N/A |
-| As a Spanish-speaking student, I would like to be able to use the Food Calculator program in Spanish so I can understand the information more easily | Spanish Mode | Could Have / Will Not Have | TBD | N/A |
+<table>
+    <tr>
+        <th>User Story</th>
+        <th>Feature</th>
+        <th>Priority</th>
+        <th>Dependencies</th>
+        <th>Feature Achieved</th>
+    </tr>
+    <tr>
+        <td>As a young student, I want to be able to see a nutritional health score for the foods that I eat so I don’t have to do extra research into my foods.</td>
+        <td>Nutritional Score</td>
+        <td>Must Have</td>
+        <td>N/A</td>
+        <td>Yes</td>
+    </tr>
+    <tr>
+        <td>As a young student, I want to be able to easily see if my foods are climate resilient since I don’t know how to research this on my own yet. </td>
+        <td>Food Calculator (Foodprints)</td>
+        <td>Must Have</td>
+        <td>N/A</td>
+        <td>Yes</td>
+    </tr>
+    <tr>
+        <td>As a camp counselor, I want the supplemental nutritional information to be very user-friendly so I can understand it well and not be confused when explaining it to campers</td>
+        <td>Food Calculator UI/UX</td>
+        <td>Should Have</td>
+        <td>N/A</td>
+        <td>Yes</td>
+    </tr>
+    <tr>
+        <td>As a parent to a young student, I want a food calculator that uses images to represent the portion sizes of the foods I am calculating so my child can understand how much food they are entering.</td>
+        <td>Food Calculator Image Representation of Size</td>
+        <td>Should Have</td>
+        <td>N/A</td>
+        <td>No</td>
+    </tr>
+    <tr>
+        <td>As a Spanish-speaking student, I would like to be able to use the Food Calculator program in Spanish so I can understand the information more easily</td>
+        <td>Spanish Mode</td>
+        <td>Could Have / Will Not Have</td>
+        <td>N/A</td>
+        <td>No</td>
+    </tr>
+</table>
 
 ## Non-Functional Requirements
 - The calculator should have very minimal latency, page loading should be less than 3 seconds because if it is longer the children will start to lose attention. 
@@ -121,19 +158,19 @@ The product also needs to consider the following aspects of data management:
 ## Integration Requirements
 We will use an API to integrate communication between our databases and the web app. The exact API is undetermined. We will use a cloud-based service to store our data for easy access, scalability, and security. The service could include Azure SQL, or AWS RDS. The integration points will be the food calculator. The data exchanges will consist of a query sent from the calculator to the databases to retrieve data related to a specific query. The data will be fetched and returned to the web app where it will process the data into information for the user.
 Maintenance: The project partners will be working directly with the end users to collect real-time data, provide support, and collect feedback.
-<br>Deployment:
+### Deployment
 - Local development environments and GitHub to keep everyone’s code and documentation updated.
 - Group members can run their server locally when testing.
 - Potential use of AWS but this has not yet been discussed.
 - Need to register a domain name and choose a hosting provider.
 
 ## User Interaction and Design
-Interactions:
+### Interactions
 - The user can select a single or multiple whole-food items to calculate
 - The user can visually search through a list of foods by category.
 - The user will be presented with information about the plant/food item.
 
-Design Principles:
+### Design Principles
 - Simplicity: The app will be designed for third to fifth-graders. So, the app should be easy to understand and use with minimal clutter. Focusing on core functionality with no confusing surprises. The reading needs to be at an appropriate level, with a strong focus on visual learning.
 - Usability: The app needs to be user-friendly with a smooth user experience. The app will have a consistent theme layout and provide intuitive user interactions. The app should support different devices and screen sizes.
 - Visual: The web app will be visually appealing and interesting for third to fifth-graders.
@@ -142,60 +179,144 @@ Design Principles:
 Media Collection (Figma, Wireframes, Mockups Etc.):<br>
 [PRD Media Collection](https://docs.google.com/document/d/1jVi8ro4-QyRwsyHoVbZHJT5p5Q82Dwlu82jYp29z9_s/edit?usp=sharing) (Second Document supplied in upload)
 # Milestones and Timeline
-| Milestone | Duration | Timeline |
-| --- | --- | --- |
-| Planning: Communicate with project partners and team to develop goals, objectives, and technical requirements. | 2 weeks | October 27th, 2023 |
-| Analysis: Analyze the data and information gathered during the planning stage. Define features, specifications, and functionality. | 1 week | November 3rd, 2023 |
-| Design: Design the user interface, user interactions, user experiences, and backend of the web app. | 2 weeks | November 17th, 2023 |
-| Prototyping: Prototype the food calculator web app Version 0. | 3 weeks | December 10th, 2023 |
-| Evaluate: JOFN researchers and educators will evaluate app. | 2 weeks | January 19th, 2023 |
-| Prototyping: Iterate prototype with information gained from interviews. | 6 weeks | March 1st, 2023 |
-| Interviews: Field test latest version of app with end users. | 2 weeks | March 15th, 2023 |
-| Development: Develop the final iteration of the app. | 6 weeks | May 10th, 2023 |
-| Testing: Test app. | 2 weeks | May 24th, 2023 |
-| Release: App is complete and ready for researchers to use during the JOFN summer camps. | 2 weeks | June 7th, 2023 |
+<table>
+    <tr>
+        <th>Milestone</th>
+        <th>Duration</th>
+        <th>Timeline</th>
+    </tr>
+    <tr>
+        <td>Planning: Communicate with project partners and team to develop goals, objectives, and technical requirements.</td>
+        <td>2 weeks</td>
+        <td>October 27th, 2023</td>
+    </tr>
+    <tr>
+        <td>Analysis: Analyze the data and information gathered during the planning stage. Define features, specifications, and functionality.</td>
+        <td>1 week</td>
+        <td>November 3rd, 2023</td>
+    </tr>
+    <tr>
+        <td>Design: Design the user interface, user interactions, user experiences, and backend of the web app.</td>
+        <td>2 weeks</td>
+        <td>November 17th, 2023</td>
+    </tr>
+    <tr>
+        <td>Prototyping: Prototype the food calculator web app Version 0.</td>
+        <td>3 weeks</td>
+        <td>December 10th, 2023</td>
+    </tr>
+    <tr>
+        <td>Evaluate: JOFN researchers and educators will evaluate app.</td>
+        <td>1 week</td>
+        <td>March 18th, 2024</td>
+    </tr>
+    <tr>
+        <td>Prototyping: Iterate prototype with information gained from interviews.</td>
+        <td>6 weeks</td>
+        <td>March 1st, 2023</td>
+    </tr>
+    <tr>
+        <td>Interviews: Field test latest version of app with end users.</td>
+        <td>2 weeks</td>
+        <td>April 1st, 2024</td>
+    </tr>
+    <tr>
+        <td>Development: Develop the final iteration of the app. JOFN researchers and educators will evaluate the app.</td>
+        <td>4 weeks</td>
+        <td>April 29th, 2024</td>
+    </tr>
+    <tr>
+        <td>Prepare to present app at Extension Conference in Bend </td>
+        <td>2 weeks</td>
+        <td>May 8th, 2024</td>
+    </tr>
+    <tr>
+        <td>Testing: Test app.</td>
+        <td>2 weeks</td>
+        <td>May 24th, 2023</td>
+    </tr>
+    <tr>
+        <td>Release: App is complete and ready for researchers to use during the JOFN summer camps.</td>
+        <td>2 weeks</td>
+        <td>June 7th, 2023</td>
+    </tr>
+</table>
 
 # Goals and Success Metrics
-| Goal | Metric | Baseline | Target | Tracking Method| Goal Achieved |
-| --- | --- | --- | --- | --- | --- |
-| Ensure Data Quality | Does the data allow us to make the calculator? | Yes or No | By 12/04 | Discuss with team | Yes |
-| Determine which frameworks will be used for the web application. | Document in github listing which framework will be used for which task. | Document what database, server, and frontend we will be using. | Document the database, server, frontend, and any APIs we will need. | Viewing Document | Yes |
-| Seamless data retrieval from the database | Milliseconds | 1 second | 1 second | Code testing | Yes |
-| Very base prototype 0, application home screen. | Do we have all the requirements to create the home screen? | Yes or No | By 12/10 | Check with team | Yes |
-| Generate Feedback | Do we have a substantial amount of user feedback
-Feedback from 20+ users
-By 5/8
-Viewing Document
-Yes
-Product usability 
-How difficult  
-would you rate  
-the app?
-Easy > 50% 
-Easy > 70% 
-Interview
-Partially Done
-Product interest 
-How likely are you  to recommend  
-this product?
-Very > 50% 
-Very > 70% 
-Interview
-No
-Project partner
-satisfaction
-
-
-How useful do you feel the
-product is to you?
-Very > 50% 
-Very > 70% 
- Interview
-
-
-Yes
-
-
+<table>
+    <tr>
+        <th>Goal</th>
+        <th>Metric</th>
+        <th>Baseline</th>
+        <th>Target </th>
+        <th>Tracking Method</th>
+        <th>Goal Achieved</th>
+    </tr>
+    <tr>
+        <td>Ensure Data Quality</td>
+        <td>Does the data allow us to make the calculator?</td>
+        <td>Yes or No</td>
+        <td>By 12/04</td>
+        <td>Discuss with team</td>
+        <td>Yes</td>
+    </tr>
+    <tr>
+        <td>Determine which frameworks will be used for the web application.</td>
+        <td>Document in github listing which framework will be used for which task.</td>
+        <td>Document what database, server, and frontend we will be using.</td>
+        <td>Document the database, server, frontend, and any APIs we will need.</td>
+        <td>Viewing Document</td>
+        <td>Yes</td>
+    </tr>
+    <tr>
+        <td>Seamless data retrieval from the database</td>
+        <td>Milliseconds </td>
+        <td>1 second</td>
+        <td>1 second</td>
+        <td>Code testing</td>
+        <td>Yes</td>
+    </tr>
+    <tr>
+        <td>Very base prototype 0, application home screen.</td>
+        <td>Do we have all the requirements to create the home screen?</td>
+        <td>Yes or No </td>
+        <td>By 12/10</td>
+        <td>Check with team</td>
+        <td>Yes</td>
+    </tr>
+    <tr>
+        <td>Generate Feedback</td>
+        <td>Do we have a substantial amount of user feedback</td>
+        <td>Feedback from 20+ users</td>
+        <td>By 5/8</td>
+        <td>Viewing Document</td>
+        <td>Yes</td>
+    </tr>
+    <tr>
+        <td>Product usability </td>
+        <td>How difficult would you rate the app?</td>
+        <td>Easy > 50% </td>
+        <td>Easy > 70% </td>
+        <td>Interview</td>
+        <td>Partially Done</td>
+    </tr>
+    <tr>
+        <td>Product interest</td>
+        <td>How likely are you  to recommend this product?</td>
+        <td>Very > 50% </td>
+        <td>Very > 70% </td>
+        <td>Interview</td>
+        <td>No</td>
+    </tr>
+    <tr>
+        <td>Project partner satisfaction</td>
+        <td>How useful do you feel the product is to you?</td>
+        <td>Very > 50% </td>
+        <td>Very > 70% </td>
+        <td>Interview</td>
+        <td>Yes</td>
+    </tr>
+</table>
 
 # Open Questions
 - [ ] Which database will we be using and where will it be hosted?
@@ -206,4 +327,5 @@ Yes
 # Out of Scope
 - Mobile Application: A mobile app is beyond the scope of our project and we will have to stick to a web application. We do not have enough members or experience making mobile apps in order to implement this in three terms.
 - AI: It is likely that we will not have enough time to implement any sort of artificial intelligence in our program. This is due to our time constraints and that we have a small group.
-- Languages besides English and Spanish: We will not have the time/resources to have somebody translate the application into any other language other than English or Spanish. Even Spanish is a stretch goal for our project.
+- Languages besides English: We will not have the time/resources to have somebody translate the application into any other language other than English
+- Administration Website: We will not have enough time to implement a backend website for the administration to add and delete items from the database. They will have to manually enter new items.
