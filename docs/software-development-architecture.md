@@ -26,7 +26,7 @@ This document discusses the architecture for a web-based food calculator applica
   - Supabase is an open-source platform that utilizes the amazing strength of a PostgreSQL database for modern web applications. 
 - Database: PostgreSQL
   - PostgreSQL is a very popular open-source relational database management system.
-- Third-Party APIs: REST, Elastic Search
+- Third-Party APIs: REST, Elastic Search<br>
 ![Three different sections in a top down format where each leads to the next. First section is "User Interfaces" which is comprised of the web browser like Edge and Chrome. The second section is "Front-end" that is made up of React.js and NEXT.js. The last section is the "Back-end" or the Data Sources. THis is made up of Supabase where the data tables are stored.](software-development-architecture-image.png)
 
 # Architectural Patterns
