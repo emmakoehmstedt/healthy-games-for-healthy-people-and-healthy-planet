@@ -156,7 +156,7 @@ The product also needs to consider the following aspects of data management:
 - Data structures: The product needs to use appropriate and efficient data structures for organizing and manipulating data such as tables in csv files.
 - Data tools: The product needs to use reliable and secure data tools for accessing and hosting data, such as Supabase.
 ## Integration Requirements
-We will use an API to integrate communication between our databases and the web app. The exact API is undetermined. We will use a cloud-based service to store our data for easy access, scalability, and security. The service could include Azure SQL, or AWS RDS. The integration points will be the food calculator. The data exchanges will consist of a query sent from the calculator to the databases to retrieve data related to a specific query. The data will be fetched and returned to the web app where it will process the data into information for the user.
+We will use an API[^1] to integrate communication between our databases and the web app. The exact API[^1] is undetermined. We will use a cloud-based service to store our data for easy access, scalability, and security. The service could include Azure SQL[^2], or AWS RDS[^3]. The integration points will be the food calculator. The data exchanges will consist of a query sent from the calculator to the databases to retrieve data related to a specific query. The data will be fetched and returned to the web app where it will process the data into information for the user.
 Maintenance: The project partners will be working directly with the end users to collect real-time data, provide support, and collect feedback.
 ### Deployment
 - Local development environments and GitHub to keep everyone’s code and documentation updated.
@@ -329,3 +329,8 @@ Media Collection (Figma, Wireframes, Mockups Etc.):<br>
 - AI: It is likely that we will not have enough time to implement any sort of artificial intelligence in our program. This is due to our time constraints and that we have a small group.
 - Languages besides English: We will not have the time/resources to have somebody translate the application into any other language other than English
 - Administration Website: We will not have enough time to implement a backend website for the administration to add and delete items from the database. They will have to manually enter new items.
+
+
+[^1]: API - Application Programming Interface
+[^2]: SQL - Structured Query Language
+[^3]: AWS RDS - Amazon Web Services Relational Database Service

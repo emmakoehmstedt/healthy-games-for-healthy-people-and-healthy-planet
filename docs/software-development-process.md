@@ -19,13 +19,13 @@
 ## Github
 - All edits must be done within each person's own branch - this also helps track who is contributing what to the project.
 - Once the feature, bug, or refactoring is done, a Pull Request is created.
-    - All pull requests will be reviewed and “signed off” by two members of the team - we need to ensure that it does not ever break the main branch.
+    - All pull requests will be reviewed and "signed off" by two members of the team - we need to ensure that it does not ever break the main branch.
     - The Pull Request needs to comply with the Definition of Done (see later) and should be linked to the corresponding work item.
 ## Kanban
 - We will use a Kanban board to show what we need to do, what is in progress, what is in the code review phase, and what is completed.
 - Work items in the Kanban board will be taken from the product backlog, which will be ordered from most to least urgent.
 - A work item must have a thorough description, time estimate, and criteria for acceptance before it is added to the Kanban board.
-- In order to move from the “Code Review” to the “Completed” section of the Kanban board, the code needs to be reviewed by at least two team members. This is when the Pull Request can be merged.
+- In order to move from the "Code Review" to the "Completed" section of the Kanban board, the code needs to be reviewed by at least two team members. This is when the Pull Request can be merged.
 
 # Process 
 Our team agrees to follow a Kanban Agile approach for the project, which involves the following steps:
@@ -40,7 +40,7 @@ Our team agrees to follow a Kanban Agile approach for the project, which involve
 **Product Manager:** The product manager will be responsible for communicating with the project partners (stakeholders) about their needs for the product. They will be noting these needs in the project partner meetings. Based on stakeholder feedback, they will create user stories and add these to the backlog. - Gerald<br>
 **Project Manager:** The project manager will be responsible for refining the backlog and sorting the tasks in order from most to least urgent. They will oversee assigning tasks to different group members and will check in with team members on their progress. - Garrett<br>
 **Frontend:** This role can be filled by multiple team members. This will involve implementing the front end of the product. This includes color schemes, styles, navigation, and displaying information from the back end. - Kyu Sung, Mitch, Gerald (Emma if need be)<br>
-**Backend:** This role can be filled by multiple team members. This involves implementing the back end of the product. This includes creating the database, managing CRUD operations on the database, connecting the database to the front end, authenticating users, and more. - Emma and Garrett (Mitch if need be)<br>
+**Backend:** This role can be filled by multiple team members. This involves implementing the back end of the product. This includes creating the database, managing CRUD[^1] operations on the database, connecting the database to the front end, authenticating users, and more. - Emma and Garrett (Mitch if need be)<br>
 **Design:** This role can be filled by multiple team members. This involves drawing out different screens of the web application on Figma to achieve the desired appearance and usability that the project partners are looking for. - Emma, Kyu Sung, Gerald, Garrett, Mitch<br>
 **Data Analysis:** This role can be filled by multiple team members. This will involve analyzing the data given by the project partners, determining what data needs to be stored in the database, and how the total scores will be calculated. - Emma, Kyu Sung, Gerald, Garrett, Mitch
 
@@ -150,3 +150,5 @@ Document Contributors:
 - Emma Koehmstedt
 - Kyu Sung Kwon
 - Mitch Stephenson
+
+[^1]: CRUD - Create, Read, Update, and Delete. The basic components of database design.

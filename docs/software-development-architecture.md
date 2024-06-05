@@ -26,7 +26,7 @@ This document discusses the architecture for a web-based food calculator applica
   - Supabase is an open-source platform that utilizes the amazing strength of a PostgreSQL database for modern web applications. 
 - Database: PostgreSQL
   - PostgreSQL is a very popular open-source relational database management system.
-- Third-Party APIs: REST, Elastic Search<br>
+- Third-Party APIs[^2]: REST[^4], Elastic Search<br>
 ![Three different sections in a top down format where each leads to the next. First section is "User Interfaces" which is comprised of the web browser like Edge and Chrome. The second section is "Front-end" that is made up of React.js and NEXT.js. The last section is the "Back-end" or the Data Sources. THis is made up of Supabase where the data tables are stored.](software-development-architecture-image.png)
 
 # Architectural Patterns
@@ -37,12 +37,12 @@ This architecture combines multiple services that will work interdependently to 
 
 # Component Descriptions
 - **User Interface/Frontend (Next.js):** Displays Food Calculator interface and handles user input. Displays calculated score from user input. Provides additional information, navigation from screen to screen, and makes HTTP requests to the backend server.
-- **Backend Server (Supabase):** Serves as our API, handles all queries to the database given from the front-end, and sends proper response information & HTTP calls to the front end. 
+- **Backend Server (Supabase):** Serves as our API[^2], handles all queries to the database given from the front-end, and sends proper response information & HTTP calls to the front end. 
 - **Database (PostgreSQL via Supabase):** Supply by project partners. Stores carbon footprints, and water footprints for a range of foods. Easily scalable to allow for more food information to be entered.
 - **Server:** Localhost for development & then deployed on a permanent OSU server (will be figured out during winter term).
 
 # Data Management
-Develop a relational database utilizing RESTful APIS & test with Insomnia/Supabase. The database will contain nutritional scores, carbon footprint, and water footprint for individual foods, along with being accessed by using an API offered by Supabase.  PostgreSQL will be the relational database we use as that is utilized within Supabase. 
+Develop a relational database utilizing RESTful APIs[^2] & test with Insomnia/Supabase. The database will contain nutritional scores, carbon footprint, and water footprint for individual foods, along with being accessed by using an API[^2] offered by Supabase.  PostgreSQL will be the relational database we use as that is utilized within Supabase. 
 
 # Interface Definitions
 **GET /**	      tasks return the information requested from the user once the = or finish buttons are pressed.<br>
@@ -56,12 +56,12 @@ With our current scope, security risks aren’t very high but it is still good p
 
 It is essential for the admin login to be secure since users without administrative privileges cannot modify the information. This will require both authentication and authorization. We will want to make sure that we have a user login page (authentication) for admins to modify information. We will also want to have different privilege levels for different users. For example, only users authorized with admin privileges should be able to add, remove, or alter data in the database.
 
-To secure our data we will want to maintain our SQL source code under version control (GitHub) outside of Supabase. The data will be extracted from the external database and inputted into the Supabase database. Transport Layer Security is another approach to security that we may enlist. Since HTTPS is standard practice for websites, it is widely used and accepted.
+To secure our data we will want to maintain our SQL[^5] source code under version control (GitHub) outside of Supabase. The data will be extracted from the external database and inputted into the Supabase database. Transport Layer Security is another approach to security that we may enlist. Since HTTPS[^3] is standard practice for websites, it is widely used and accepted.
 
 ## Performance
 We are currently dealing with a limited number of fruits/vegetables, but it will be important to design our database for quick insertion and retrieval so it can handle larger amounts of data in the future. Overall, the performance needs to be quick & effective, which can be done through horizontal scaling utilizing containers.
 
-In the big picture, our application may have upwards of 50 users at once. In the future, if our application was used by regional education facilities or outreach programs, we may want to think about using a REST API optimizer. This could help us scale up to meet the needs of increased traffic. Overall, we will want to make sure that our application can quickly query the database and display that information for the user to see.
+In the big picture, our application may have upwards of 50 users at once. In the future, if our application was used by regional education facilities or outreach programs, we may want to think about using a REST[^4] API[^2] optimizer. This could help us scale up to meet the needs of increased traffic. Overall, we will want to make sure that our application can quickly query the database and display that information for the user to see.
 
 ## Maintenance and Support
 The project partners are responsible for the web application once the 9-month capstone project is complete. The versioning/issue tracking will be the sole responsibility of the project partners at the end of this capstone sequence. The project partners will be working directly with the end users to collect real-time data, provide support, and collect feedback.
@@ -85,11 +85,12 @@ Our testing environment will consist of unit tests, integration tests, system te
 - The users will perform specific tasks in simulated real-life environments.
 
 # Glossary
-[^1]: JOFN - This is the program Junior Outdoor Food Navigators. It is an OSU program partnered with Asp3ire and Kids Spirit with the goal of teaching children about environmental health and climate resilience through positive experiences with nature and food.
 - CRUD - Create, Read, Update, and Delete. The basic components of database design.
-- API - Application Programming Interface
 - NC - Nutritional Calculator
-- HTTPS - Hypertext Transfer Protocol Secure
-- REST - Representational State Transfer
-- SQL - Structured Query Language
 - ReactJS - A JavaScript library that allows you to easily create user interfaces. It removes developers from working with the DOM and allows you to split up your program into components.
+
+[^1]: JOFN - This is the program Junior Outdoor Food Navigators. It is an OSU program partnered with Asp3ire and Kids Spirit with the goal of teaching children about environmental health and climate resilience through positive experiences with nature and food.
+[^2]: API - Application Programming Interface
+[^3]: HTTPS - Hypertext Transfer Protocol Secure
+[^4]: REST - Representational State Transfer
+[^5]: SQL - Structured Query Language
