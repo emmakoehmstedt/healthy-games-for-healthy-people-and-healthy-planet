@@ -2,7 +2,7 @@
 ## Communication
 - We are responsive with our asynchronous communication.
     - Keep tabs on the team Discord and respond to teammates within 24 hours for important messages (i.e. meeting times & quick responses).
-    - Use “@everyone” for urgent information about an issue that would halt progress or waste working time.
+    - Use "@everyone" for urgent information about an issue that would halt progress or waste working time.
     - We all must regularly communicate via our Discord server, and reacting with emotes counts.
 - We are responsible for maintaining a regular communication schedule with our project partners, and teaching assistants.
 ## Meetings
