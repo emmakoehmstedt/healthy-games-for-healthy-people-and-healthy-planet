@@ -5,7 +5,7 @@ This document discusses the architecture for a web-based food calculator applica
 # Architectural Goals and Principles
 ## Goals
 - The application will be scalable, stable, testable, and flexible.
-- The application will be integrated into the JOFN camps and curriculum, and potentially expanded to regional education and outreach programs.
+- The application will be integrated into the JOFN[^1] camps and curriculum, and potentially expanded to regional education and outreach programs.
 - The application will continue working and be updated after the capstone project is over.
 - The application will grow in complexity with newer modules added over time.
 
@@ -85,7 +85,7 @@ Our testing environment will consist of unit tests, integration tests, system te
 - The users will perform specific tasks in simulated real-life environments.
 
 # Glossary
-- JOFN - This is the program Junior Outdoor Food Navigators. It is an OSU program partnered with Asp3ire and Kids Spirit with the goal of teaching children about environmental health and climate resilience through positive experiences with nature and food.
+[^1]: JOFN - This is the program Junior Outdoor Food Navigators. It is an OSU program partnered with Asp3ire and Kids Spirit with the goal of teaching children about environmental health and climate resilience through positive experiences with nature and food.
 - CRUD - Create, Read, Update, and Delete. The basic components of database design.
 - API - Application Programming Interface
 - NC - Nutritional Calculator
