@@ -39,10 +39,10 @@ Our team agrees to follow a Kanban Agile approach for the project, which involve
 # Roles 
 **Product Manager:** The product manager will be responsible for communicating with the project partners (stakeholders) about their needs for the product. They will be noting these needs in the project partner meetings. Based on stakeholder feedback, they will create user stories and add these to the backlog. - Gerald<br>
 **Project Manager:** The project manager will be responsible for refining the backlog and sorting the tasks in order from most to least urgent. They will oversee assigning tasks to different group members and will check in with team members on their progress. - Garrett<br>
-**Frontend:** This role can be filled by multiple team members. This will involve implementing the front end of the product. This includes color schemes, styles, navigation, and displaying information from the back end. - Kyu Sung, Mitch, Gerald (Emma if need be)<br>
-**Backend:** This role can be filled by multiple team members. This involves implementing the back end of the product. This includes creating the database, managing CRUD[^1] operations on the database, connecting the database to the front end, authenticating users, and more. - Emma and Garrett (Mitch if need be)<br>
+**Frontend:** This role can be filled by multiple team members. This will involve implementing the front end of the product. This includes color schemes, styles, navigation, and displaying information from the back end. - Emma, Kyu Sung, Mitch, Gerald<br>
+**Backend:** This role can be filled by multiple team members. This involves implementing the back end of the product. This includes creating the database, managing CRUD[^1] operations on the database, connecting the database to the front end, authenticating users, and more. - Emma and Garrett<br>
 **Design:** This role can be filled by multiple team members. This involves drawing out different screens of the web application on Figma to achieve the desired appearance and usability that the project partners are looking for. - Emma, Kyu Sung, Gerald, Garrett, Mitch<br>
-**Data Analysis:** This role can be filled by multiple team members. This will involve analyzing the data given by the project partners, determining what data needs to be stored in the database, and how the total scores will be calculated. - Emma, Kyu Sung, Gerald, Garrett, Mitch
+**Data Analysis:** This role can be filled by multiple team members. This will involve analyzing the data given by the project partners, determining what data needs to be stored in the database, and how the total scores will be calculated. - Emma, Garrett
 
 # Tooling 
 <table>
@@ -56,11 +56,11 @@ Our team agrees to follow a Kanban Agile approach for the project, which involve
   </tr>
   <tr>
     <th>Documentation</th>
-    <td>README file, Project Notes within our Google Drive, Astro & Starlight</td>
+    <td>README file, Project Notes within our Google Drive</td>
   </tr>
   <tr>
     <th>Test Framework</th>
-    <td>Playwright & Jest</td>
+    <td>Google Forms for user testing feedback on the prototype</td>
   </tr>
   <tr>
     <th>Linting and Formatting</th>
@@ -68,7 +68,7 @@ Our team agrees to follow a Kanban Agile approach for the project, which involve
   </tr>
   <tr>
     <th>CI/CD</th>
-    <td>GitHub Actions</td>
+    <td>GitHub and Vercel</td>
   </tr>
   <tr>
     <th>IDE</th>
@@ -82,8 +82,6 @@ Our team agrees to follow a Kanban Agile approach for the project, which involve
     <th>Others</th>
     <td>
         - Utilize MySQL Workbench for Database Management<br>
-        - Utilize Prometheus for Monitoring<br>
-        - Each member will have their own branch within the main GitHub repo.<br>
         - Any code edits will need to be checked by another member before being committed to the main branch; ensure minimal errors exist within Main.
     </td>
   </tr>
@@ -93,17 +91,16 @@ Our team agrees to follow a Kanban Agile approach for the project, which involve
 Definition of done is a set of criteria that guarantees quality and completeness of changes made to the project. Our definition of done includes the following steps:
 - Present the sketch or idea to the project partners and get their approval.
 - Distribute the work required to meet the acceptance criteria to the team members.
-- Perform unit testing and integration testing for the changes.
-- Review the changes by at least two team members and merge them into the main branch.
+- Review the changes by at least one team member and merge them into the main branch.
 - Update the documentation, the release notes, and the Kanban board.
 - Prepare a demo for the next project partner meeting and get feedback.
 - Evaluate and avoid any breaking changes or minor bugs caused by the new feature.
-- Deploy the changes to staging.
+- Deploy the changes
 
 # Release Cycle 
-Our release schedule will emphasize continuous development and testing with a scheduled major release at the end of every term (3 months).
+Our release schedule will emphasize continuous development and testing.
 
-Every team member will work on their section or issue. Then the section or issue will get staged for testing and quality assurance. After it is tested, the issue will be double checked by two team members and merged to the main branch on Github.
+Every team member will work on their section or issue. Then the section or issue will get staged for testing and quality assurance. The issue will be reviewed by at least one team member and merged to the main branch on Github.
 
 Use semantic versioning; Major, Minor, and Patch:
 - Increment the Major version for changes that could break compatibility with the project’s existing code.
@@ -121,10 +118,10 @@ Use semantic versioning; Major, Minor, and Patch:
     </tr>
     <tr>
         <td>Production</td>
-        <td>AWS through CI/CD</td>
+        <td>Github and Vercel through CI/CD</td>
         <td>Release</td>
-        <td>Sleeping well at night</td>
-        <td>Sentry</td>
+        <td>Reviewing and deploying new features or edited features</td>
+        <td>N/A</td>
     </tr>
     <tr>
         <td>Staging (Test)</td>
@@ -137,13 +134,13 @@ Use semantic versioning; Major, Minor, and Patch:
         <td>Dev</td>
         <td>Local (macOS and Windows)</td>
         <td>Commit</td>
-        <td>Development and unit tests</td>
+        <td>Writing and committing code or other changes to the Github Repo.</td>
         <td>N/A</td>
     </tr>
 </table>
 
 # Team Information and Contributors
-Our team is Games for Healthy People and Healthy Planet for the class CS461.<br>
+Our team is Games for Healthy People and Healthy Planet for the class CS46X.<br>
 Document Contributors:
 - Garett Berliner
 - Gerald Hendrix

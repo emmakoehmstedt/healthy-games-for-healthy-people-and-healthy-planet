@@ -42,7 +42,7 @@ This architecture combines multiple services that will work interdependently to 
 - **Server:** Localhost for development & then deployed on a permanent OSU server (will be figured out during winter term).
 
 # Data Management
-Develop a relational database utilizing RESTful APIs[^2] & test with Insomnia/Supabase. The database will contain nutritional scores, carbon footprint, and water footprint for individual foods, along with being accessed by using an API[^2] offered by Supabase.  PostgreSQL will be the relational database we use as that is utilized within Supabase. 
+Develop a relational database utilizing RESTful APIs[^2] & test with Supabase. The database will contain nutritional scores, carbon footprint, and water footprint for individual foods, along with being accessed by using an API[^2] offered by Supabase.  PostgreSQL will be the relational database we use as that is utilized within Supabase. 
 
 # Interface Definitions
 **GET /**	      tasks return the information requested from the user once the = or finish buttons are pressed.<br>
